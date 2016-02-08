@@ -3,6 +3,12 @@ CREATE USER admin@localhost IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON impact_app.* TO admin@localhost;
 FLUSH PRIVILEGES;
 
+
+CREATE TABLE questionnaire_question(
+  question_id int not null auto_increment primary key,
+  question_description varchar (100) not null
+);
+/*
 CREATE TABLE entity (
   entity_id int not null auto_increment primary key,
   entity_name varchar (100) not null,
@@ -68,3 +74,4 @@ CREATE TABLE "noname" (
   collab_id int not null,
   foreign key (collab_id) references questionare_collaboration(collab_id)
 );
+*/
