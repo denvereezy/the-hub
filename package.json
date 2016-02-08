@@ -24,6 +24,7 @@
     "express-session": "~1.13.0",
     "mysql": "~2.10.2",
     "bluebird": "~3.2.2",
-    "connection-provider": "git://github.com/avermeulen/connection-provider"
+    "connection-provider": "git://github.com/avermeulen/connection-provider",
+    "compression": "~1.6.1"
   }
 }
