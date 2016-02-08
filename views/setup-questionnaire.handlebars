@@ -1,15 +1,21 @@
 
 <form action="/setup-questionnaire/add" method="POST">
-           <h1>Add a product</h1>
-           q:<input type="text" name="question_description" required>
+           <h1>Setup Questionnaire</h1>
+           <input type="text" name="question_description" required>
            <input type="submit">
-       </form>
+</form>
 <div class="container">
-    <h1>Setup Questionnaire</h1>
 
+    <table>
     {{#each questions}}
-    <p>
-      {{question_description}}
-    </p>
+        <tr>
+            <td>{{question_description}}</td>
+                <td><a href="/setup-questionnaire/edit/{{question_id}}"">edit</a></td>
+                <td><a href="/setup-questionnaire/delete/{{question_id}}">delete</a></td>
+        </tr>
     {{/each}}
+    <p>
+
+    </p>
+
 </div>
