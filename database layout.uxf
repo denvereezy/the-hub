@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>117</x>
+      <y>36</y>
+      <w>189</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>User
+--
+
+#user_id: 
+*entity_id:
+user_name:
+user_email:
+user_password:
+user_contactNo:</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>459</x>
+      <y>36</y>
+      <w>189</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Entity
+--
+
+#entity_id:
+entity_logo:
+entity_firstName:
+entity_lastName:
+entity_address:
+entity_donors: { }
+entity_beneficiary_userIds: { }
+entity_admins_userIds: { }
+entity_viewers_userIds: { }</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>783</x>
+      <y>270</y>
+      <w>189</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Metric_question_results
+--
+
+question_results_time:
+*question_id:
+*entity_id:
+user_id:
+question_results_value:</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>252</y>
+      <w>189</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Metric_questions
+--
+
+#metric_id:
+metric_description:
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>459</x>
+      <y>288</y>
+      <w>189</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Metric_questionares
+--
+
+#questionnaires_id:
+*entity_id_createdQuestionnaire:
+*entity_ids_sentTo: { }
+due_date:
+metric_ids: { }</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>126</x>
+      <y>423</y>
+      <w>189</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Invitations
+--
+
+questionnaire_id:
+status:
+email:
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>783</x>
+      <y>432</y>
+      <w>189</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Questionare_collaboration
+--
+
+#collab_id:
+entity_id:
+*question_id:
+collab_type: (HUB or Benef)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>639</x>
+      <y>477</y>
+      <w>162</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+
+only certain fields
+selected to be sent
+to HUB/Beneficiaries</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>297</x>
+      <y>72</y>
+      <w>180</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;50.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>306</x>
+      <y>387</y>
+      <w>171</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Invite users</panel_attributes>
+    <additional_attributes>10.0;110.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>207</y>
+      <w>180</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Donor create questionnaire</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>459</x>
+      <y>558</y>
+      <w>189</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>Note..Metric_questionnaires 
+expand me \/
+bg=green
+-
+entity_id_createdQuestionnaire
+- Organization who created the 
+questionnaire
+-
+entity_ids_sentTo(accepted):
+- ids of organizations Questionnaire
+sent to.
+(first one in array will always be
+the HUB's id)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>378</y>
+      <w>27</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>783</x>
+      <y>558</y>
+      <w>189</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>Note..Questionnaire_collaboration
+bg=green
+expand me \/
+-
+Removed user_id and added
+entity_id.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>459</x>
+      <y>468</y>
+      <w>189</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>questionnaire_questions
+--
+#question_id:
+question_description:</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>396</y>
+      <w>27</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>207</y>
+      <w>261</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Donor create questionnaire</panel_attributes>
+    <additional_attributes>190.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
