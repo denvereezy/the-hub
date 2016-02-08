@@ -1,3 +1,4 @@
+
 insert into questionnaire_question (question_description) values("Enabler cost to sustainable revenue ratio");
 insert into questionnaire_question (question_description) values("Number of partnerships with non-financial services providers");
 insert into questionnaire_question (question_description) values("Number of partnerships with financial services providers");

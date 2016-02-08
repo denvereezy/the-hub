@@ -38,6 +38,10 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
+app.get('/setup-questionnaire', function (req, res) {
+  res.render('setup-questionnaire');
+});
+
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {
   const host = server.address().address;
