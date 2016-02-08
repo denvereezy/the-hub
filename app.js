@@ -5,7 +5,10 @@ const express      = require('express'),
       bodyParser   = require('body-parser'),
       mysql        = require('mysql'),
       connectionPv = require('connection-provider'),
+      compression  = require('compression'),
       app          = express();
+
+const QuestionDataService = require('./data_services/questionDataService');
 
 const dbOptions = {
   host      : 'localhost',
@@ -17,7 +20,7 @@ const dbOptions = {
 
 const serviceSetupCallBack = function (connection) {
   return {
-    //
+    questionDataService : new QuestionDataService(connection);
   }
 };
 
@@ -27,6 +30,7 @@ app.use(session({ secret : 'keyboard cat', cookie :{ maxAge : 3600000 }, resave 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended : false }));
 app.use(bodyParser.json());
+app.use(compression());
 app.engine('handlebars', exhbs({defaultLayout : 'main'}));
 app.set('view engine', 'handlebars');
 
