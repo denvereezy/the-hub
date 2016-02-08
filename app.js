@@ -10,6 +10,8 @@ const express      = require('express'),
 
 const QuestionDataService = require('./data_services/questionDataService');
 
+const questions = require('./routes/questionnaire.js');
+
 const dbOptions = {
   host      : 'localhost',
   user      : 'admin',
@@ -20,7 +22,7 @@ const dbOptions = {
 
 const serviceSetupCallBack = function (connection) {
   return {
-    questionDataService : new QuestionDataService(connection);
+    questionDataService : new QuestionDataService(connection)
   }
 };
 
@@ -38,9 +40,11 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-app.get('/setup-questionnaire', function (req, res) {
-  res.render('setup-questionnaire');
-});
+app.get('/setup-questionnaire/show',questions.show);
+// app.post('/setup-questionnaire/edit',questions.edit);
+// app.post('/setup-questionnaire/add',questions.add);
+// app.post('/setup-questionnaire/update',questions.update);
+// app.get('/setup-questionnaire/detete',questions.delete);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {
