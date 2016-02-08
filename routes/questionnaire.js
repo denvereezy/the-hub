@@ -14,23 +14,23 @@ exports.show = function (req, res, next) {
 });
 };
 
-// exports.add = function (req, res, next) {
-//     req.getServices()
-//       .then(function(services){
-//         var input = JSON.parse(JSON.stringify(req.body));
-//         var data = {
-//             Name : input.Name,
-//         };
-//         var categoryDataService = services.categoryDataService;
-//         categoryDataService.addCategory(data)
-//           .then(function(results){
-//               res.redirect('/setup-questionnaire');
-//           })
-//             .catch(function(err){
-//                 next(err);
-//     });
-// });
-// };
+exports.add = function (req, res, next) {
+    req.getServices()
+      .then(function(services){
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            question_description : input.question_description,
+        };
+        const questionDataService = services.questionDataService;
+        questionDataService.addQuestion(data)
+          .then(function(results){
+              res.redirect('/setup-questionnaire');
+          })
+            .catch(function(err){
+                next(err);
+    });
+});
+};
 //
 // exports.get = function(req, res, next){
 //   req.getServices()

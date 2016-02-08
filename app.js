@@ -42,7 +42,7 @@ app.get('/', function (req, res) {
 
 app.get('/setup-questionnaire/show',questions.show);
 // app.post('/setup-questionnaire/edit',questions.edit);
-// app.post('/setup-questionnaire/add',questions.add);
+app.post('/setup-questionnaire/add',questions.add);
 // app.post('/setup-questionnaire/update',questions.update);
 // app.get('/setup-questionnaire/detete',questions.delete);
 
