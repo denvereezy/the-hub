@@ -63,8 +63,8 @@ question_results_value:</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>126</x>
-      <y>459</y>
+      <x>54</x>
+      <y>495</y>
       <w>189</w>
       <h>108</h>
     </coordinates>
@@ -84,7 +84,7 @@ metric_description:
       <w>189</w>
       <h>117</h>
     </coordinates>
-    <panel_attributes>Metric_questionares
+    <panel_attributes>questionares
 --
 
 #questionnaires_id:
@@ -267,16 +267,5 @@ m2=1
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
     <additional_attributes>160.0;290.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>306</x>
-      <y>306</y>
-      <w>180</w>
-      <h>225</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>180.0;10.0;10.0;230.0</additional_attributes>
   </element>
 </diagram>
