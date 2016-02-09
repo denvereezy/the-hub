@@ -32,6 +32,7 @@ exports.add = function (req, res, next) {
 });
 };
 
+
 exports.get = function(req, res, next){
   req.getServices()
     .then(function(services){
@@ -55,7 +56,7 @@ exports.update = function(req, res, next){
       const questionDataService = services.questionDataService;
       questionDataService.updateQuestion(data,id)
         .then(function(results){
-            var resultsCb = function(results){
+            const resultsCb = function(results){
                 res.redirect('/setup-questionnaire/show');
             };
         })
