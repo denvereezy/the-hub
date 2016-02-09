@@ -41,10 +41,11 @@ app.get('/', function (req, res) {
 });
 
 app.get('/setup-questionnaire/show',questions.show);
-// app.post('/setup-questionnaire/edit',questions.edit);
+// app.get('/setup-questionnaire/edit/:question_id',questions.get);
 app.post('/setup-questionnaire/add',questions.add);
-// app.post('/setup-questionnaire/update',questions.update);
-// app.get('/setup-questionnaire/detete',questions.delete);
+app.get('/setup-questionnaire/delete/:question_id',questions.delete);
+app.post('/setup-questionnaire/update/:question_id',questions.update);
+
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {

@@ -17,8 +17,8 @@ exports.show = function (req, res, next) {
 exports.add = function (req, res, next) {
     req.getServices()
       .then(function(services){
-        var input = JSON.parse(JSON.stringify(req.body));
-        var data = {
+        const input = JSON.parse(JSON.stringify(req.body));
+        const data = {
             question_description : input.question_description,
         };
         const questionDataService = services.questionDataService;
@@ -47,35 +47,35 @@ exports.add = function (req, res, next) {
 //     });
 // };
 //
-// exports.update = function(req, res, next){
-//   req.getServices()
-//     .then(function(services){
-//       var data = JSON.parse(JSON.stringify(req.body));
-//       var Id = req.params.Id;
-//       var categoryDataService = services.categoryDataService;
-//       categoryDataService.updateCategory(data,Id)
-//         .then(function(results){
-//             var resultsCb = function(results){
-//                 res.redirect('/setup-questionnaire');
-//             };
-//         })
-//           .catch(function(err){
-//                 next(err);
-//         });
-//     });
-// };
-//
-// exports.delete = function(req, res, next){
-//     req.getServices()
-//       .then(function(services){
-//         var Id = req.params.Id;
-//         var categoryDataService = services.categoryDataService;
-//         categoryDataService.deleteCategory(Id)
-//           .then(function(results){
-//               res.redirect('/setup-questionnaire');
-//         })
-//           .catch(function(err){
-//                 next(err);
-//         });
-//     });
-// };
+exports.update = function(req, res, next){
+  req.getServices()
+    .then(function(services){
+      const data = JSON.parse(JSON.stringify(req.body));
+      const id = req.params.question_id;
+      const questionDataService = services.questionDataService;
+      questionDataService.updateQuestion(data,id)
+        .then(function(results){
+            var resultsCb = function(results){
+                res.redirect('/setup-questionnaire/show');
+            };
+        })
+          .catch(function(err){
+                next(err);
+        });
+    });
+};
+
+exports.delete = function(req, res, next){
+    req.getServices()
+      .then(function(services){
+        const id = req.params.question_id;
+        const questionDataService = services.questionDataService;
+        questionDataService.deleteQuestion(id)
+          .then(function(results){
+              res.redirect('/setup-questionnaire/show');
+        })
+          .catch(function(err){
+                next(err);
+        });
+    });
+};
