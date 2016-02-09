@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/setup-questionnaire/show',questions.show);
-// app.get('/setup-questionnaire/edit/:question_id',questions.get);
+app.get('/setup-questionnaire/edit/:question_id',questions.get);
 app.post('/setup-questionnaire/add',questions.add);
 app.get('/setup-questionnaire/delete/:question_id',questions.delete);
 app.post('/setup-questionnaire/update/:question_id',questions.update);

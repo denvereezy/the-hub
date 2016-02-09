@@ -31,22 +31,22 @@ exports.add = function (req, res, next) {
     });
 });
 };
-//
-// exports.get = function(req, res, next){
-//   req.getServices()
-//     .then(function(services){
-//     var Id = req.params.Id;
-//     var categoryDataService = services.categoryDataService;
-//     categoryDataService.editCategory(Id)
-//       .then(function(results){
-//             res.render('edit',{data : results[0]});
-//       })
-//           .catch(function(err){
-//                 next(err);
-//         });
-//     });
-// };
-//
+
+exports.get = function(req, res, next){
+  req.getServices()
+    .then(function(services){
+    const id = req.params.question_id;
+    const questionDataService = services.questionDataService;
+    questionDataService.editQuestion(id)
+      .then(function(results){
+            res.render('edit_questionnaire',{data : results[0]});
+      })
+          .catch(function(err){
+                next(err);
+        });
+    });
+};
+
 exports.update = function(req, res, next){
   req.getServices()
     .then(function(services){
