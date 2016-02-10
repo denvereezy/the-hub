@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>126</x>
-      <y>36</y>
+      <x>135</x>
+      <y>27</y>
       <w>189</w>
       <h>153</h>
     </coordinates>
@@ -24,8 +24,8 @@ user_contactNo:</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>36</y>
+      <x>477</x>
+      <y>27</y>
       <w>189</w>
       <h>171</h>
     </coordinates>
@@ -45,12 +45,12 @@ entity_viewers_userIds: { }</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>252</y>
+      <x>801</x>
+      <y>243</y>
       <w>189</w>
-      <h>117</h>
+      <h>126</h>
     </coordinates>
-    <panel_attributes>Metric_question_results
+    <panel_attributes>questionnaire_results
 --
 
 question_results_time:
@@ -63,8 +63,8 @@ question_results_value:</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>126</x>
-      <y>459</y>
+      <x>63</x>
+      <y>486</y>
       <w>189</w>
       <h>108</h>
     </coordinates>
@@ -79,12 +79,12 @@ metric_description:
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>252</y>
+      <x>477</x>
+      <y>243</y>
       <w>189</w>
       <h>117</h>
     </coordinates>
-    <panel_attributes>Metric_questionares
+    <panel_attributes>questionares
 --
 
 #questionnaires_id:
@@ -96,8 +96,8 @@ due_date:</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>126</x>
-      <y>252</y>
+      <x>135</x>
+      <y>198</y>
       <w>189</w>
       <h>117</h>
     </coordinates>
@@ -113,25 +113,24 @@ email:
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>459</y>
-      <w>189</w>
-      <h>108</h>
+      <x>801</x>
+      <y>450</y>
+      <w>234</w>
+      <h>90</h>
     </coordinates>
-    <panel_attributes>Questionare_collaboration
+    <panel_attributes>Questionare_questions_collaboration
 --
 
 #collab_id:
 entity_id:
-*question_id:
-collab_type: (HUB or Benef)</panel_attributes>
+*question_id:</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>477</y>
+      <x>657</x>
+      <y>468</y>
       <w>162</w>
       <h>81</h>
     </coordinates>
@@ -145,8 +144,8 @@ to HUB/Beneficiaries</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>90</y>
+      <x>315</x>
+      <y>81</y>
       <w>180</w>
       <h>45</h>
     </coordinates>
@@ -156,20 +155,20 @@ to HUB/Beneficiaries</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>117</y>
+      <x>315</x>
+      <y>108</y>
       <w>180</w>
-      <h>216</h>
+      <h>171</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Invite users</panel_attributes>
-    <additional_attributes>10.0;220.0;180.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>198</y>
+      <x>558</x>
+      <y>189</y>
       <w>180</w>
       <h>72</h>
     </coordinates>
@@ -178,65 +177,27 @@ Donor create questionnaire</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>468</x>
-      <y>558</y>
-      <w>189</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>Note..Metric_questionnaires 
-expand me \/
-bg=green
--
-entity_id_createdQuestionnaire
-- Organization who created the 
-questionnaire
--
-entity_ids_sentTo(accepted):
-- ids of organizations Questionnaire
-sent to.
-(first one in array will always be
-the HUB's id)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>873</x>
+      <x>882</x>
       <y>360</y>
-      <w>27</w>
-      <h>117</h>
+      <w>72</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>792</x>
-      <y>585</y>
-      <w>189</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>Note..Questionnaire_collaboration
-bg=green
-expand me \/
--
-Removed user_id and added
-entity_id.</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;60.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>459</y>
+      <x>477</x>
+      <y>450</y>
       <w>189</w>
-      <h>81</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>questionnaire_questions
 --
+
 #question_id:
 questionnaire_id:
 question_description:</panel_attributes>
@@ -245,8 +206,8 @@ question_description:</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>360</y>
+      <x>558</x>
+      <y>351</y>
       <w>27</w>
       <h>117</h>
     </coordinates>
@@ -259,24 +220,54 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>198</y>
-      <w>162</w>
+      <x>657</x>
+      <y>189</y>
+      <w>207</w>
       <h>279</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
-    <additional_attributes>160.0;290.0;10.0;10.0</additional_attributes>
+    <additional_attributes>210.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>234</x>
+      <y>360</y>
+      <w>189</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>questionnaire_collab
+--
+from_entity_id:
+to_entity_id:
+questionnaire_id:</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>306</y>
-      <w>180</w>
-      <h>225</h>
+      <x>378</x>
+      <y>189</y>
+      <w>117</w>
+      <h>189</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>180.0;10.0;10.0;230.0</additional_attributes>
+    <panel_attributes>m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;190.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>414</x>
+      <y>351</y>
+      <w>81</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;60.0;70.0;10.0</additional_attributes>
   </element>
 </diagram>
