@@ -11,6 +11,10 @@ module.exports = function(connection){
         return queryService.executeQuery('insert into questionnaire_questions set ?', data);
     };
 
+    this.questionnaire = function(){
+        return queryService.executeQuery('select * from questionnaires');
+    };
+
     this.editQuestion = function(id){
         return queryService.executeQuery('SELECT * FROM questionnaire_questions WHERE question_id = ?', [id]);
     };
