@@ -40,6 +40,10 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
+app.get('/dashboard', function (req, res) {
+  res.render('dashboard');
+});
+
 app.get('/setup-questionnaire/show',questions.show);
 app.get('/setup-questionnaire/edit/:question_id',questions.get);
 app.post('/setup-questionnaire/add',questions.add);
