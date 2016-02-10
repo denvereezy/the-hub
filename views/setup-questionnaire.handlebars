@@ -1,10 +1,11 @@
 <div class="container">
 <form action="/setup-questionnaire/add" method="POST">
            <h1 class="setup_questionnaire_header">Setup Questionnaire</h1>
-           <input type="text" name="question_description" required>
-           <select name="Id">
-     				{{#each questionnaire}}
-       					<option value = "{{questionnaire_id}}">{{questionnaire_name}}</option>
+           <input type="text" name="questionnaire_name">
+           <input type="date" name="due_date">
+           <select name="entity_id">
+     				{{#each entity}}
+       					<option value = "{{entity_id}}">{{entity_name}}</option>
      				{{/each}}
    			</select>
            <input type="submit">
@@ -12,11 +13,13 @@
 
 
     <table>
-    {{#each questions}}
+    {{#each questionnaire}}
         <tr>
-            <td>{{question_description}}</td>
-                <td><a href="/setup-questionnaire/edit/{{question_id}}">edit</a></td>
-                <td><a href="/setup-questionnaire/delete/{{question_id}}">delete</a></td>
+          <td>{{description}}</td>
+          <td>{{questionnaire_name}}</td>
+            <td>{{due_date}}</td>
+                <td><a href="/setup-questionnaire/edit/{{questionnaire_id}}">edit</a></td>
+                <td><a href="/setup-questionnaire/delete/{{questionnaire_id}}">delete</a></td>
         </tr>
     {{/each}}
     <p>

@@ -8,7 +8,7 @@ const express      = require('express'),
       compression  = require('compression'),
       app          = express();
 
-const QuestionDataService = require('./data_services/questionDataService');
+const QuestionDataService = require('./data_services/questionnaireDataService');
 
 const questions = require('./routes/questionnaire.js');
 
@@ -47,8 +47,8 @@ app.get('/dashboard', function (req, res) {
 app.get('/setup-questionnaire/show',questions.show);
 app.get('/setup-questionnaire/edit/:question_id',questions.get);
 app.post('/setup-questionnaire/add',questions.add);
-app.get('/setup-questionnaire/delete/:question_id',questions.delete);
-app.post('/setup-questionnaire/update/:question_id',questions.update);
+app.get('/setup-questionnaire/delete/:questionnaire_id',questions.delete);
+app.post('/setup-questionnaire/update/:questionnaire_id',questions.update);
 
 
 const port = process.env.PORT || 8080;
