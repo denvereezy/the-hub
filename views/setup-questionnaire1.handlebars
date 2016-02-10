@@ -1,15 +1,18 @@
-<div class="container">
 <form action="/setup-questionnaire/add" method="POST">
-           <h1 class="setup_questionnaire_header">Setup Questionnaire</h1>
-           <input type="text" name="question_description" required>
-           <select name="Id">
-     				{{#each questionnaire}}
-       					<option value = "{{questionnaire_id}}">{{questionnaire_name}}</option>
-     				{{/each}}
-   			</select>
-           <input type="submit">
+  <h1>Create questionnaire</h1>
+  <input type="text" name="questionnaire_name" required>
+  <input type="submit">
 </form>
 
+
+
+
+<form action="/setup-questionnaire/{{something_id}}/add" method="POST">
+           <h1>Setup Questionnaire</h1>
+           <input type="text" name="question_description" required>
+           <input type="submit">
+</form>
+<div class="container">
 
     <table>
     {{#each questions}}

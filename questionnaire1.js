@@ -2,12 +2,10 @@ exports.show = function (req, res, next) {
     req.getServices()
       .then(function(services){
           const questionDataService = services.questionDataService;
-          questionDataService.questions(),
-          questionDataService.questionnaire()
-            .then(function(results,questionnaire){
+          questionDataService.questions()
+            .then(function(results){
                 res.render( 'setup-questionnaire', {
-                    questions : results,
-                    questionnaire : questionnaire
+                    questions : results
                 });
         })
           .catch(function(err){
@@ -16,13 +14,12 @@ exports.show = function (req, res, next) {
 });
 };
 
-exports.add = function (req, res, next) {
+exports.name_questionnaire = function (req, res, next) {
     req.getServices()
       .then(function(services){
         const input = JSON.parse(JSON.stringify(req.body));
         const data = {
-            question_description : input.question_description,
-            questionnaire_id  : input.questionnaire_id
+            questionnaire_name : input.questionnaire_name,
         };
         const questionDataService = services.questionDataService;
         questionDataService.addQuestion(data)
@@ -35,22 +32,22 @@ exports.add = function (req, res, next) {
 });
 };
 
-
-exports.get = function(req, res, next){
-  req.getServices()
-    .then(function(services){
-    const id = req.params.question_id;
-    const questionDataService = services.questionDataService;
-    questionDataService.editQuestion(id)
-      .then(function(results){
-            res.render('edit_questionnaire',{data : results[0]});
-      })
-          .catch(function(err){
-                next(err);
-        });
-    });
-};
-
+//
+// exports.get = function(req, res, next){
+//   req.getServices()
+//     .then(function(services){
+//     const Id = req.params.Id;
+//     const categoryDataService = services.categoryDataService;
+//     categoryDataService.editCategory(Id)
+//       .then(function(results){
+//             res.render('edit',{data : results[0]});
+//       })
+//           .catch(function(err){
+//                 next(err);
+//         });
+//     });
+// };
+//
 exports.update = function(req, res, next){
   req.getServices()
     .then(function(services){
