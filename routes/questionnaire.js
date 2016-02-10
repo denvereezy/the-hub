@@ -5,9 +5,9 @@ exports.show = function (req, res, next) {
   .then(function(services){
     const questionDataService = services.questionDataService;
     Promise.join(questionDataService.questions() , questionDataService.questionnaire(),
-    function(questions,questionnaire){
+    function(entity,questionnaire){
       res.render( 'setup-questionnaire', {
-        questions : questions,
+        entity : entity,
         questionnaire : questionnaire
       });
     })
@@ -22,13 +22,15 @@ exports.add = function (req, res, next) {
       .then(function(services){
         const input = JSON.parse(JSON.stringify(req.body));
         const data = {
-            question_description : input.question_description,
-            questionnaire_id  : input.questionnaire_id
+            entity_id : input.entity_id,
+            due_date : input.due_date,
+            questionnaire_name : input.questionnaire_name
+
         };
         const questionDataService = services.questionDataService;
         questionDataService.addQuestion(data)
           .then(function(results){
-              res.redirect('/setup-questionnaire');
+              res.redirect('/setup-questionnaire/show');
           })
             .catch(function(err){
                 next(err);
@@ -73,9 +75,9 @@ exports.update = function(req, res, next){
 exports.delete = function(req, res, next){
     req.getServices()
       .then(function(services){
-        const id = req.params.question_id;
+        const id = req.params.questionnaire_id;
         const questionDataService = services.questionDataService;
-        questionDataService.deleteQuestion(id)
+        questionDataService.deleteQuestionnaire(id)
           .then(function(results){
               res.redirect('/setup-questionnaire/show');
         })
