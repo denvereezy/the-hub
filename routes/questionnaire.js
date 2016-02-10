@@ -6,7 +6,7 @@ exports.show = function (req, res, next) {
     const questionDataService = services.questionDataService;
     Promise.join(questionDataService.questions() , questionDataService.questionnaire(),
     function(entity,questionnaire){
-      res.render( 'setup-questionnaire', {
+      res.render( 'setup-questionnaire-step-1', {
         entity : entity,
         questionnaire : questionnaire
       });
@@ -30,7 +30,7 @@ exports.add = function (req, res, next) {
         const questionDataService = services.questionDataService;
         questionDataService.addQuestion(data)
           .then(function(results){
-              res.redirect('/setup-questionnaire/show');
+              res.redirect('/setup-questionnaire-step-2');
           })
             .catch(function(err){
                 next(err);
@@ -63,7 +63,7 @@ exports.update = function(req, res, next){
       questionDataService.updateQuestion(data,id)
         .then(function(results){
             const resultsCb = function(results){
-                res.redirect('/setup-questionnaire/show');
+                res.redirect('/setup-questionnaire-step-1');
             };
         })
           .catch(function(err){
@@ -79,7 +79,7 @@ exports.delete = function(req, res, next){
         const questionDataService = services.questionDataService;
         questionDataService.deleteQuestionnaire(id)
           .then(function(results){
-              res.redirect('/setup-questionnaire/show');
+              res.redirect('/setup-questionnaire-step-1');
         })
           .catch(function(err){
                 next(err);

@@ -44,7 +44,11 @@ app.get('/dashboard', function (req, res) {
   res.render('dashboard');
 });
 
-app.get('/setup-questionnaire/show',questions.show);
+app.get('/setup-questionnaire-step-2', function (req, res) {
+  res.render('setup-questionnaire-step-2');
+});
+
+app.get('/setup-questionnaire-step-1',questions.show);
 app.get('/setup-questionnaire/edit/:question_id',questions.get);
 app.post('/setup-questionnaire/add',questions.add);
 app.get('/setup-questionnaire/delete/:questionnaire_id',questions.delete);
