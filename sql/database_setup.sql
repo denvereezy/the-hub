@@ -7,7 +7,6 @@ CREATE TABLE entity (
   entity_id int not null auto_increment primary key,
   entity_name varchar (100) not null,
   entity_logo varchar (100) not null,
-  entity_email varchar (100) not null,
   entity_address varchar (100) not null
 );
 

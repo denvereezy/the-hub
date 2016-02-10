@@ -1,19 +1,20 @@
+const Promise = require("bluebird");
+
 exports.show = function (req, res, next) {
-    req.getServices()
-      .then(function(services){
-          const questionDataService = services.questionDataService;
-          questionDataService.questions(),
-          questionDataService.questionnaire()
-            .then(function(results,questionnaire){
-                res.render( 'setup-questionnaire', {
-                    questions : results,
-                    questionnaire : questionnaire
-                });
-        })
-          .catch(function(err){
-              next(err);
+  req.getServices()
+  .then(function(services){
+    const questionDataService = services.questionDataService;
+    Promise.join(questionDataService.questions() , questionDataService.questionnaire(),
+    function(questions,questionnaire){
+      res.render( 'setup-questionnaire', {
+        questions : questions,
+        questionnaire : questionnaire
+      });
+    })
+    .catch(function(err){
+      next(err);
     });
-});
+  });
 };
 
 exports.add = function (req, res, next) {
