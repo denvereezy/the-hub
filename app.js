@@ -1,3 +1,4 @@
+// Dependencies
 const express      = require('express'),
       exhbs        = require('express-handlebars'),
       cookieParser = require('cookie-parser'),
@@ -8,9 +9,11 @@ const express      = require('express'),
       compression  = require('compression'),
       app          = express();
 
+//Data Services - SQL statements (functions)
 const QuestionnaireDataService = require('./data_services/questionnaireDataService');
 const QuestionDataService = require('./data_services/questionDataService');
 
+//Routes -
 const questionnaire = require('./routes/questionnaire.js');
 const questions = require('./routes/setup_questions.js');
 
