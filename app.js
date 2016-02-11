@@ -8,9 +8,11 @@ const express      = require('express'),
       compression  = require('compression'),
       app          = express();
 
-const QuestionDataService = require('./data_services/questionnaireDataService');
+const QuestionnaireDataService = require('./data_services/questionnaireDataService');
+const QuestionDataService = require('./data_services/questionDataService');
 
-const questions = require('./routes/questionnaire.js');
+const questionnaire = require('./routes/questionnaire.js');
+const questions = require('./routes/setup_questions.js');
 
 const dbOptions = {
   host      : 'localhost',
@@ -22,6 +24,7 @@ const dbOptions = {
 
 const serviceSetupCallBack = function (connection) {
   return {
+    questionnaireDataService : new QuestionnaireDataService(connection),
     questionDataService : new QuestionDataService(connection)
   }
 };
@@ -48,12 +51,15 @@ app.get('/setup-questionnaire-step-2', function (req, res) {
   res.render('setup-questionnaire-step-2');
 });
 
-app.get('/setup-questionnaire-step-1',questions.show);
-app.get('/setup-questionnaire/edit/:question_id',questions.get);
-app.post('/setup-questionnaire/add',questions.add);
-app.get('/setup-questionnaire/delete/:questionnaire_id',questions.delete);
-app.post('/setup-questionnaire/update/:questionnaire_id',questions.update);
+app.get('/setup-questionnaire-step-1',questionnaire.show);
+app.get('/setup-questionnaire/edit/:question_id',questionnaire.get);
+app.post('/setup-questionnaire/add',questionnaire.add);
+app.get('/setup-questionnaire/delete/:questionnaire_id',questionnaire.delete);
+app.post('/setup-questionnaire/update/:questionnaire_id',questionnaire.update);
 
+app.get('/setup-questionnaire-step-2/show', questions.show);
+// app.get('/setup-questionnaire-step-2', questions.add);
+app.post('/setup-questionnaire-step-2/add', questions.add);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {

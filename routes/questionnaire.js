@@ -3,8 +3,9 @@ const Promise = require("bluebird");
 exports.show = function (req, res, next) {
   req.getServices()
   .then(function(services){
-    const questionDataService = services.questionDataService;
-    Promise.join(questionDataService.questions() , questionDataService.questionnaire(),
+    const questionnaireDataService = services.questionnaireDataService;
+    console.log(questionnaireDataService);
+    Promise.join(questionnaireDataService.entity() , questionnaireDataService.questionnaire(),
     function(entity,questionnaire){
       res.render( 'setup-questionnaire-step-1', {
         entity : entity,
@@ -27,10 +28,10 @@ exports.add = function (req, res, next) {
             questionnaire_name : input.questionnaire_name
 
         };
-        const questionDataService = services.questionDataService;
-        questionDataService.addQuestion(data)
+        const questionnaireDataService = services.questionnaireDataService;
+        questionnaireDataService.addQuestion(data)
           .then(function(results){
-              res.redirect('/setup-questionnaire-step-2');
+              res.redirect('/setup-questionnaire-step-2/show');
           })
             .catch(function(err){
                 next(err);
@@ -43,8 +44,8 @@ exports.get = function(req, res, next){
   req.getServices()
     .then(function(services){
     const id = req.params.question_id;
-    const questionDataService = services.questionDataService;
-    questionDataService.editQuestion(id)
+    const questionnaireDataService = services.questionnaireDataService;
+    questionnaireDataService.editQuestion(id)
       .then(function(results){
             res.render('edit_questionnaire',{data : results[0]});
       })
@@ -59,8 +60,8 @@ exports.update = function(req, res, next){
     .then(function(services){
       const data = JSON.parse(JSON.stringify(req.body));
       const id = req.params.question_id;
-      const questionDataService = services.questionDataService;
-      questionDataService.updateQuestion(data,id)
+      const questionnaireDataService = services.questionnaireDataService;
+      questionnaireDataService.updateQuestion(data,id)
         .then(function(results){
             const resultsCb = function(results){
                 res.redirect('/setup-questionnaire-step-1');
@@ -76,8 +77,8 @@ exports.delete = function(req, res, next){
     req.getServices()
       .then(function(services){
         const id = req.params.questionnaire_id;
-        const questionDataService = services.questionDataService;
-        questionDataService.deleteQuestionnaire(id)
+        const questionnaireDataService = services.questionnaireDataService;
+        questionnaireDataService.deleteQuestionnaire(id)
           .then(function(results){
               res.redirect('/setup-questionnaire-step-1');
         })
