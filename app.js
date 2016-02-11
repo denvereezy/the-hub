@@ -12,9 +12,11 @@ const express      = require('express'),
 //Data Services - SQL statements (functions)
 const QuestionnaireDataService = require('./data_services/questionnaireDataService');
 const QuestionDataService = require('./data_services/questionDataService');
+const InvitationDataService = require('./data_services/invitationDataService');
 
 const questionnaire = require('./routes/questionnaire.js');
 const questions = require('./routes/setup_questions.js');
+const invitations = require('./routes/setup_invitations.js');
 
 const dbOptions = {
   host      : 'localhost',
@@ -27,7 +29,8 @@ const dbOptions = {
 const serviceSetupCallBack = function (connection) {
   return {
     questionnaireDataService : new QuestionnaireDataService(connection),
-    questionDataService : new QuestionDataService(connection)
+    questionDataService : new QuestionDataService(connection),
+    invitationDataService : new InvitationDataService(connection)
   }
 };
 
@@ -62,6 +65,10 @@ app.post('/setup-questionnaire/update/:questionnaire_id',questionnaire.update);
 app.get('/setup-questionnaire-step-2/show', questions.show);
 // app.get('/setup-questionnaire-step-2', questions.add);
 app.post('/setup-questionnaire-step-2/add', questions.add);
+app.get('/setup-questionnaire-step-2/next', questions.next);
+
+
+app.get('/setup-questionnaire-step-3/show', invitations.show);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {

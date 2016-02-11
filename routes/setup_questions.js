@@ -35,3 +35,14 @@ exports.add = function (req, res, next) {
     });
 });
 };
+
+
+exports.next = function (req, res, next) {
+    req.getServices()
+        .then(function(){
+                    res.redirect('/setup-questionnaire-step-3/show');
+                })
+                .catch(function(err){
+                    next(err);
+                });
+};
