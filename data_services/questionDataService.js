@@ -4,7 +4,7 @@ module.exports = function(connection){
   const queryService = new QueryService(connection);
 
     this.questions = function(){
-        return queryService.executeQuery('select question_id, question_description from questionnaire_questions');
+        return queryService.executeQuery('SELECT * FROM questionnaire_questions WHERE questionnaire_id = (SELECT MAX( questionnaire_id ) FROM questionnaire_questions)');
     };
 
     this.addQuestion = function(data){
