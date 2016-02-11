@@ -1,7 +1,8 @@
 <div id="setupQuestionStep1">
     <div class="container">
         <form action="/setup-questionnaire/add" method="POST">
-                   <h1 class="setup_questionnaire_header">Setup Questionnaire</h1>
+                   <h1 class="setup_questionnaire_header">Setup Questionnaire - Step 1</h1>
+                   <h3>Questionnaire Name:</h3>
                    <input type="text" name="questionnaire_name">
                    <input type="date" name="due_date">
                    <select name="entity_id">
@@ -12,16 +13,17 @@
                    <input type="submit" value="next">
         </form>
 
-        <table>
-        {{#each questionnaire}}
-            <tr>
-              <td>{{description}}</td>
-              <td>{{questionnaire_name}}</td>
-                <td>{{due_date}}</td>
-                    <td><a href="/setup-questionnaire/edit/{{questionnaire_id}}">edit</a></td>
-                    <td><a href="/setup-questionnaire/delete/{{questionnaire_id}}">delete</a></td>
-            </tr>
-        {{/each}}
-        </table>
+        <!--Display all questionnaires in database-->
+        <!--<table>-->
+        <!--{{#each questionnaire}}-->
+            <!--<tr>-->
+              <!--<td>{{description}}</td>-->
+              <!--<td>{{questionnaire_name}}</td>-->
+                <!--<td>{{due_date}}</td>-->
+                    <!--<td><a href="/setup-questionnaire/edit/{{questionnaire_id}}">edit</a></td>-->
+                    <!--<td><a href="/setup-questionnaire/delete/{{questionnaire_id}}">delete</a></td>-->
+            <!--</tr>-->
+        <!--{{/each}}-->
+        <!--</table>-->
     </div>
 </div>
