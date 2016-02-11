@@ -69,6 +69,7 @@ app.get('/setup-questionnaire-step-2/next', questions.next);
 
 
 app.get('/setup-questionnaire-step-3/show', invitations.show);
+app.post('/setup-questionnaire-step-3/add', invitations.add);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {

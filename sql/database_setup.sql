@@ -57,8 +57,10 @@ CREATE TABLE questionnaire_results (
   foreign key (questionnaire_question_collab_id) references questionnaire_question_collab(questionnaire_question_collab_id)
 );
 
-CREATE TABLE invitations (
-  invitations_id int not null auto_increment primary key,
-  email varchar (100) not null,
-  status varchar (100) not null
-);
+  CREATE TABLE invitations (
+    invitations_id int not null auto_increment primary key,
+    questionnaire_id int not null,
+    invitations_email varchar (100) not null,
+    invitations_status tinyint (1) not null,
+    foreign key (questionnaire_id) references questionnaires(questionnaire_id)
+  );
