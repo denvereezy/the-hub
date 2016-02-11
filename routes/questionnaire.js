@@ -1,7 +1,6 @@
 const Promise = require("bluebird");
 
 exports.show = function (req, res, next) {
-<<<<<<< HEAD
   req.getServices()
   .then(function(services){
     const questionnaireDataService = services.questionnaireDataService;
@@ -11,9 +10,16 @@ exports.show = function (req, res, next) {
       res.render( 'setup-questionnaire-step-1', {
         entity : entity,
         questionnaire : questionnaire
-=======
-  req
-      .getServices()
+      });
+    })
+    .catch(function(err){
+      next(err);
+    });
+  });
+};
+
+exports.add = function (req, res, next) {
+  req.getServices()
       .then(function(services){
           const questionDataService = services.questionDataService;
           Promise.join( questionDataService.questions(),
@@ -27,7 +33,6 @@ exports.show = function (req, res, next) {
       })
       .catch(function(err){
         next(err);
->>>>>>> aca0388bc6e1802c96cf6d7290d489956621821e
       });
   });
 };
