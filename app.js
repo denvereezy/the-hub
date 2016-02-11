@@ -14,7 +14,7 @@ const QuestionnaireDataService = require('./data_services/questionnaireDataServi
 const QuestionDataService = require('./data_services/questionDataService');
 const InvitationDataService = require('./data_services/invitationDataService');
 
-const questionnaire = require('./routes/questionnaire.js');
+const questionnaire = require('./routes/setup_questionnaire.js');
 const questions = require('./routes/setup_questions.js');
 const invitations = require('./routes/setup_invitations.js');
 
