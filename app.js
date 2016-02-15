@@ -10,13 +10,17 @@ const express      = require('express'),
       app          = express();
 
 //Data Services - SQL statements (functions)
-const QuestionnaireDataService = require('./data_services/questionnaireDataService');
-const QuestionDataService = require('./data_services/questionDataService');
-const InvitationDataService = require('./data_services/invitationDataService');
+const QuestionnaireDataService  = require('./data_services/questionnaireDataService');
+const QuestionDataService       = require('./data_services/questionDataService');
+const InvitationDataService     = require('./data_services/invitationDataService');
+const SignupDataService         = require('./data_services/signupDataService');
 
-const questionnaire = require('./routes/setup_questionnaire.js');
-const questions = require('./routes/setup_questions.js');
-const invitations = require('./routes/setup_invitations.js');
+
+//routes
+const questionnaire   = require('./routes/setup_questionnaire.js');
+const questions       = require('./routes/setup_questions.js');
+const invitations     = require('./routes/setup_invitations.js');
+const signup          = require('./routes/signup.js');
 
 const dbOptions = {
   host      : 'localhost',
