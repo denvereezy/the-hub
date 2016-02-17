@@ -1,3 +1,4 @@
+
 CREATE DATABASE the_hub;
 CREATE USER admin@localhost IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON the_hub.* TO admin@localhost;
@@ -12,7 +13,7 @@ CREATE TABLE entity (
 
 CREATE TABLE user (
   id int not null auto_increment primary key,
-  email varchar (100) int not null,
+  email varchar (100) not null,
   entity_id int not null,
   role varchar (100) not null,
   status varchar (100) not null,
@@ -27,7 +28,7 @@ CREATE TABLE questionnaire (
   entity_id int not null,
   name varchar (100) not null,
   dueDate date not null,
-  foreign key (entity_id) references entity_id(id)
+  foreign key (entity_id) references entity(id)
 );
 
 CREATE TABLE questionnaire_user (
@@ -36,4 +37,36 @@ CREATE TABLE questionnaire_user (
   status varchar (100) not null,
   foreign key (questionnaire_id) references questionnaire(id),
   foreign key (user_id) references user(id)
+);
+
+CREATE TABLE password_reset (
+  token varchar (100) not null,
+  timestamp date not null,
+  user_id int not null,
+  foreign key (user_id) references user(id)
+);
+
+CREATE TABLE metric(
+  id int not null auto_increment primary key,
+  title_id varchar (100) not null,
+  description varchar (100) not null,
+  entity_id int not null,
+  foreign key (entity_id) references entity(id)
+);
+
+CREATE TABLE response_data(
+  id int not null auto_increment primary key,
+  value varchar (100) not null,
+  timestamp date not null,
+  questionnaire_id int not null,
+  metric_id int not null,
+  foreign key (questionnaire_id) references questionnaire(id),
+  foreign key (metric_id) references metric(id)
+);
+
+CREATE TABLE questionnaire_metric(
+  questionnaire_id int not null,
+  metric_id int not null,
+  foreign key(questionnaire_id) references questionnaire(id),
+  foreign key(metric_id) references metric(id)
 );

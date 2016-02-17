@@ -17,7 +17,7 @@ const dbOptions = {
   user      : 'admin',
   password  : 'password',
   port      : 3306,
-  database  : 'impact_app'
+  database  : 'the_hub'
 };
 
 const serviceSetupCallBack = function (connection) {
