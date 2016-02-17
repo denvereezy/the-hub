@@ -1,0 +1,19 @@
+h1 {
+    margin-bottom: 40px;
+}
+
+.btn_add_metrics {
+    margin-left: 20px;
+}
+
+.display_added_questions {
+    display: block;
+    margin-top: 20px;
+    min-width: 500px;
+    min-height: 300px;
+    border: none;
+}
+
+.container {
+    margin-left: 14px;
+}
