@@ -1,13 +1,8 @@
-/*
+
 CREATE DATABASE the_hub;
 CREATE USER admin@localhost IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON the_hub.* TO admin@localhost;
 FLUSH PRIVILEGES;
-*/
-drop table entity if exists;
-drop table entity if exists;
-
-
 
 CREATE TABLE entity (
   id int not null auto_increment primary key,
