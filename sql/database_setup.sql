@@ -1,4 +1,4 @@
-CREATE DATABASE impact_app;
+CREATE DATABASE the_hub;
 CREATE USER admin@localhost IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON impact_app.* TO admin@localhost;
+GRANT ALL PRIVILEGES ON the_hub.* TO admin@localhost;
 FLUSH PRIVILEGES;
