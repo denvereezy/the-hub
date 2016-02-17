@@ -8,7 +8,7 @@ exports.add = function (req, res, next) {
             name  : input.name,
             logo  : input.logo,
             address : input.address
-        };
+          };
 
         const user = {
             email :  input.email,
@@ -16,24 +16,16 @@ exports.add = function (req, res, next) {
             status  : 'created',
             password  : 'password',
             firstName : input.firstName,
-            lastName  : input.lastName
+            lastName  : input.lastName,
+            entity_id :
         };
-
         const signupDataService = services.signupDataService;
-        signupDataService.addEntity(entity)
-        .then(function(data){
-          // console.log(data.insertId);
-          user.entity_id = data.insertId;
-          return signupDataService.addUser(user);
-        })
-        .then(function(user){
-
-       })
-        .then(function(results){
-          res.redirect('/');
-        })
-        .catch(function(err){
-          next(err);
-        });
+        Promise.join(addEntity(entity), addUser(user))
+          .then(function(entityResults, userResults){
+              res.redirect('/');
+          })
+            .catch(function(err){
+                next(err);
+    });
 });
 };

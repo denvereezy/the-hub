@@ -10,7 +10,7 @@ const express      = require('express'),
 
 const SignupDataService = require('./data_services/signupDataService');
 
-const questions = require('./routes/signup.js');
+const signup = require('./routes/signup.js');
 
 const dbOptions = {
   host      : 'localhost',
@@ -37,14 +37,14 @@ app.engine('handlebars', exhbs({defaultLayout : 'main'}));
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('signup');
 });
 
-app.get('/setup-questionnaire/show',questions.show);
-app.get('/setup-questionnaire/edit/:question_id',questions.get);
-app.post('/setup-questionnaire/add',questions.add);
-app.get('/setup-questionnaire/delete/:question_id',questions.delete);
-app.post('/setup-questionnaire/update/:question_id',questions.update);
+// app.get('/signup',questions.show);
+// app.get('/setup-questionnaire/edit/:question_id',questions.get);
+app.post('/signup/add',signup.add);
+// app.get('/setup-questionnaire/delete/:question_id',questions.delete);
+// app.post('/setup-questionnaire/update/:question_id',questions.update);
 
 
 const port = process.env.PORT || 8080;
