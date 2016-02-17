@@ -1,0 +1,30 @@
+{
+  "name": "the-hub",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/denvereezy/the-hub.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/denvereezy/the-hub/issues"
+  },
+  "dependencies": {
+    "express": "~4.13.4",
+    "express-handlebars": "~3.0.0",
+    "cookie-parser": "~1.4.1",
+    "body-parser": "~1.14.2",
+    "bcrypt": "~0.8.5",
+    "express-session": "~1.13.0",
+    "mysql": "~2.10.2",
+    "bluebird": "~3.2.2",
+    "connection-provider": "git://github.com/avermeulen/connection-provider",
+    "compression": "~1.6.1"
+  }
+}
