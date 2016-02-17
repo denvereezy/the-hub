@@ -8,9 +8,9 @@ const express      = require('express'),
       compression  = require('compression'),
       app          = express();
 
-const QuestionDataService = require('./data_services/questionDataService');
+const SignupDataService = require('./data_services/signupDataService');
 
-const questions = require('./routes/questionnaire.js');
+const questions = require('./routes/signup.js');
 
 const dbOptions = {
   host      : 'localhost',
@@ -22,7 +22,7 @@ const dbOptions = {
 
 const serviceSetupCallBack = function (connection) {
   return {
-    questionDataService : new QuestionDataService(connection)
+    signupDataService : new SignupDataService(connection)
   }
 };
 
