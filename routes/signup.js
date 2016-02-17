@@ -21,19 +21,18 @@ exports.add = function (req, res, next) {
 
         const signupDataService = services.signupDataService;
         signupDataService.addEntity(entity)
-        .then(function(data){
+          .then(function(data){
           // console.log(data.insertId);
-          user.entity_id = data.insertId;
-          return signupDataService.addUser(user);
-        })
-        .then(function(user){
-
-       })
-        .then(function(results){
-          res.redirect('/');
-        })
-        .catch(function(err){
-          next(err);
+            user.entity_id = data.insertId;
+            return signupDataService.addUser(user);
+          })
+            .then(function(user){
+            })
+              .then(function(results){
+                  res.redirect('/');
+              })
+                .catch(function(err){
+                  next(err);
+                });
         });
-});
 };
