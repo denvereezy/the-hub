@@ -1,9 +1,0 @@
-<div id="container"><h1>Edit Questions</h1>
-  {{#data}}
-      <form action="/setup-questionnaire/update/{{question_id}}" method="POST">
-  		Description:
-  		<input type="text" name="question_description" value="{{question_description}}" required>
-  		<input type="submit">
-      </form>
-  {{/data}}
-</div>
