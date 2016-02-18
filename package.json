@@ -16,15 +16,16 @@
     "url": "https://github.com/denvereezy/the-hub/issues"
   },
   "dependencies": {
+    "bcrypt": "~0.8.5",
+    "bluebird": "~3.2.2",
+    "body-parser": "~1.14.2",
+    "compression": "~1.6.1",
+    "connection-provider": "git://github.com/avermeulen/connection-provider",
+    "cookie-parser": "~1.4.1",
     "express": "~4.13.4",
     "express-handlebars": "~3.0.0",
-    "cookie-parser": "~1.4.1",
-    "body-parser": "~1.14.2",
-    "bcrypt": "~0.8.5",
     "express-session": "~1.13.0",
     "mysql": "~2.10.2",
-    "bluebird": "~3.2.2",
-    "connection-provider": "git://github.com/avermeulen/connection-provider",
-    "compression": "~1.6.1"
+    "node-uuid": "^1.4.7"
   }
 }

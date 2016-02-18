@@ -6,6 +6,7 @@ const express      = require('express'),
       mysql        = require('mysql'),
       connectionPv = require('connection-provider'),
       compression  = require('compression'),
+      uuid         = require('node-uuid'),
       app          = express();
 
 const SignupDataService = require('./data_services/signupDataService');
