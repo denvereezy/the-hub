@@ -1,0 +1,51 @@
+<div id="setupQuestionStep2">
+    <div class="container">
+        <h1>Setup Questionnaire - Step 2</h1>
+        <form action="/setup-questionnaire-step-2/add" method="POST">
+            <h4>Add Question:</h4>
+            <textarea name="title" row="3" cols="50" placeholder="Enter question here" required></textarea>
+            <h4>Add Question description: </h4>
+            <textarea name="description" row="3" cols="50" placeholder="Enter description here(description of question)" required></textarea>
+            {{#each questionnaire}}
+                <input type="hidden" name="id" value="{{id}}">
+            {{/each}}
+            <input type="submit" value="Create Question">
+        </form>
+
+
+        <form method="post" action="">
+            <h3>Select Questions to add to Questionnaire:</h3>
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>Description</th>
+                    <th>Select</th>
+                </tr>
+                {{#each metric}} <!-- SELECT title, description FROM metric WHERE entity_id = ?-->
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{description}}</td>
+                    <td><input type="checkbox" name="select"/></td>
+                </tr>
+                {{/each}}
+            </table>
+            <input type="submit" value="Add Questions to Questionnaire" />
+        </form>
+
+
+        <!--<h3>Questions Added:</h3>-->
+        <!--<table>-->
+            <!--{{#each questions}}-->
+                <!--<tr>-->
+                    <!--<td>{{question_description}}</td>-->
+                    <!--<td><a href="/setup-questions/edit/{{question_id}}">edit</a></td>-->
+                    <!--<td><a href="/setup-questions/delete/{{question_id}}">delete</a></td>-->
+                <!--</tr>-->
+            <!--{{/each}}-->
+        <!--</table>-->
+
+        <!--<form action="/setup-questionnaire-step-2/next" method="GET">-->
+            <!--<input type="submit" value="next"/>-->
+        <!--</form>-->
+    </div>
+</div>
