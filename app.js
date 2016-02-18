@@ -9,9 +9,11 @@ const express      = require('express'),
       uuid         = require('node-uuid'),
       app          = express();
 
-const SignupDataService = require('./data_services/signupDataService');
+const SignupDataService = require('./data_services/signupDataService.js');
+const SetupQuestionnaireDataService = require('./data_services/setupQuestionnaireDataService.js');
 
 const signup = require('./routes/signup.js');
+const setupQuestionnaire = require('./routes/setupQuestionnaire.js');
 
 const dbOptions = {
   host      : 'localhost',
@@ -23,7 +25,8 @@ const dbOptions = {
 
 const serviceSetupCallBack = function (connection) {
   return {
-    signupDataService : new SignupDataService(connection)
+    signupDataService : new SignupDataService(connection),
+    setupQuestionnaireDataService : new SetupQuestionnaireDataService(connection)
   }
 };
 
@@ -45,9 +48,14 @@ app.get('/signup', function (req, res) {
   res.render('signup');
 });
 
+app.get('/setup-questionnaire', function (req, res) {
+  res.render('setup-questionnaire-step-1');
+});
+
 // app.get('/signup',questions.show);
 // app.get('/setup-questionnaire/edit/:question_id',questions.get);
 app.post('/signup/add',signup.add);
+app.post('/setup-questionnaire-step-1/create', setupQuestionnaire.create);
 // app.get('/setup-questionnaire/delete/:question_id',questions.delete);
 // app.post('/setup-questionnaire/update/:question_id',questions.update);
 
