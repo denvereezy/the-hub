@@ -37,6 +37,10 @@ app.engine('handlebars', exhbs({defaultLayout : 'main'}));
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
+  res.render('index');
+});
+
+app.get('/signup', function (req, res) {
   res.render('signup');
 });
 
