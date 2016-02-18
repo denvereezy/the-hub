@@ -61,6 +61,7 @@ app.get('/setup-questionnaire-step-2', function (req, res) {
 // app.get('/setup-questionnaire/edit/:question_id',questions.get);
 app.post('/signup/add',signup.add);
 app.post('/setup-questionnaire-step-1/create', setupQuestionnaire.create);
+app.get('/setup-questionnaire-step-2/show', setupQuestionnaire.show);
 // app.get('/setup-questionnaire/delete/:question_id',questions.delete);
 // app.post('/setup-questionnaire/update/:question_id',questions.update);
 

@@ -8,7 +8,7 @@ module.exports = function(connection){
     };
 
     this.fetchEntityMetrics = function() {
-        return queryService.executeQuery('SELECT * FROM metrics WHERE entity_id = 1');
+        return queryService.executeQuery('SELECT * FROM metric WHERE entity_id = 1');
     };
 
 };

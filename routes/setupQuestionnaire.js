@@ -28,9 +28,9 @@ exports.show = function (req, res, next) {
             //}
             const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
             setupQuestionnaireDataService.fetchEntityMetrics()
-                .then(function(results){
-                    res.render('/setup-questionnaire-step-2/show', {
-                        metric : results,
+                .then(function(metric){
+                    res.render('setup-questionnaire-step-2', {
+                        metric : metric
                     });
                     });
                 })
