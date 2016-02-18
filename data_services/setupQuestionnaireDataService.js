@@ -11,4 +11,8 @@ module.exports = function(connection){
         return queryService.executeQuery('SELECT * FROM metric WHERE entity_id = 1');
     };
 
+    this.addMetricToMetricTable = function(data) {
+        return queryService.executeQuery('INSERT INTO metric set ?', data);
+    };
+
 };

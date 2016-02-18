@@ -23,11 +23,8 @@ exports.create = function (req, res, next) {
 exports.show = function (req, res, next) {
     req.getServices()
         .then(function(services){
-            //const data = {
-            //    entity_id : 1,  //TODO temporarily hardcoding identity while without sign in / params in url
-            //}
             const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-            setupQuestionnaireDataService.fetchEntityMetrics()
+            setupQuestionnaireDataService.fetchEntityMetrics() //TODO temporarily hardcoding identity in SQL while without sign in / params in url
                 .then(function(metric){
                     res.render('setup-questionnaire-step-2', {
                         metric : metric
@@ -38,3 +35,44 @@ exports.show = function (req, res, next) {
                     next(err);
                 });
         };
+
+
+exports.addMetricToMetricTable = function (req, res, next) {
+    req.getServices()
+        .then(function(services){
+            const input = JSON.parse(JSON.stringify(req.body));
+            const data = {
+                title : input.title,
+                description : input.description,
+                entity_id : 1
+            };
+            const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+            setupQuestionnaireDataService.addMetricToMetricTable(data)
+                .then(function(results){
+                    res.redirect('/setup-questionnaire-step-2/show');
+                });
+        })
+        .catch(function(err){
+            next(err);
+        });
+};
+
+exports.linkMetricToQuestionnaire = function (req, res, next) {
+    req.getServices()
+        .then(function(services){
+            const input = JSON.parse(JSON.stringify(req.body));
+            const data = {
+                title : input.title,
+                description : input.description,
+                entity_id : 1
+            };
+            const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+            setupQuestionnaireDataService.addMetricToMetricTable(data)
+                .then(function(results){
+                    res.redirect('/setup-questionnaire-step-2/show');
+                });
+        })
+        .catch(function(err){
+            next(err);
+        });
+};
