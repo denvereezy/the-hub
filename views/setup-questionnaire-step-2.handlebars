@@ -21,7 +21,7 @@
                     <th>Description</th>
                     <th>Select</th>
                 </tr>
-                {{#each metric}} <!-- SELECT title, description FROM metric WHERE entity_id = ?-->
+                {{#each metric}} <!-- SELECT title, description FROM metric WHERE entity_id = ? -->
                 <tr>
                     <td>{{title}}</td>
                     <td>{{description}}</td>
@@ -29,7 +29,7 @@
                 </tr>
                 {{/each}}
             </table>
-            <input type="submit" value="Add Questions to Questionnaire" />
+            <input type="submit" value="Add Questions to Questionnaire" /> <!-- INSERT INTO questionnaire_metric set ? -->
         </form>
 
 

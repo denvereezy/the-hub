@@ -7,4 +7,8 @@ module.exports = function(connection){
         return queryService.executeQuery('INSERT INTO questionnaire set ?', data);
     };
 
+    this.fetchEntityMetrics = function() {
+        return queryService.executeQuery('SELECT * FROM metrics WHERE entity_id = 1');
+    };
+
 };

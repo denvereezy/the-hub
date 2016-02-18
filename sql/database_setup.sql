@@ -28,6 +28,7 @@ CREATE TABLE questionnaire (
   entity_id int not null,
   name varchar (100) not null,
   dueDate date not null,
+  parent_questionnaire_id int,
   foreign key (entity_id) references entity(id)
 );
 
@@ -48,7 +49,7 @@ CREATE TABLE password_reset (
 
 CREATE TABLE metric(
   id int not null auto_increment primary key,
-  title_id varchar (100) not null,
+  title varchar (100) not null,
   description varchar (100) not null,
   entity_id int not null,
   foreign key (entity_id) references entity(id)

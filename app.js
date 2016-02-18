@@ -7,6 +7,7 @@ const express      = require('express'),
       connectionPv = require('connection-provider'),
       compression  = require('compression'),
       uuid         = require('node-uuid'),
+      lodash       = require('lodash'),
       app          = express();
 
 const SignupDataService = require('./data_services/signupDataService.js');
@@ -50,6 +51,10 @@ app.get('/signup', function (req, res) {
 
 app.get('/setup-questionnaire', function (req, res) {
   res.render('setup-questionnaire-step-1');
+});
+
+app.get('/setup-questionnaire-step-2', function (req, res) {
+  res.render('setup-questionnaire-step-2');
 });
 
 // app.get('/signup',questions.show);
