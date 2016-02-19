@@ -1,5 +1,9 @@
 var Promise = require('bluebird');
 
+/////////////////////////////////////////////////////////////////
+/////////////////// Setup Questionnaire ////////////////////////
+////////////////////////////////////////////////////////////////
+
 //setup-question-step-1
 exports.create = function (req, res, next) {
     req.getServices()
@@ -95,4 +99,30 @@ exports.linkMetricToQuestionnaire = function (req, res, next) {
     .catch(function(err){
         next(err);
     });
+};
+
+//setup-questionnaire-step-3
+
+
+
+/////////////////////////////////////////////////////////////////
+/////////////// Derived Setup Questionnaire ////////////////////
+////////////////////////////////////////////////////////////////
+
+//derived-setup-questionnaire-step-1
+exports.show = function (req, res, next) {
+
+    req.getServices()
+        .then(function(services){
+            const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+            setupQuestionnaireDataService.fetchEntityMetrics() //TODO temporarily hardcoding identity in SQL while without sign in / params in url
+                .then(function(metric){
+                    res.render('setup-questionnaire-step-2', {
+                        metric : metric
+                    });
+                });
+        })
+        .catch(function(err){
+            next(err);
+        });
 };
