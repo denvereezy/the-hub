@@ -1,3 +1,5 @@
+var Promise = require('bluebird');
+
 //setup-question-step-1
 exports.create = function (req, res, next) {
     req.getServices()
@@ -21,6 +23,7 @@ exports.create = function (req, res, next) {
 
 //setup-question-step-2
 exports.show = function (req, res, next) {
+
     req.getServices()
         .then(function(services){
             const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
@@ -66,13 +69,30 @@ exports.linkMetricToQuestionnaire = function (req, res, next) {
                 description : input.description,
                 entity_id : 1
             };
+
+            const selectedMetricIds = req.body.selectedMetrics;
             const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-            setupQuestionnaireDataService.addMetricToMetricTable(data)
-                .then(function(results){
-                    res.redirect('/setup-questionnaire-step-2/show');
-                });
-        })
-        .catch(function(err){
-            next(err);
-        });
+            var databaseCalls = [];
+
+            function insertArrayIntoQuestionnaireMetric(selectedMetricIds) {
+                if (selectedMetricIds.length > 1) {
+                    for (i = 0; i < selectedMetricIds.length; i++) {
+                        var data2 = {
+                            metric_id : selectedMetricIds[i],
+                            questionnaire_id : 1   //TODO using hard coded questionnaire_id due to no params in url
+                        }
+                        var response = setupQuestionnaireDataService.linkMetricToQuestionnaire(data2);
+                        databaseCalls.push(response);
+                    }
+                    return Promise.all(databaseCalls);
+                }
+            };
+
+            return  insertArrayIntoQuestionnaireMetric(selectedMetricIds);
+        }).then(function() {
+
+    })
+    .catch(function(err){
+        next(err);
+    });
 };

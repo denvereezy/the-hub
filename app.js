@@ -8,11 +8,12 @@ const express      = require('express'),
       compression  = require('compression'),
       uuid         = require('node-uuid'),
       lodash       = require('lodash'),
+      jquery       = require('jquery'),
+      cheerio      = require('cheerio'),
       app          = express();
 
 const SignupDataService = require('./data_services/signupDataService.js');
 const SetupQuestionnaireDataService = require('./data_services/setupQuestionnaireDataService.js');
-
 const signup = require('./routes/signup.js');
 const setupQuestionnaire = require('./routes/setupQuestionnaire.js');
 
@@ -64,6 +65,7 @@ app.post('/signup/add',signup.add);
 app.post('/setup-questionnaire-step-1/create', setupQuestionnaire.create);
 app.get('/setup-questionnaire-step-2/show', setupQuestionnaire.show);
 app.post('/setup-questionnaire-step-2/addMetricToMetricTable', setupQuestionnaire.addMetricToMetricTable);
+app.post('/setup-questionnaire-step-2/linkMetricToQuestionnaire', setupQuestionnaire.linkMetricToQuestionnaire);
 // app.get('/setup-questionnaire/delete/:question_id',questions.delete);
 // app.post('/setup-questionnaire/update/:question_id',questions.update);
 

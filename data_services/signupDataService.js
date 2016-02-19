@@ -11,6 +11,4 @@ module.exports = function(connection){
       return queryService.executeQuery('insert into user set ?', user);
     };
 
-
-
 };
