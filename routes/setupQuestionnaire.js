@@ -94,7 +94,7 @@ exports.linkMetricToQuestionnaire = function (req, res, next) {
 
             return  insertArrayIntoQuestionnaireMetric(selectedMetricIds);
         }).then(function() {
-
+            res.redirect('/dashboard')
     })
     .catch(function(err){
         next(err);
