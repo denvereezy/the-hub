@@ -10,5 +10,7 @@ module.exports = function(connection) {
     //this.addMetricToMetricTable = function(data) {
     //    return queryService.executeQuery('INSERT INTO metric set ?', data);
     //};
-
+    this.showQuestionnaires = function(id) {
+      return queryService.executeQuery('SELECT * FROM questionnaire WHERE entity_id = ?', id)
+    };
 };

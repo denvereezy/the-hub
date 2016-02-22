@@ -13,7 +13,7 @@
         </form>
 
         <!-- TODO: http://www.jquerywithexample.com/2012/11/get-selected-checkbox-using-jquery.html -->
-        <form method="post" action="/setup-questionnaire-step-2/linkMetricToQuestionnaire">
+        <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
             <h3>Select Questions to add to Questionnaire:</h3>
             <table>
                 <tr>
@@ -21,7 +21,7 @@
                     <th>Description</th>
                     <th>Select</th>
                 </tr>
-                {{#each metric}} <!-- SELECT title, description FROM metric WHERE entity_id = ? -->
+                {{#each metrics}} <!-- SELECT title, description FROM metric WHERE entity_id = ? -->
                 <tr>
                     <td>{{title}}</td>
                     <td>{{description}}</td>
@@ -31,5 +31,15 @@
             </table>
             <input type="submit" value="Add Questions to Questionnaire" /> <!-- INSERT INTO questionnaire_metric set ? -->
         </form>
+        <form action="/setup-questionnaire-step-3/send" method="POST">
+            <label for="entity_id">Select entity to send questionnaire</label>
+            <select name="entity_id">
+              {{#each entities}}
+              <option value="{{id}}">{{name}}</option>
+              {{/each}}
+            </select>
+
+            <input type="submit" value="send">
+          </form>
     </div>
 </div>

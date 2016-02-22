@@ -7,8 +7,12 @@ module.exports = function(connection) {
         return queryService.executeQuery('INSERT INTO questionnaire set ?', data);
     };
 
-    this.fetchEntityMetrics = function() {
-        return queryService.executeQuery('SELECT * FROM metric WHERE entity_id = 1'); //Todo entity hard coded until params in url
+    this.fetchEntityMetrics = function(entity_id) {
+        return queryService.executeQuery('SELECT * FROM metric WHERE entity_id = ?',[entity_id]); //Todo entity hard coded until params in url
+    };
+
+    this.showEntity = function() {
+      return queryService.executeQuery('SELECT * FROM entity');
     };
 
     this.addMetricToMetricTable = function(data) {
@@ -18,4 +22,5 @@ module.exports = function(connection) {
     this.linkMetricToQuestionnaire = function(data2) {
         return queryService.executeQuery('INSERT INTO questionnaire_metric set ?', data2);
     };
+
 };

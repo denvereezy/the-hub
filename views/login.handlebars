@@ -1,9 +1,10 @@
 <div>
     <h2>Login:</h2>
-    <form method="get" action="">
-        <label>E-mail</label><input type="text" />
-        <label>Password</label><input type="text" />
+    <form method="post" action="/login">
+        <label>E-mail</label><input type="email" name="email"/>
+        <label>Password</label><input type="password" name="password"/>
 
         <input type="submit" />
     </form>
+  <a href="/signup">signup</a>
 </div>

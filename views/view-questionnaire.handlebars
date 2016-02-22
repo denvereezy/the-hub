@@ -3,17 +3,14 @@
 <table>
 <tr>
     <th>Questionnaire name:</th>
-    <th>Author:</th>
     <th>Due Date:</th>
-    <th>Actions:</th>
 </tr>
 
     <!-- Temporarily only supporting name and dueDate -->
 {{#each questionnaire}}
     <tr>
-    <td><a href="/answer-questionnaire/show">{{name}}</a></td>
+    <td>{{name}}</td>
     <td>{{dueDate}}</td>
-    <td><a href="/view-questionnaire/createChild">Create Child</a></td>
     </tr>
 {{/each}}
 
