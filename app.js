@@ -9,20 +9,19 @@ const express      = require('express'),
       compression  = require('compression'),
       uuid         = require('node-uuid'),
       lodash       = require('lodash'),
-      //jquery       = require('jquery'),
       app          = express();
 
 //Data Services
-const SignupDataService = require('./data_services/signupDataService.js');
+const SignupDataService             = require('./data_services/signupDataService.js');
 const SetupQuestionnaireDataService = require('./data_services/setupQuestionnaireDataService.js');
-const LoginDataService = require('./data_services/loginDataService');
+const LoginDataService              = require('./data_services/loginDataService');
 const ViewQuestionnnaireDataService = require('./data_services/viewQuestionnaireDataService');
 
 //Routes
-const signup = require('./routes/signup');
+const signup             = require('./routes/signup');
 const setupQuestionnaire = require('./routes/setupQuestionnaire');
-const login = require('./routes/login');
-const viewQuestionnaire = require('./routes/viewQuestionnaire');
+const login              = require('./routes/login');
+const viewQuestionnaire  = require('./routes/viewQuestionnaire');
 
 // Connection to mySql
 const dbOptions = {
@@ -35,9 +34,9 @@ const dbOptions = {
 
 const serviceSetupCallBack = function (connection) {
   return {
-    signupDataService : new SignupDataService(connection),
+    signupDataService             : new SignupDataService(connection),
     setupQuestionnaireDataService : new SetupQuestionnaireDataService(connection),
-    loginDataService : new LoginDataService(connection),
+    loginDataService              : new LoginDataService(connection),
     viewQuestionnnaireDataService : new ViewQuestionnnaireDataService(connection)
   }
 };
@@ -53,34 +52,28 @@ app.use(compression());
 app.engine('handlebars', exhbs({defaultLayout : 'main'}));
 app.set('view engine', 'handlebars');
 
-//when URL routes
 app.get('/', function (req, res) {
   res.render('login');
 });
+app.post('/login', login.userLogin);
 
 app.get('/dashboard', function(req, res){
   res.render('dashboard');
 });
 
-
 app.get('/signup', function (req, res) {
   res.render('signup');
 });
-
-app.get('/questionnaire/setup/step1', function (req, res) {
-  res.render('setup-questionnaire-step-1');
-});
-
-app.get('/view-questionnaire', viewQuestionnaire.show);
-
-//Route Actions
-//Signup
 app.post('/signup/add',signup.add);
+app.get('/view-questionnaire', viewQuestionnaire.show);
  // app.get('/signup',questions.show);
 // app.get('/setup-questionnaire/edit/:question_id',questions.get);
 
-app.post('/login', login.userLogin);
+
 //Setup Questionnaire
+app.get('/questionnaire/setup/step1', function (req, res) {
+  res.render('setup-questionnaire-step-1');
+});
 app.post('/questionnaire/setup/step1/', setupQuestionnaire.create);
 app.get('/questionnaire/setup/step2/:id', setupQuestionnaire.show);
 app.post('/questionnaire/setup/step2/:id', setupQuestionnaire.linkMetricToQuestionnaire);

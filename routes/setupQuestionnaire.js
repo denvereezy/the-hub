@@ -1,8 +1,4 @@
-var Promise = require('bluebird');
-
-/////////////////////////////////////////////////////////////////
-/////////////////// Setup Questionnaire ////////////////////////
-////////////////////////////////////////////////////////////////
+const Promise = require('bluebird');
 
 //setup-question-step-1
 exports.create = function (req, res, next) {
@@ -21,9 +17,9 @@ exports.create = function (req, res, next) {
                 })
         })
           .catch(function(err){
-                next(err);
+              next(err);
           });
-        };
+};
 
 //setup-question-step-2
 exports.show = function (req, res, next) {
@@ -40,13 +36,12 @@ exports.show = function (req, res, next) {
                         entities  : entities,
                         questionnaire_id : questionnaire_id
                     });
-                    });
-                })
-                .catch(function(err){
-                    next(err);
-                });
-        };
-
+            });
+        })
+          .catch(function(err){
+                next(err);
+          });
+};
 
 exports.addMetricToMetricTable = function (req, res, next) {
     req.getServices()
@@ -62,57 +57,48 @@ exports.addMetricToMetricTable = function (req, res, next) {
                     res.redirect('/questionnaire/setup/step2/:id');
                 });
         })
-        .catch(function(err){
+          .catch(function(err){
             next(err);
-        });
+          });
 };
 
 exports.linkMetricToQuestionnaire = function (req, res, next) {
     var questionnaire_id = req.params.id;
     req.getServices()
         .then(function(services){
-            const input = JSON.parse(JSON.stringify(req.body));
             const data = {
-                title : input.title,
-                description : input.description,
+                title : req.body.title,
+                description : req.body.description,
                 entity_id : req.session.entity_id
             };
-
             const selectedMetricIds = req.body.selectedMetrics;
             const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-            var databaseCalls = [];
+            const databaseCalls = [];
 
             function insertArrayIntoQuestionnaireMetric(selectedMetricIds) {
                 if (selectedMetricIds.length > 0) {
                     for (i = 0; i < selectedMetricIds.length; i++) {
-                        var data2 = {
+                        const data2 = {
                             metric_id : selectedMetricIds[i],
                             questionnaire_id : questionnaire_id
                         };
-
-                        console.log(JSON.stringify(data2));
-
-                        var response = setupQuestionnaireDataService.linkMetricToQuestionnaire(data2);
+                        const response = setupQuestionnaireDataService.linkMetricToQuestionnaire(data2);
                         databaseCalls.push(response);
                     }
                     return Promise.all(databaseCalls);
                 }
             };
-
-            return  insertArrayIntoQuestionnaireMetric(selectedMetricIds);
+            return insertArrayIntoQuestionnaireMetric(selectedMetricIds);
         })
-
-          .then(function(results2) {
-            res.redirect('/questionnaire/setup/step3/' + questionnaire_id);
+          .then(function(results) {
+              res.redirect('/questionnaire/setup/step3/' + questionnaire_id);
           })
-    .catch(function(err){
-        next(err);
-    });
+            .catch(function(err){
+                next(err);
+            });
 };
 
 //setup-questionnaire-step-3
-
-
 exports.sendQuestionnaire = function(req, res, next){
   req.getServices()
   .then(function(services){
@@ -127,13 +113,10 @@ exports.sendQuestionnaire = function(req, res, next){
               res.redirect('/dashboard');
           });
   })
-  .catch(function(err){
-      next(err);
-  });
+    .catch(function(err){
+        next(err);
+    });
 };
-/////////////////////////////////////////////////////////////////
-/////////////// Derived Setup Questionnaire ////////////////////
-////////////////////////////////////////////////////////////////
 
 //derived-setup-questionnaire-step-1
 // exports.show = function (req, res, next) {

@@ -1,9 +1,9 @@
-var Promise = require("bluebird");
-var QueryService = require("../data_services/query-service");
-var bcrypt = require('bcrypt');
+const Promise = require("bluebird");
+const QueryService = require("../data_services/query-service");
+const bcrypt = require('bcrypt');
 
 module.exports = function(connection){
-    var queryService  = new QueryService(connection);
+    const queryService  = new QueryService(connection);
 
     this.signup = function(data){
         return new Promise(function(resolve,reject){

@@ -14,7 +14,7 @@ module.exports = function(connection){
             bcrypt.genSalt(10, function(err, salt) {
                 bcrypt.hash(user.password, salt, function(err, hash) {
                     if (err){
-                        return console.log(err);
+                        return reject (err);
                     }
                     user.password = hash;
                     queryService.executeQuery('insert into user set ?', user, function(err, results) {
@@ -25,5 +25,4 @@ module.exports = function(connection){
             });
         });
     };
-
 };

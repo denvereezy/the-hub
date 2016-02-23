@@ -5,24 +5,23 @@ exports.add = function (req, res, next) {
       .then(function(services){
         const input = JSON.parse(JSON.stringify(req.body));
         const entity = {
-            name  : input.name,
-            logo  : input.logo,
-            address : input.address
+            name  : req.body.name,
+            logo  : req.body.logo,
+            address : req.body.address
         };
 
         const user = {
-            email :  input.email,
+            email :  req.body.email,
             role  :  'admin',
             status  : 'created',
             password  : 'password',
-            firstName : input.firstName,
-            lastName  : input.lastName
+            firstName : req.body.firstName,
+            lastName  : req.body.lastName
         };
 
         const signupDataService = services.signupDataService;
         signupDataService.addEntity(entity)
           .then(function(data){
-          // console.log(data.insertId);
             user.entity_id = data.insertId;
             return signupDataService.addUser(user);
           })

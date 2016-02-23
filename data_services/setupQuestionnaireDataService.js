@@ -8,7 +8,7 @@ module.exports = function(connection) {
     };
 
     this.fetchEntityMetrics = function(entity_id) {
-        return queryService.executeQuery('SELECT * FROM metric WHERE entity_id = ?',[entity_id]); //Todo entity hard coded until params in url
+        return queryService.executeQuery('SELECT * FROM metric WHERE entity_id = ?',[entity_id]);
     };
 
     this.showEntity = function() {
