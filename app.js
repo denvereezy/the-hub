@@ -82,7 +82,6 @@ app.post('/setup-questionnaire-step-2/addMetricToMetricTable', setupQuestionnair
 // app.get('/setup-questionnaire/delete/:question_id',questions.delete);
 // app.post('/setup-questionnaire/update/:question_id',questions.update);
 
-app.post('/setup-questionnaire-step-3/send', setupQuestionnaire.sendQuestionnaire);
 //View Questionnaire
 app.post('/view-questionnaire/create', setupQuestionnaire.create);
 

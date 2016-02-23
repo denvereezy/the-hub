@@ -5,7 +5,7 @@
             <h4>Add Question:</h4>
             <textarea name="title" row="3" cols="50" placeholder="Enter question here" required></textarea>
             <h4>Add Question description: </h4>
-            <textarea name="description" row="3" cols="50" placeholder="Enter description here(description of question)" required></textarea>
+            <textarea name="description" row="3" cols="50" placeholder="Enter description of question" required></textarea>
             {{#each questionnaire}}
                 <input type="hidden" name="id" value="{{id}}">
             {{/each}}
@@ -21,7 +21,7 @@
                     <th>Description</th>
                     <th>Select</th>
                 </tr>
-                {{#each metrics}} <!-- SELECT title, description FROM metric WHERE entity_id = ? -->
+                {{#each metrics}}
                 <tr>
                     <td>{{title}}</td>
                     <td>{{description}}</td>
@@ -29,17 +29,7 @@
                 </tr>
                 {{/each}}
             </table>
-            <input type="submit" value="Add Questions to Questionnaire" /> <!-- INSERT INTO questionnaire_metric set ? -->
+            <input type="submit" value="Add Questions to Questionnaire" />
         </form>
-        <form action="/setup-questionnaire-step-3/send" method="POST">
-            <label for="entity_id">Select entity to send questionnaire</label>
-            <select name="entity_id">
-              {{#each entities}}
-              <option value="{{id}}">{{name}}</option>
-              {{/each}}
-            </select>
-
-            <input type="submit" value="send">
-          </form>
     </div>
 </div>
