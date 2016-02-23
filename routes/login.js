@@ -17,7 +17,7 @@ exports.userLogin = function(req, res, next) {
       loginDataService.login(email)
       .then(function(results){
           const user = results[0];
-          bcrypt.compare(input.password, user.password,function(err, pass) {
+          bcrypt.compare(req.body.password, user.password,function(err, pass) {
               if (pass) {
                 req.session.user = email;
                 req.session.role =  user.role;
