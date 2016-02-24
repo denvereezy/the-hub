@@ -12,11 +12,12 @@ const express      = require('express'),
       app          = express();
 
 //Data Services
-const SignupDataService             = require('./data_services/signupDataService');
-const SetupQuestionnaireDataService = require('./data_services/setupQuestionnaireDataService');
-const LoginDataService              = require('./data_services/loginDataService');
-const ViewQuestionnnaireDataService = require('./data_services/viewQuestionnaireDataService');
-const QuestionDataService           = require('./data_services/questionDataService');
+const SignupDataService                 = require('./data_services/signupDataService');
+const SetupQuestionnaireDataService     = require('./data_services/setupQuestionnaireDataService');
+const LoginDataService                  = require('./data_services/loginDataService');
+const ViewQuestionnnaireDataService     = require('./data_services/viewQuestionnaireDataService');
+const QuestionDataService               = require('./data_services/questionDataService');
+const AllocateQuestionnaireDataServices = require('./data_services/allocateQuestionnaireDataServices');
 
 //Routes
 const signup             = require('./routes/signup');
@@ -24,7 +25,7 @@ const setupQuestionnaire = require('./routes/setupQuestionnaire');
 const login              = require('./routes/login');
 const viewQuestionnaire  = require('./routes/viewQuestionnaire');
 const questions          = require('./routes/questions');
-
+const allocate           = require('./routes/allocateQuestionnaire');
 
 // Connection to mySql
 const dbOptions = {
@@ -37,11 +38,12 @@ const dbOptions = {
 
 const serviceSetupCallBack = function (connection) {
   return {
-    signupDataService             : new SignupDataService(connection),
-    setupQuestionnaireDataService : new SetupQuestionnaireDataService(connection),
-    loginDataService              : new LoginDataService(connection),
-    viewQuestionnnaireDataService : new ViewQuestionnnaireDataService(connection),
-    questionDataService           : new QuestionDataService(connection)
+    signupDataService                 : new SignupDataService(connection),
+    setupQuestionnaireDataService     : new SetupQuestionnaireDataService(connection),
+    loginDataService                  : new LoginDataService(connection),
+    viewQuestionnnaireDataService     : new ViewQuestionnnaireDataService(connection),
+    questionDataService               : new QuestionDataService(connection),
+    allocateQuestionnaireDataServices : new allocateQuestionnaireDataServices(connection)
   }
 };
 
