@@ -3,7 +3,7 @@ module.exports = function(connection) {
     const queryService = new QueryService(connection);
 
     this.showEntities = function(id){
-      return queryService.executeQuery('seclect * from entity where id != ?', id);
+      return queryService.executeQuery('select * from entity where id != ?', id);
     };
 
     this.allocateQuestionnaire = function(data){

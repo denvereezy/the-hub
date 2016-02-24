@@ -17,7 +17,7 @@ const SetupQuestionnaireDataService     = require('./data_services/setupQuestion
 const LoginDataService                  = require('./data_services/loginDataService');
 const ViewQuestionnnaireDataService     = require('./data_services/viewQuestionnaireDataService');
 const QuestionDataService               = require('./data_services/questionDataService');
-const AllocateQuestionnaireDataServices = require('./data_services/allocateQuestionnaireDataServices');
+const AllocateQuestionnaireDataService = require('./data_services/allocateQuestionnaireDataService');
 
 //Routes
 const signup             = require('./routes/signup');
@@ -43,7 +43,7 @@ const serviceSetupCallBack = function (connection) {
     loginDataService                  : new LoginDataService(connection),
     viewQuestionnnaireDataService     : new ViewQuestionnnaireDataService(connection),
     questionDataService               : new QuestionDataService(connection),
-    allocateQuestionnaireDataServices : new allocateQuestionnaireDataServices(connection)
+    allocateQuestionnaireDataService  : new AllocateQuestionnaireDataService(connection)
   }
 };
 
@@ -71,7 +71,7 @@ app.get('/signup', function (req, res) {
   res.render('signup');
 });
 
-app.get('/questionnaire/allocate', allocate.show);
+app.get('/questionnaire/allocate/:id', allocate.show);
 app.post('/signup/add',signup.add);
 app.get('/view-questionnaire', viewQuestionnaire.show);
  // app.get('/signup',questions.show);

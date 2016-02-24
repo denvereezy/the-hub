@@ -1,9 +1,9 @@
 exports.show = function (req, res, next) {
-  const id = req.params.id;
+  const id = req.session.entity_id;
     req.getServices()
         .then(function(services){
-            const allocateQuestionnaireDataServices = services.allocateQuestionnaireDataServices;
-            questionDataService.showEntities(id)
+            const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
+            allocateQuestionnaireDataService.showEntities(id)
             .then(function(entities){
                     res.render('allocateQuestionnaire', {
                         entities  : entities
@@ -25,8 +25,8 @@ exports.allocate = function(req, res, next){
             name : req.body.name,
             dueDate : req.body.dueDate
         };
-      const allocateQuestionnaireDataServices = services.allocateQuestionnaireDataServices;
-      setupQuestionnaireDataService.allocateQuestionnaire(data)
+      const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
+      allocateQuestionnaireDataService.allocateQuestionnaire(data)
         .then(function(results){
             const id = results.insertId;
           res.render('allocate_questionnaire',{

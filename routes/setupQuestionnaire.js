@@ -79,7 +79,7 @@ exports.linkMetricToQuestionnaire = function (req, res, next) {
               return  setupQuestionnaireDataService.linkMetricToQuestionnaire(data);
             })
               .then(function(results) {
-                  res.redirect('/dashboard');
+                  res.redirect('/questionnaire/allocate/' + questionnaire_id);
               })
                 .catch(function(err){
                     next(err);
