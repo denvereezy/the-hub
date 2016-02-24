@@ -7,6 +7,6 @@ module.exports = function(connection) {
     };
 
     this.allocateQuestionnaire = function(data){
-      return queryService.executeQuery('insert into questionnaire set ?', data;);
+      return queryService.executeQuery('insert into questionnaire set ?', data);
     };
 };
