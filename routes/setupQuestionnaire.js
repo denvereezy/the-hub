@@ -54,8 +54,7 @@ exports.addMetricToMetricTable = function (req, res, next) {
             const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
             setupQuestionnaireDataService.addMetricToMetricTable(data)
                 .then(function(results){
-                  const id = results.insertId;
-                    res.redirect('/questionnaire/setup/step2/' + id);
+                    res.redirect('/questionnaire/setup/step2/' + questionnaire_id);
                 });
         })
           .catch(function(err){
@@ -65,38 +64,26 @@ exports.addMetricToMetricTable = function (req, res, next) {
 
 exports.linkMetricToQuestionnaire = function (req, res, next) {
     var questionnaire_id = req.params.id;
+    var setupQuestionnaireDataService;
     req.getServices()
         .then(function(services){
-            const data = {
-                title : req.body.title,
-                description : req.body.description,
-                entity_id : req.session.entity_id
-            };
             const selectedMetricIds = req.body.selectedMetrics;
-            const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-            const databaseCalls = [];
-
-            function insertArrayIntoQuestionnaireMetric(selectedMetricIds) {
-                if (selectedMetricIds.length > 0) {
-                    for (i = 0; i < selectedMetricIds.length; i++) {
-                        const data2 = {
-                            metric_id : selectedMetricIds[i],
-                            questionnaire_id : questionnaire_id
-                        };
-                        const response = setupQuestionnaireDataService.linkMetricToQuestionnaire(data2);
-                        databaseCalls.push(response);
-                    }
-                    return Promise.all(databaseCalls);
-                }
-            };
-            return insertArrayIntoQuestionnaireMetric(selectedMetricIds);
-        })
-          .then(function(results) {
-              res.redirect('/questionnaire/setup/step3/' + questionnaire_id);
+            setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+            return selectedMetricIds;
           })
-            .catch(function(err){
-                next(err);
-            });
+            .mapSeries(function(metric_id){
+                const data = {
+                    metric_id : metric_id,
+                    questionnaire_id : questionnaire_id
+                };
+              return  setupQuestionnaireDataService.linkMetricToQuestionnaire(data);
+            })
+              .then(function(results) {
+                  res.redirect('/dashboard');
+              })
+                .catch(function(err){
+                    next(err);
+                });
 };
 
 

@@ -9,7 +9,7 @@
     <!-- Temporarily only supporting name and dueDate -->
 {{#each questionnaire}}
     <tr>
-    <td>{{name}}</td>
+    <td><a href="/questionnaire/questions/view/{{id}}">{{name}}</a></td>
     <td>{{dueDate}}</td>
     </tr>
 {{/each}}

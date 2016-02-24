@@ -11,6 +11,6 @@ module.exports = function(connection) {
     //    return queryService.executeQuery('INSERT INTO metric set ?', data);
     //};
     this.showQuestionnaires = function(id) {
-      return queryService.executeQuery('SELECT * FROM questionnaire WHERE entity_id = ?', id)
+      return queryService.executeQuery('SELECT id, entity_id, name, DATE_FORMAT(dueDate,"%d %b %y") as dueDate FROM questionnaire WHERE entity_id = ?', id)
     };
 };

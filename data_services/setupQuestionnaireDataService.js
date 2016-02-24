@@ -15,8 +15,8 @@ module.exports = function(connection) {
         return queryService.executeQuery('INSERT INTO metric set ?', data);
     };
 
-    this.linkMetricToQuestionnaire = function(data2) {
-        return queryService.executeQuery('INSERT INTO questionnaire_metric set ?', data2);
+    this.linkMetricToQuestionnaire = function(data) {
+        return queryService.executeQuery('INSERT INTO questionnaire_metric set ?', data);
     };
 
 };
