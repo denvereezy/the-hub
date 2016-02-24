@@ -1,3 +1,21 @@
+exports.show = function (req, res, next) {
+  const id = req.params.id;
+    req.getServices()
+        .then(function(services){
+            const allocateQuestionnaireDataServices = services.allocateQuestionnaireDataServices;
+            questionDataService.showEntities(id)
+            .then(function(entities){
+                    res.render('allocateQuestionnaire', {
+                        entities  : entities
+                    });
+            });
+        })
+          .catch(function(err){
+                next(err);
+          });
+};
+
+
 exports.allocate = function(req, res, next){
 
   req.getServices()
@@ -7,7 +25,7 @@ exports.allocate = function(req, res, next){
             name : req.body.name,
             dueDate : req.body.dueDate
         };
-      const setupQuestionnaireDataService  = services.allocateQuestionnaire;
+      const allocateQuestionnaireDataServices = services.allocateQuestionnaireDataServices;
       setupQuestionnaireDataService.allocateQuestionnaire(data)
         .then(function(results){
             const id = results.insertId;

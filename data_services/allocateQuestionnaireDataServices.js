@@ -2,7 +2,7 @@ const QueryService = require("../data_services/query-service");
 module.exports = function(connection) {
     const queryService = new QueryService(connection);
 
-    this.showEntity = function(id){
+    this.showEntities = function(id){
       return queryService.executeQuery('seclect * from entity where id != ?', id);
     };
 

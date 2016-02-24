@@ -70,6 +70,8 @@ app.get('/dashboard', function(req, res){
 app.get('/signup', function (req, res) {
   res.render('signup');
 });
+
+app.get('/questionnaire/allocate', allocate.show);
 app.post('/signup/add',signup.add);
 app.get('/view-questionnaire', viewQuestionnaire.show);
  // app.get('/signup',questions.show);
