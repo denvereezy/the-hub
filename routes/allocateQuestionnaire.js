@@ -1,5 +1,3 @@
-const Promise = require('bluebird');
-
 exports.show = function (req, res, next) {
   const id = req.session.entity_id;
   const questionnaire_id = req.params.id;
@@ -38,7 +36,7 @@ exports.allocate = function(req, res, next){
         .then(function(data){
 
         })
-          .then(function(data){
+          .then(function(results){
             res.redirect('/dashboard');
           })
             .catch(function(error){
