@@ -1,5 +1,6 @@
 exports.show = function (req, res, next) {
   const id = req.session.entity_id;
+  console.log(req.params);
     req.getServices()
         .then(function(services){
             const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
@@ -17,11 +18,12 @@ exports.show = function (req, res, next) {
 
 
 exports.allocate = function(req, res, next){
-
+  var questionnaire_id = req.params.id;
   req.getServices()
     .then(function(services){
         const data = {
-            entity_id : req.session.entity_id,
+            entity_id : req.body.entity_id,
+            parent_questionnaire_id : questionnaire_id,
             name : req.body.name,
             dueDate : req.body.dueDate
         };
