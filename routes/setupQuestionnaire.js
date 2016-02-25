@@ -70,7 +70,6 @@ exports.linkMetricToQuestionnaire = function (req, res, next) {
             const rawMetricIds = req.body.selectedMetrics;
             // ensure that if only one question is selected we still have a list of metric ids - html quirk...
             const selectedMetricIds = Array.isArray(rawMetricIds) ? rawMetricIds : [rawMetricIds];
-            console.log(selectedMetricIds);
             setupQuestionnaireDataService = services.setupQuestionnaireDataService;
             return selectedMetricIds;
           })

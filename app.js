@@ -72,6 +72,7 @@ app.get('/signup', function (req, res) {
 });
 
 app.get('/questionnaire/allocate/:id', allocate.show);
+app.post('/questionnaire/allocate/:id',allocate.allocate);
 app.post('/signup/add',signup.add);
 app.get('/view-questionnaire', viewQuestionnaire.show);
  // app.get('/signup',questions.show);
