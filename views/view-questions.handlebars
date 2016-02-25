@@ -1,4 +1,19 @@
-<h3>title - description</h3>
-{{#each questions}}
-<p>{{title}} - {{description}} - <input type="number" name="name" placeholder="answer"> <input type="checkbox" name="name"></p>
-{{/each}}
+
+<form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
+    <h3>Select Questions to add to Questionnaire:</h3>
+    <table>
+        <tr>
+            <th>Question</th>
+            <th>Description</th>
+            <th>Select</th>
+        </tr>
+        {{#each questions}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td><input type="checkbox" class="metricSelected" name="selectedMetrics" value="{{id}}"/></td>
+        </tr>
+        {{/each}}
+    </table>
+    <input type="submit" value="Create new Questionnaire" />
+</form>

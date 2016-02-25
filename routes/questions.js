@@ -6,7 +6,8 @@ exports.show = function (req, res, next) {
             questionDataService.showAll(id)
             .then(function(questions){
                     res.render('view-questions', {
-                        questions  : questions
+                        questions  : questions,
+                        questionnaire_id  : id
                     });
             });
         })

@@ -79,6 +79,7 @@ app.get('/view-questionnaire', viewQuestionnaire.show);
 // app.get('/setup-questionnaire/edit/:question_id',questions.get);
 
 app.get('/questionnaire/questions/view/:id',questions.show);
+app.post('/questionnaire/questions/view/:id',setupQuestionnaire.linkMetricToQuestionnaire)
 //Setup Questionnaire
 app.get('/questionnaire/setup/step1', function (req, res) {
   res.render('setup-questionnaire-step-1');
