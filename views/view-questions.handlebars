@@ -1,5 +1,10 @@
 
-<form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
+  {{#if questionnaire.parent_questionnaire_id}}
+    <form method="post" action="/questionnaire/allocate/down/{{questionnaire_id}}">
+  {{else}}
+    <form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
+  {{/if}}
+
     <h3>Select Questions to add to Questionnaire:</h3>
     <table>
         <tr>

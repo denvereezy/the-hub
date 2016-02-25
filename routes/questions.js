@@ -3,11 +3,17 @@ exports.show = function (req, res, next) {
     req.getServices()
         .then(function(services){
             const questionDataService = services.questionDataService;
-            questionDataService.showAll(id)
+            questionDataService
+            .showAll(id)
+            .then(function(){
+              // get the questionnaire
+            })
             .then(function(questions){
                     res.render('view-questions', {
                         questions  : questions,
-                        questionnaire_id  : id
+                        questionnaire  : questionnaire,
+                        questionnaire_id  : id,
+
                     });
             });
         })

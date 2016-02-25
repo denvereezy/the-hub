@@ -77,6 +77,7 @@ app.post('/signup/add',signup.add);
 app.get('/view-questionnaire', viewQuestionnaire.show);
  // app.get('/signup',questions.show);
 // app.get('/setup-questionnaire/edit/:question_id',questions.get);
+app.post('/questionnaire/allocate/down/:id',allocate.allocateToSubEntity);
 
 app.get('/questionnaire/questions/view/:id',questions.show);
 app.post('/questionnaire/questions/view/:id',setupQuestionnaire.linkMetricToQuestionnaire)
