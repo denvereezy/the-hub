@@ -1,10 +1,10 @@
 exports.show = function (req, res, next) {
-  const id = req.session.entity_id;
+  const entity_id = req.session.entity_id;
   const questionnaire_id = req.params.id;
     req.getServices()
         .then(function(services){
             const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
-            allocateQuestionnaireDataService.showEntities(id)
+            allocateQuestionnaireDataService.showEntities(entity_id)
             .then(function(entities){
                     res.render('allocateQuestionnaire', {
                         entities  : entities,
@@ -63,7 +63,6 @@ exports.allocate = function(req, res, next){
           metric_ids  : req.body.selectedMetrics
       };
 
-      console.log("=> " + data.parent_questionnaire_id);
 
       req.getServices()
         .then(function(services){
@@ -72,13 +71,22 @@ exports.allocate = function(req, res, next){
 
           allocateQuestionnaireDataService.questionnaireInfo(questionnaire_id)
           .then(function(info){
-              data.name = info[0].name;
-              data.dueDate = info[0].dueDate;
-              return allocateQuestionnaireDataService.allocateQuestionnaire(data);
+            // console.log("=>info " + JSON.stringify(info);
+
+
+              var questionnaireData = {
+                  dueDate : info[0].dueDate,
+                  name : info[0].name,
+                  entity_id : data.entity_id,
+                  parent_questionnaire_id : data.parent_questionnaire_id
+              };
+
+              return allocateQuestionnaireDataService.allocateQuestionnaire(questionnaireData);
           })
           .then(function(result){
               const questionnaireId = result.insertId;
               const metric_ids = data.metric_ids.map(function(m){return {metric_id : m}});
+              console.log(metric_ids);
               return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(questionnaireId, metric_ids);
           })
               .then(function(results){

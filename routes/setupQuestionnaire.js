@@ -102,11 +102,11 @@ exports.linkMetricToQuestionnaire = function (req, res, next) {
 //             setupQuestionnaireDataService.fetchEntityMetrics(entity_id)
 //                 .then(function(metric){
 //                     res.render('setup-questionnaire', {
-//                         metric : metric
+//                          metric : metric
 //                     });
 //                 });
 //         })
-//         .catch(function(err){
+//          .catch(function(err){
 //             next(err);
-//         });
+//          });
 // };
