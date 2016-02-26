@@ -5,22 +5,10 @@
     <th>Questionnaire name:</th>
     <th>Due Date:</th>
 </tr>
-
-    <!-- Temporarily only supporting name and dueDate -->
 {{#each questionnaire}}
     <tr>
     <td><a href="/questionnaire/questions/view/{{id}}">{{name}}</a></td>
     <td>{{dueDate}}</td>
     </tr>
 {{/each}}
-
-<!-- Will eventually support this model -->
-<!--{{#each questionnaire}}-->
-<!--<tr>-->
-    <!--<td><a href="/answer-questionnaire/show">{{name}}</a></td>-->
-    <!--<td>{{received_from_name}}</td>-->         <!-- Received from name, name determined by ID of Questionnaire -->
-    <!--<td>{{dueDate}}</td>-->
-    <!--<td><a href="/view-questionnaire/createChild">Create Child</a></td>-->
-<!--</tr>-->
-<!--{{/each}}-->
 </table>

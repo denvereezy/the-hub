@@ -1,6 +1,5 @@
 const Promise = require('bluebird');
 
-//setup-question-step-1
 exports.create = function (req, res, next) {
     req.getServices()
         .then(function(services){
@@ -21,7 +20,6 @@ exports.create = function (req, res, next) {
           });
 };
 
-//setup-question-step-2
 exports.show = function (req, res, next) {
   var questionnaire_id = req.params.id;
     req.getServices()
@@ -87,26 +85,3 @@ exports.linkMetricToQuestionnaire = function (req, res, next) {
                     next(err);
                 });
 };
-
-
-
-//derived-setup-questionnaire-step-1
-// exports.show = function (req, res, next) {
-//
-//     req.getServices()
-//         .then(function(services){
-//             const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-//
-//               const entity_id = req.session.entity_id;
-//
-//             setupQuestionnaireDataService.fetchEntityMetrics(entity_id)
-//                 .then(function(metric){
-//                     res.render('setup-questionnaire', {
-//                          metric : metric
-//                     });
-//                 });
-//         })
-//          .catch(function(err){
-//             next(err);
-//          });
-// };
