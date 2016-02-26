@@ -17,7 +17,6 @@ exports.show = function (req, res, next) {
           });
 };
 
-
 exports.allocate = function(req, res, next){
   var questionnaire_id = req.params.id;
   var childQuestionnaireId = null;
@@ -25,19 +24,14 @@ exports.allocate = function(req, res, next){
       entity_id : req.body.entity_id,
       parent_questionnaire_id : questionnaire_id
   };
-
-  console.log("=> " + data.parent_questionnaire_id);
-
   req.getServices()
     .then(function(services){
-
       const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
-
       allocateQuestionnaireDataService.questionnaireInfo(questionnaire_id)
       .then(function(info){
           data.name = info[0].name;
           data.dueDate = info[0].dueDate;
-          return allocateQuestionnaireDataService.allocateQuestionnaire(data);
+          return allocateQuestionnaireDataService.createChildQuestionnaire(data);
       })
       .then(function(result){
           childQuestionnaireId = result.insertId;
@@ -54,48 +48,41 @@ exports.allocate = function(req, res, next){
             });
     });
 };
-    exports.allocateToSubEntity = function(req, res, next){
-      var questionnaire_id = req.params.id;
-      var childQuestionnaireId = null;
-      const data = {
-          entity_id : req.body.entity_id,
-          parent_questionnaire_id : questionnaire_id,
-          metric_ids  : req.body.selectedMetrics
-      };
+exports.allocateToSubEntity = function(req, res, next){
+  var questionnaire_id = req.params.id;
+  var childQuestionnaireId = null;
+  const data = {
+      entity_id : req.body.entity_id,
+      parent_questionnaire_id : questionnaire_id,
+      metric_ids  : req.body.selectedMetrics
+  };
 
+  req.getServices()
+    .then(function(services){
+      const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
+      allocateQuestionnaireDataService.questionnaireInfo(questionnaire_id)
+      .then(function(info){
+          var questionnaireData = {
+              dueDate : info[0].dueDate,
+              name : info[0].name,
+              entity_id : data.entity_id,
+              parent_questionnaire_id : data.parent_questionnaire_id
+          };
 
-      req.getServices()
-        .then(function(services){
-
-          const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
-
-          allocateQuestionnaireDataService.questionnaireInfo(questionnaire_id)
-          .then(function(info){
-            // console.log("=>info " + JSON.stringify(info);
-
-
-              var questionnaireData = {
-                  dueDate : info[0].dueDate,
-                  name : info[0].name,
-                  entity_id : data.entity_id,
-                  parent_questionnaire_id : data.parent_questionnaire_id
-              };
-
-              return allocateQuestionnaireDataService.allocateQuestionnaire(questionnaireData);
+          return allocateQuestionnaireDataService.createChildQuestionnaire(questionnaireData);
+      })
+      .then(function(result){
+          const questionnaireId = result.insertId;
+          const metric_ids = data.metric_ids.map(function(m){return {metric_id : m}});
+          return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(questionnaireId, metric_ids);
+      })
+          .then(function(results){
+            res.redirect('/dashboard');
           })
-          .then(function(result){
-              const questionnaireId = result.insertId;
-              const metric_ids = data.metric_ids.map(function(m){return {metric_id : m}});
-              console.log(metric_ids);
-              return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(questionnaireId, metric_ids);
-          })
-              .then(function(results){
-                res.redirect('/dashboard');
-              })
-                .catch(function(error){
-                  next(error);
-                });
-        });
+            .catch(function(error){
+              next(error);
+            });
+    });
 
 
 };

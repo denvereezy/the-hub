@@ -6,11 +6,11 @@ module.exports = function(connection) {
     const queryService = new QueryService(connection);
     const sdqs = new SetupQuestionnaireDataService(connection);
 
-    this.showEntities = function(entity_id)  {
-      return queryService.executeQuery('select * from entity where id != ?', entity_id);
+    this.showEntities = function(id)  {
+      return queryService.executeQuery('select * from entity where id != ?', id);
     };
 
-    this.allocateQuestionnaire = function(data) {
+    this.createChildQuestionnaire = function(data) {
       return queryService.executeQuery('insert into questionnaire set ?', data);
     };
 
@@ -19,8 +19,10 @@ module.exports = function(connection) {
     };
 
     this.allocateMetricListToQuestionaire = function(target_questionnaire_id, metric_list){
+          console.log(metric_list);
           return Promise
             .mapSeries(metric_list, function(metric_row){
+              console.log(metric_row);
               return sdqs.linkMetricToQuestionnaire({
                 questionnaire_id : target_questionnaire_id,
                 metric_id : metric_row.metric_id
