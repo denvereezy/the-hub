@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>220</x>
+      <y>380</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Entity
+--
+#id
+*name
+logo
+address</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>460</y>
+      <w>220</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>User
+--
+#id
+*email
+*entity_id (FK to Entity)
+*role (standard, admin)
+*status (created, verified, banned)
+password
+firstName
+lastName</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>10</y>
+      <w>260</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Questionnaire_Metric
+--
+#questionnaire_id (FK to Questionnaire)
+#metric_id (FK to Metric)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>590</y>
+      <w>550</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>ResponseData
+--
+#id
+#user_id (FK to User)
+#user_entity_id (FK to Entity -&gt; the entity id of the user who answered the question)
+#questionnaire_id (FK to Questionnaire)
+#metric_id (FK to Metric)
+*value
+*timestamp</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>140</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Questionnaire
+--
+#id
+*entity_id
+*name
+dueDate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>220</x>
+      <y>0</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Metric
+--
+#id
+*title
+description
+#entity_id (FK to Entity)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>470</y>
+      <w>30</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>680</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>PasswordReset
+--
+#user_id (FK to User)
+*token
+timestamp</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>430</y>
+      <w>350</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+</panel_attributes>
+    <additional_attributes>10.0;10.0;330.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>850</x>
+      <y>610</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..1
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>90</y>
+      <w>50</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>300</y>
+      <w>270</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Questionnaire_User
+--
+#questionnaire_id (FK to Questionnaire)
+#user_id (FK to User)
+status (complete, incomplete)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>30</y>
+      <w>360</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=0..1
+</panel_attributes>
+    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>70</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..*
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>230</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=0..1
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>390</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..*
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

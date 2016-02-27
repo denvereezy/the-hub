@@ -1,0 +1,29 @@
+
+  {{#if questionnaire.parent_questionnaire_id}}
+  <form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
+  {{else}}
+  <form method="post" action="/questionnaire/allocate/down/{{questionnaire_id}}">
+  {{/if}}
+
+    <h3>Select Questions to add to Questionnaire:</h3>
+    <table>
+        <tr>
+            <th>Question</th>
+            <th>Description</th>
+            <th>Select</th>
+        </tr>
+        {{#each questions}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td><input type="checkbox" class="metricSelected" name="selectedMetrics" value="{{id}}"/></td>
+        </tr>
+        {{/each}}
+    </table><br>
+  Select entity:  <select name='entity_id'>
+      {{#each entities}}
+      <option type='text' name="entity_id" value='{{id}}'>{{name}}</option>
+      {{/each}}
+    </select>
+    <input type="submit" value="Create new Questionnaire" />
+</form>
