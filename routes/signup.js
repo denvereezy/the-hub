@@ -1,16 +1,13 @@
-var Promise = require('bluebird');
-
 exports.add = function (req, res, next) {
     req.getServices()
       .then(function(services){
-        const input = JSON.parse(JSON.stringify(req.body));
-        const entity = {
+        var entity = {
             name  : req.body.name,
             logo  : req.body.logo,
             address : req.body.address
         };
 
-        const user = {
+        var user = {
             email :  req.body.email,
             role  :  'admin',
             status  : 'created',

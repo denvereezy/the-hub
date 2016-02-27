@@ -1,6 +1,6 @@
 exports.show = function (req, res, next) {
-  const entity_id = req.session.entity_id;
-  const questionnaire_id = req.params.id;
+  var entity_id = req.session.entity_id;
+  var questionnaire_id = req.params.id;
     req.getServices()
         .then(function(services){
             const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
@@ -20,7 +20,7 @@ exports.show = function (req, res, next) {
 exports.allocate = function(req, res, next){
   var questionnaire_id = req.params.id;
   var childQuestionnaireId = null;
-  const data = {
+  var data = {
       entity_id : req.body.entity_id,
       parent_questionnaire_id : questionnaire_id
   };
@@ -51,7 +51,7 @@ exports.allocate = function(req, res, next){
 exports.allocateToSubEntity = function(req, res, next){
   var questionnaire_id = req.params.id;
   var childQuestionnaireId = null;
-  const data = {
+  var data = {
       entity_id : req.body.entity_id,
       parent_questionnaire_id : questionnaire_id,
       metric_ids  : req.body.selectedMetrics
@@ -72,8 +72,8 @@ exports.allocateToSubEntity = function(req, res, next){
           return allocateQuestionnaireDataService.createChildQuestionnaire(questionnaireData);
       })
       .then(function(result){
-          const questionnaireId = result.insertId;
-          const metric_ids = data.metric_ids.map(function(m){return {metric_id : m}});
+          var questionnaireId = result.insertId;
+          var metric_ids = data.metric_ids.map(function(m){return {metric_id : m}});
           return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(questionnaireId, metric_ids);
       })
           .then(function(results){

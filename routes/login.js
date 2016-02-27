@@ -12,11 +12,11 @@ exports.userCheck = function (req, res, next) {
 exports.userLogin = function(req, res, next) {
     req.getServices()
     .then(function(services){
-      const email = req.body.email;
+      var email = req.body.email;
       const loginDataService = services.loginDataService;
       loginDataService.login(email)
       .then(function(results){
-          const user = results[0];
+          var user = results[0];
           bcrypt.compare(req.body.password, user.password,function(err, pass) {
               if (pass) {
                 req.session.user = email;

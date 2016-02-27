@@ -1,8 +1,8 @@
 const Promise = require('bluebird');
 
 exports.show = function (req, res, next) {
-const id = req.params.id;
-const entity_id = req.session.entity_id;
+var id = req.params.id;
+var entity_id = req.session.entity_id;
   req.getServices()
       .then(function(services){
           const questionDataService = services.questionDataService;

@@ -19,10 +19,8 @@ module.exports = function(connection) {
     };
 
     this.allocateMetricListToQuestionaire = function(target_questionnaire_id, metric_list){
-          console.log(metric_list);
           return Promise
             .mapSeries(metric_list, function(metric_row){
-              console.log(metric_row);
               return sdqs.linkMetricToQuestionnaire({
                 questionnaire_id : target_questionnaire_id,
                 metric_id : metric_row.metric_id
