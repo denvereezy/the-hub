@@ -23,6 +23,7 @@ const login              = require('./routes/login');
 const viewQuestionnaire  = require('./routes/viewQuestionnaire');
 const questions          = require('./routes/questions');
 const allocate           = require('./routes/allocateQuestionnaire');
+const router             = require('./routes/router');
 
 const dbOptions = {
   host      : 'localhost',
@@ -53,28 +54,14 @@ app.use(compression());
 app.engine('handlebars', exhbs({defaultLayout : 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/signup', function (req, res) {
-  res.render('signup');
-});
+app.get('/signup', router.signup);
 app.post('/signup/add',signup.add);
-
-app.get('/', function (req, res) {
-  res.render('login');
-});
-
+app.get('/', router.login);
 app.post('/login', login.userLogin);
-
-app.get('/dashboard', function(req, res){
-  res.render('dashboard');
-});
-
-app.get('/questionnaire/setup/step1', function (req, res) {
-  res.render('setup-questionnaire-step-1');
-});
-
+app.get('/dashboard', router.dashboard);
+app.get('/questionnaire/setup/step1', router.questionnaire);
 app.post('/questionnaire/setup/step2/:id', setupQuestionnaire.linkMetricToQuestionnaire);
 app.post('/setup-questionnaire-step-2/addMetricToMetricTable/:id', setupQuestionnaire.addMetricToMetricTable);
-
 app.get('/questionnaire/allocate/:id', allocate.show);
 app.post('/questionnaire/allocate/down/:id',allocate.allocateToSubEntity);
 app.post('/view-questionnaire/create', setupQuestionnaire.create);
@@ -82,11 +69,7 @@ app.post('/questionnaire/allocate/:id',allocate.allocate);
 app.get('/view-questionnaire', viewQuestionnaire.show);
 app.get('/questionnaire/questions/view/:id',questions.show);
 app.post('/questionnaire/questions/view/:id',setupQuestionnaire.linkMetricToQuestionnaire)
-
-app.get('/logout', function(req, res){
-     delete req.session.user
-     res.redirect("/");
-});
+app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {
