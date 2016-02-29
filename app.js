@@ -60,6 +60,8 @@ app.get('/', router.login);
 app.post('/login', login.userLogin);
 app.get('/dashboard', router.dashboard);
 app.get('/questionnaire/setup/step1', router.questionnaire);
+app.post('/questionnaire/setup/step1/', setupQuestionnaire.create);
+app.get('/questionnaire/setup/step2/:id', setupQuestionnaire.show);
 app.post('/questionnaire/setup/step2/:id', setupQuestionnaire.linkMetricToQuestionnaire);
 app.post('/setup-questionnaire-step-2/addMetricToMetricTable/:id', setupQuestionnaire.addMetricToMetricTable);
 app.get('/questionnaire/allocate/:id', allocate.show);
