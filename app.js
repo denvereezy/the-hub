@@ -16,11 +16,13 @@ const LoginDataService                  = require('./data_services/loginDataServ
 const ViewQuestionnnaireDataService     = require('./data_services/viewQuestionnaireDataService');
 const QuestionDataService               = require('./data_services/questionDataService');
 const AllocateQuestionnaireDataService  = require('./data_services/allocateQuestionnaireDataService');
+const AnswerDataService                 = require('./data_services/answerDataService');
 
 const signup             = require('./routes/signup');
 const setupQuestionnaire = require('./routes/setupQuestionnaire');
 const login              = require('./routes/login');
 const viewQuestionnaire  = require('./routes/viewQuestionnaire');
+const answerQuestionnaire  = require('./routes/answers');
 const questions          = require('./routes/questions');
 const allocate           = require('./routes/allocateQuestionnaire');
 const router             = require('./routes/router');
@@ -40,7 +42,8 @@ const serviceSetupCallBack = function (connection) {
     loginDataService                  : new LoginDataService(connection),
     viewQuestionnnaireDataService     : new ViewQuestionnnaireDataService(connection),
     questionDataService               : new QuestionDataService(connection),
-    allocateQuestionnaireDataService  : new AllocateQuestionnaireDataService(connection)
+    allocateQuestionnaireDataService  : new AllocateQuestionnaireDataService(connection),
+    answerDataService                 : new AnswerDataService(connection)
   }
 };
 
@@ -69,8 +72,11 @@ app.post('/questionnaire/allocate/down/:id',allocate.allocateToSubEntity);
 app.post('/view-questionnaire/create', setupQuestionnaire.create);
 app.post('/questionnaire/allocate/:id',allocate.allocate);
 app.get('/view-questionnaire', viewQuestionnaire.show);
+app.get('/answer-questionnaire', answerQuestionnaire.show);
 app.get('/questionnaire/questions/view/:id',questions.show);
-app.post('/questionnaire/questions/view/:id',setupQuestionnaire.linkMetricToQuestionnaire)
+app.get('/questionnaire/questions/:id',answerQuestionnaire.showQuestions);
+app.post('/questionnaire/questions/view/:id',setupQuestionnaire.linkMetricToQuestionnaire);
+app.post('/questionnaire-metric/answer/:id',answerQuestionnaire.answers)
 app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;

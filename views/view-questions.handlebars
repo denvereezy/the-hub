@@ -10,14 +10,12 @@
         <tr>
             <th>Question</th>
             <th>Description</th>
-            <th>Answer</th>
             <th>Select</th>
         </tr>
         {{#each questions}}
         <tr>
             <td>{{title}}</td>
             <td>{{description}}</td>
-            <td><input type="text" name="value" placeholder="answer">
             <td><input type="checkbox" class="metricSelected" name="selectedMetrics" value="{{id}}"/></td>
         </tr>
         {{/each}}
