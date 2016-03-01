@@ -57,7 +57,7 @@ CREATE TABLE metric(
 
 CREATE TABLE response_data(
   id int not null auto_increment primary key,
-  value varchar (100) not null,
+  value decimal (20.2),
   timestamp date not null,
   questionnaire_id int not null,
   metric_id int not null,
@@ -66,8 +66,10 @@ CREATE TABLE response_data(
 );
 
 CREATE TABLE questionnaire_metric(
+  id int not null auto_increment primary key,
   questionnaire_id int not null,
   metric_id int not null,
+  value decimal (20.2)
   foreign key(questionnaire_id) references questionnaire(id),
   foreign key(metric_id) references metric(id)
 );
