@@ -22,7 +22,8 @@ exports.allocate = function(req, res, next){
   var childQuestionnaireId = null;
   var data = {
       entity_id : req.body.entity_id,
-      parent_questionnaire_id : questionnaire_id
+      parent_questionnaire_id : questionnaire_id,
+      base_questionnaire_id : questionnaire_id
   };
   req.getServices()
     .then(function(services){
@@ -49,14 +50,13 @@ exports.allocate = function(req, res, next){
     });
 };
 exports.allocateToSubEntity = function(req, res, next){
-  var questionnaire_id = req.params.id;
+  var questionnaire_id = req.params.questionnaire_id;
   var childQuestionnaireId = null;
   var data = {
       entity_id : req.body.entity_id,
       parent_questionnaire_id : questionnaire_id,
       metric_ids  : req.body.selectedMetrics
   };
-
   req.getServices()
     .then(function(services){
       const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
