@@ -74,9 +74,9 @@ app.post('/questionnaire/allocate/:id',allocate.allocate);
 app.get('/view-questionnaire', viewQuestionnaire.show);
 app.get('/answer-questionnaire', answerQuestionnaire.show);
 app.get('/questionnaire/questions/view/:id',questions.show);
-app.get('/questionnaire/questions/:id',answerQuestionnaire.showQuestions);
+app.get('/questionnaire/questions/:questionnaire_id',answerQuestionnaire.showQuestions);
 app.post('/questionnaire/questions/view/:id',setupQuestionnaire.linkMetricToQuestionnaire);
-app.post('/questionnaire-metric/answer/:id',answerQuestionnaire.answers)
+app.post('/questionnaire/:questionnaire_id/answer/:questionnaire_metric_id',answerQuestionnaire.answers)
 app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;

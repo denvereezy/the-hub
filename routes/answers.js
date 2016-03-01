@@ -18,15 +18,16 @@ exports.show = function (req, res, next) {
 };
 
 exports.showQuestions = function (req, res, next) {
-var id = req.params.id;
+var questionnaire_id = req.params.questionnaire_id;
   req.getServices()
       .then(function(services){
           const questionDataService = services.questionDataService;
-          questionDataService.showAll(id)
+          questionDataService.showAll(questionnaire_id)
           .then(function(questions){
                   res.render('answers-questions', {
                       questions  : questions,
-                      questionnaire_id  : id
+                      questionnaire_id  : questionnaire_id,
+                      questionnaire_metric_id : questions[0].questionnaire_metric_id
                   });
           });
       })
@@ -38,14 +39,12 @@ var id = req.params.id;
 exports.answers = function  (req, res, next)  {
   req.getServices()
   .then(function(services){
-    var data = JSON.parse(JSON.stringify(req.body));
-    var id = req.body.id;
-    var questionnaire_id = req.params.id
+    var data = req.body;
+    var questionnaire_id = req.params.questionnaire_id;
+    var questionnaire_metric_id = req.params.questionnaire_metric_id;
     const answerDataService = services.answerDataService;
-    answerDataService.answeredMetrics(data, id)
+    answerDataService.answeredMetrics({value:data.value}, questionnaire_metric_id)
     .then(function(results){
-      console.log(results);
-      console.log(data);
       res.redirect('/questionnaire/questions/' + questionnaire_id);
     })
       .catch(function(error){
