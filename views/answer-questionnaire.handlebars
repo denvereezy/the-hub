@@ -1,10 +1,12 @@
 <h2>View Questionnaires</h2>
 
-<table>
+<table class="table">
+  <thead class="thead-inverse">
 <tr>
     <th>Questionnaire name:</th>
     <th>Due Date:</th>
 </tr>
+</thead>
 {{#each questionnaire}}
     <tr>
     <td><a href="/questionnaire/questions/{{id}}">{{name}}</a></td>

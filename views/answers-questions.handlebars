@@ -1,7 +1,7 @@
   {{#each questions}}
 <form method="post" action="/questionnaire-metric/answer/{{questionnaire_id}}">
-<table class="table">
-  <thead class="thead-inverse">
+  <table class="table">
+    <thead class="thead-inverse">
   <tr>
     <th>id</th>
     <th>title</th>
@@ -16,7 +16,7 @@
             <td>{{title}}</td><br>
             <td>{{description}}</td>
             <td><input type="number" name="value" value="{{value}}"></td>
-            <td><input type="submit" value="Submit" /></td>
+            <td><input type="submit" class="btn btn-primary" value="Submit" /></td>
 </tr>
   </tbody>
   </table>

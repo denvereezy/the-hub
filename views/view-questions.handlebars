@@ -6,12 +6,15 @@
   {{/if}}
 
     <h3>Select Questions to add to Questionnaire:</h3>
-    <table>
+    <table class="table">
+  <thead class="thead-inverse">
         <tr>
             <th>Question</th>
             <th>Description</th>
             <th>Select</th>
         </tr>
+      </thead>
+
         {{#each questions}}
         <tr>
             <td>{{title}}</td>
@@ -25,5 +28,5 @@
       <option type='text' name="entity_id" value='{{id}}'>{{name}}</option>
       {{/each}}
     </select>
-    <input type="submit" value="Create new Questionnaire" />
+    <input type="submit" class="btn btn-primary" value="Create new Questionnaire" />
 </form>
