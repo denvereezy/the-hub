@@ -39,7 +39,7 @@ exports.answers = function  (req, res, next)  {
   req.getServices()
   .then(function(services){
     var data = JSON.parse(JSON.stringify(req.body));
-    var id = req.params.id;
+    var id = req.body.id;
     var questionnaire_id = req.params.id
     const answerDataService = services.answerDataService;
     answerDataService.answeredMetrics(data, id)
