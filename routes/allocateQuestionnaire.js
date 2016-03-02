@@ -49,6 +49,7 @@ exports.allocate = function(req, res, next){
             });
     });
 };
+
 exports.allocateToSubEntity = function(req, res, next){
   var questionnaire_id = req.params.questionnaire_id;
   var childQuestionnaireId = null;
@@ -66,7 +67,8 @@ exports.allocateToSubEntity = function(req, res, next){
               dueDate : info[0].dueDate,
               name : info[0].name,
               entity_id : data.entity_id,
-              parent_questionnaire_id : data.parent_questionnaire_id
+              parent_questionnaire_id : data.parent_questionnaire_id,
+              base_questionnaire_id : info[0].base_questionnaire_id
           };
 
           return allocateQuestionnaireDataService.createChildQuestionnaire(questionnaireData);
