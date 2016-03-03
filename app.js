@@ -61,6 +61,7 @@ app.set('view engine', 'handlebars');
 app.get('/signup', router.signup);
 app.post('/signup/add', signup.add);
 app.get('/', router.login);
+app.get('/login', router.login);
 app.post('/login', login.userLogin);
 app.use(login.userCheck);
 app.get('/dashboard', login.userCheck, router.dashboard);
