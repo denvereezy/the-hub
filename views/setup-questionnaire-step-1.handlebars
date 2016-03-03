@@ -1,8 +1,10 @@
-<div class="container">
-    <form action="/questionnaire/setup/step1" method="POST">
-        <h1>Setup Questionnaire - Step 1</h1>
-        <label>Questionnaire Name:</label><input type="text" placeholder="ex. mLab" name="name" />
-        <label>Due date:</label><input type="date" name="dueDate" />
-        <input type="submit">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+    <form class="col-md-8" action="/questionnaire/setup/step1" method="POST">
+        <h2>Setup Questionnaire</h2>
+        <div class="form-group">
+        <label>Questionnaire Name:</label><input type="text" class="form-control" placeholder="ex. mLab" name="name" />
+        <label>Due date:</label><input type="date" class="form-control" name="dueDate" />
+      </div>
+        <input type="submit" class="btn btn-success">
     </form>
 </div>

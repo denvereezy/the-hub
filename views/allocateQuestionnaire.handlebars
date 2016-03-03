@@ -1,16 +1,15 @@
-<div id="setupQuestionStep3">
-    <div class="container">
-        <form action="/questionnaire/allocate/{{questionnaire_id}}" method="POST">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <form class="col-md-8" action="/questionnaire/allocate/{{questionnaire_id}}" method="POST">
+          <div class="form-group">
             <h4>Select Entity to answer questions</h4>
-            <table>
-              <select name='entity_id'>
+            <table class="table">
+              <select name='entity_id' class='form-control'>
                 {{#each entities}}
-                <option type='text' name="entity_id" value='{{id}}'>{{name}}</option>
+                <option type='text' class='form-control' name="entity_id" value='{{id}}'>{{name}}</option>
                 {{/each}}
               </select><br /><br />
-
             </table>
-            <input type="submit" value="Allocate Questions to Entities"/>
+            <input type="submit" class="btn btn-primary" value="Allocate Questions to Entities"/>
         </form>
     </div>
 </div>

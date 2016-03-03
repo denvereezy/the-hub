@@ -1,34 +1,35 @@
-<div id="setupQuestionStep2">
-    <div class="container">
-        <h1>Setup Questionnaire - Step 2</h1>
-        <form action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <h2>Setup Questionnaire - Step 2</h2>
+        <form class="col-md-8" action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
             <h4>Add Question:</h4>
-            <textarea name="title" row="3" cols="50" placeholder="Enter question here" required></textarea>
+            <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
+            <br /><br />
             <h4>Add Question description: </h4>
-            <textarea name="description" row="3" cols="50" placeholder="Enter description of question" required></textarea>
-            {{#each questionnaire}}
-                <input type="hidden" name="id" value="{{id}}">
-            {{/each}}
-            <input type="submit" value="Create Question">
+            <textarea name="description" class="form-control" rows="5" cols="50" placeholder="Enter description of question" required></textarea>
+            <br /><br />
+            <input type="submit" class="btn btn-primary" value="Create Question">
         </form>
-
-        <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
+<br /><br />
+</div>
+  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <form class="col-md-8" method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
             <h3>Select Questions to add to Questionnaire:</h3>
-            <table>
+            <table class="table">
+              <thead class="thead-inverse">
                 <tr>
                     <th>Question</th>
                     <th>Description</th>
                     <th>Select</th>
                 </tr>
+              </thead>
                 {{#each metrics}}
                 <tr>
                     <td>{{title}}</td>
                     <td>{{description}}</td>
-                    <td><input type="checkbox" class="metricSelected" name="selectedMetrics" value="{{id}}"/></td>
+                    <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{id}}"/></td>
                 </tr>
                 {{/each}}
             </table>
-            <input type="submit" value="Add Questions to Questionnaire" />
+            <input type="submit" class="btn btn-primary" value="Add Questions to Questionnaire" />
         </form>
     </div>
-</div>

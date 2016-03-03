@@ -19,14 +19,15 @@
         <tr>
             <td>{{title}}</td>
             <td>{{description}}</td>
-            <td><input type="checkbox" class="metricSelected" name="selectedMetrics" value="{{metric_id}}"/></td>
+            <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}"/></td>
         </tr>
         {{/each}}
     </table><br>
-  Select entity:  <select name='entity_id'>
+  Select entity:  <select name='entity_id' class="form-control">
       {{#each entities}}
-      <option type='text' name="entity_id" value='{{id}}'>{{name}}</option>
+      <option type='text'class="form-control" name="entity_id" value='{{id}}'>{{name}}</option>
       {{/each}}
     </select>
+    <br />
     <input type="submit" class="btn btn-primary" value="Create new Questionnaire" />
 </form>

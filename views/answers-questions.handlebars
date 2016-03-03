@@ -1,7 +1,6 @@
   <table class="table">
     <thead class="thead-inverse">
   <tr>
-    <th>id</th>
     <th>title</th>
     <th>description</th>
     <th>answer</th>
@@ -10,12 +9,11 @@
 </thead>
 <tbody>
   {{#each questions}}
-<form method="post" action="/questionnaire/{{questionnaire_id}}/answer/{{questionnaire_metric_id}}">
+<form class="col-md-8" method="post" action="/questionnaire/{{questionnaire_id}}/answer/{{questionnaire_metric_id}}">
   <tr>
-            <td>{{questionnaire_metric_id}}</td>
             <td>{{title}}</td><br>
             <td>{{description}}</td>
-            <td><input type="number" name="value" value="{{value}}"/></td>
+            <td><input type="number" class="form-control" name="value" value="{{value}}"/></td>
             <td><input type="submit" class="btn btn-primary" value="Submit" /></td>
 </tr>
 </form>
