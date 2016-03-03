@@ -57,27 +57,29 @@ app.use(compression());
 app.engine('handlebars', exhbs({defaultLayout : 'main'}));
 app.set('view engine', 'handlebars');
 
+
 app.get('/signup', router.signup);
-app.post('/signup/add',signup.add);
+app.post('/signup/add', signup.add);
 app.get('/', router.login);
 app.get('/login', router.login);
 app.post('/login', login.userLogin);
-app.get('/dashboard', router.dashboard);
-app.get('/questionnaire/setup/step1', router.questionnaire);
-app.post('/questionnaire/setup/step1/', setupQuestionnaire.create);
-app.get('/questionnaire/setup/step2/:id', setupQuestionnaire.show);
-app.post('/questionnaire/setup/step2/:id', setupQuestionnaire.linkMetricToQuestionnaire);
-app.post('/setup-questionnaire-step-2/addMetricToMetricTable/:id', setupQuestionnaire.addMetricToMetricTable);
-app.get('/questionnaire/allocate/:id', allocate.show);
-app.post('/questionnaire/allocate/down/:id',allocate.allocateToSubEntity);
-app.post('/view-questionnaire/create', setupQuestionnaire.create);
-app.post('/questionnaire/allocate/:id',allocate.allocate);
-app.get('/view-questionnaire', viewQuestionnaire.show);
-app.get('/answer-questionnaire', answerQuestionnaire.show);
-app.get('/questionnaire/questions/view/:id',questions.show);
-app.get('/questionnaire/questions/:questionnaire_id',answerQuestionnaire.showQuestions);
-app.post('/questionnaire/questions/view/:id',setupQuestionnaire.linkMetricToQuestionnaire);
-app.post('/questionnaire/:questionnaire_id/answer/:questionnaire_metric_id',answerQuestionnaire.answers)
+app.use(login.userCheck);
+app.get('/dashboard', login.userCheck, router.dashboard);
+app.get('/questionnaire/setup/step1', login.userCheck, router.questionnaire);
+app.post('/questionnaire/setup/step1/', login.userCheck, setupQuestionnaire.create);
+app.get('/questionnaire/setup/step2/:id', login.userCheck, setupQuestionnaire.show);
+app.post('/questionnaire/setup/step2/:id', login.userCheck, setupQuestionnaire.linkMetricToQuestionnaire);
+app.post('/setup-questionnaire-step-2/addMetricToMetricTable/:id', login.userCheck, setupQuestionnaire.addMetricToMetricTable);
+app.get('/questionnaire/allocate/:id', login.userCheck, allocate.show);
+app.post('/questionnaire/allocate/down/:questionnaire_id', login.userCheck, allocate.allocateToSubEntity);
+app.post('/view-questionnaire/create', login.userCheck, setupQuestionnaire.create);
+app.post('/questionnaire/allocate/:id', login.userCheck, allocate.allocate);
+app.get('/view-questionnaire', login.userCheck, viewQuestionnaire.show);
+app.get('/answer-questionnaire', login.userCheck, answerQuestionnaire.show);
+app.get('/questionnaire/questions/view/:id', login.userCheck, questions.show);
+app.get('/questionnaire/questions/:questionnaire_id', login.userCheck, answerQuestionnaire.showQuestions);
+app.post('/questionnaire/questions/view/:id', login.userCheck, setupQuestionnaire.linkMetricToQuestionnaire);
+app.post('/questionnaire/:questionnaire_id/answer/:metric_id', login.userCheck, answerQuestionnaire.answers)
 app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;

@@ -1,9 +1,9 @@
 exports.signup = function (req, res)  {
-  res.render('signup');
+  res.render('signup',{layout:false});
 };
 
 exports.login = function (req, res) {
-  res.render('login');
+  res.render('login',{layout:false});
 };
 
 exports.dashboard = function  (req, res)  {
