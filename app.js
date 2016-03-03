@@ -17,15 +17,16 @@ const ViewQuestionnnaireDataService     = require('./data_services/viewQuestionn
 const QuestionDataService               = require('./data_services/questionDataService');
 const AllocateQuestionnaireDataService  = require('./data_services/allocateQuestionnaireDataService');
 const AnswerDataService                 = require('./data_services/answerDataService');
+const RollupDataService                 = require('./data_services/rollupDataService');
 
-const signup             = require('./routes/signup');
-const setupQuestionnaire = require('./routes/setupQuestionnaire');
-const login              = require('./routes/login');
-const viewQuestionnaire  = require('./routes/viewQuestionnaire');
+const signup               = require('./routes/signup');
+const setupQuestionnaire   = require('./routes/setupQuestionnaire');
+const login                = require('./routes/login');
+const viewQuestionnaire    = require('./routes/viewQuestionnaire');
 const answerQuestionnaire  = require('./routes/answers');
-const questions          = require('./routes/questions');
-const allocate           = require('./routes/allocateQuestionnaire');
-const router             = require('./routes/router');
+const questions            = require('./routes/questions');
+const allocate             = require('./routes/allocateQuestionnaire');
+const router               = require('./routes/router');
 
 const dbOptions = {
   host      : 'localhost',
@@ -43,7 +44,8 @@ const serviceSetupCallBack = function (connection) {
     viewQuestionnnaireDataService     : new ViewQuestionnnaireDataService(connection),
     questionDataService               : new QuestionDataService(connection),
     allocateQuestionnaireDataService  : new AllocateQuestionnaireDataService(connection),
-    answerDataService                 : new AnswerDataService(connection)
+    answerDataService                 : new AnswerDataService(connection),
+    rollupDataService                 : new RollupDataService(connection)
   }
 };
 
