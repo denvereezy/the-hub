@@ -42,6 +42,8 @@ exports.answers = function  (req, res, next)  {
     var data = req.body;
     var questionnaire_id = req.params.questionnaire_id;
     var questionnaire_metric_id = req.params.questionnaire_metric_id;
+    console.log(questionnaire_metric_id);
+    console.log(data.value);
     const answerDataService = services.answerDataService;
     answerDataService.answeredMetrics({value:data.value}, questionnaire_metric_id)
     .then(function(results){

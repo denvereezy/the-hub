@@ -76,6 +76,7 @@ exports.allocateToSubEntity = function(req, res, next){
       .then(function(result){
           var questionnaireId = result.insertId;
           var metric_ids = data.metric_ids.map(function(m){return {metric_id : m}});
+          console.log('metric' + metric_ids);
           return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(questionnaireId, metric_ids);
       })
           .then(function(results){
