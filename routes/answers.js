@@ -8,7 +8,8 @@ exports.show = function (req, res, next) {
            viewQuestionnnaireDataService.showQuestionnaires(id)
                .then(function(questionnaire){
                    res.render('answer-questionnaire', {
-                       questionnaire : questionnaire
+                       questionnaire : questionnaire,
+                       user:req.session.user
                    });
                });
        })
@@ -27,7 +28,8 @@ var questionnaire_id = req.params.questionnaire_id;
                   res.render('answers-questions', {
                       questions  : questions,
                       questionnaire_id  : questionnaire_id,
-                      questionnaire_metric_id : questions[0].questionnaire_metric_id
+                      questionnaire_metric_id : questions[0].questionnaire_metric_id,
+                      user:req.session.user
                   });
           });
       })

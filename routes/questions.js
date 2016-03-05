@@ -15,6 +15,7 @@ var entity_id = req.session.entity_id;
                       questions  : questions,
                       entities  : entities,
                       questionnaire_id  : id,
+                      user:req.session.user
                   });
           });
       })

@@ -8,7 +8,8 @@ exports.show = function (req, res, next) {
             .then(function(entities){
                     res.render('allocateQuestionnaire', {
                         entities  : entities,
-                        questionnaire_id  : questionnaire_id
+                        questionnaire_id  : questionnaire_id,
+                        user:req.session.user
                     });
             });
         })

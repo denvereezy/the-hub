@@ -31,7 +31,8 @@ exports.show = function (req, res, next) {
             .then(function(metrics){
                     res.render('setup-questionnaire-step-2', {
                         metrics  : metrics,
-                        questionnaire_id : questionnaire_id
+                        questionnaire_id : questionnaire_id,
+                        user:req.session.user
                     });
             });
         })

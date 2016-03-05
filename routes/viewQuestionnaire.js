@@ -6,7 +6,8 @@ exports.show = function (req, res, next) {
            viewQuestionnnaireDataService.showQuestionnaires(id)
                .then(function(questionnaire){
                    res.render('view-questionnaire', {
-                       questionnaire : questionnaire
+                       questionnaire : questionnaire,
+                       user:req.session.user
                    });
                });
        })
