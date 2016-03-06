@@ -19,9 +19,10 @@ exports.userLogin = function(req, res, next) {
           var user = results[0];
           bcrypt.compare(req.body.password, user.password,function(err, pass) {
               if (pass) {
-                req.session.user = email;
+                req.session.user = user.firstName;
                 req.session.role =  user.role;
                 req.session.entity_id = user.entity_id;
+                req.session.entity = user.name;
                 return res.redirect("/dashboard")
               }
               else {

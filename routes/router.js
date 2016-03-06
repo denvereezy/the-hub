@@ -7,11 +7,13 @@ exports.login = function (req, res) {
 };
 
 exports.dashboard = function  (req, res)  {
-  res.render('dashboard',{user:req.session.user});
+  res.render('dashboard',{user:req.session.user,
+  entity:req.session.entity});
 };
 
 exports.questionnaire = function  (req, res)  {
-  res.render('setup-questionnaire-step-1',{user:req.session.user});
+  res.render('setup-questionnaire-step-1',{user:req.session.user,
+  entity:req.session.entity});
 };
 
 exports.logout = function(req, res) {

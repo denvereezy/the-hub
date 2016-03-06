@@ -9,7 +9,8 @@ exports.show = function (req, res, next) {
                .then(function(questionnaire){
                    res.render('answer-questionnaire', {
                        questionnaire : questionnaire,
-                       user:req.session.user
+                       user:req.session.user,
+                       entity:req.session.entity
                    });
                });
        })
@@ -29,7 +30,8 @@ var questionnaire_id = req.params.questionnaire_id;
                       questions  : questions,
                       questionnaire_id  : questionnaire_id,
                       questionnaire_metric_id : questions[0].questionnaire_metric_id,
-                      user:req.session.user
+                      user:req.session.user,
+                      entity:req.session.entity
                   });
           });
       })

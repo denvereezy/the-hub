@@ -7,7 +7,8 @@ exports.show = function (req, res, next) {
                .then(function(questionnaire){
                    res.render('view-questionnaire', {
                        questionnaire : questionnaire,
-                       user:req.session.user
+                       user:req.session.user,
+                       entity:req.session.entity
                    });
                });
        })

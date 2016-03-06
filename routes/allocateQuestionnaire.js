@@ -9,7 +9,8 @@ exports.show = function (req, res, next) {
                     res.render('allocateQuestionnaire', {
                         entities  : entities,
                         questionnaire_id  : questionnaire_id,
-                        user:req.session.user
+                        user:req.session.user,
+                        entity:req.session.entity
                     });
             });
         })
