@@ -23,6 +23,6 @@ module.exports = function(connection){
     };
 
     this.login = function(email){
-        return queryService.executeQuery('SELECT * from user WHERE email=?', [email]);
+        return queryService.executeQuery('SELECT * from user inner join entity on entity_id = entity.id WHERE email=?', [email]);
     };
 };
