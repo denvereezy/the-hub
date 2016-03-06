@@ -23,6 +23,7 @@ exports.userLogin = function(req, res, next) {
                 req.session.role =  user.role;
                 req.session.entity_id = user.entity_id;
                 req.session.entity = user.name;
+                req.session.type = user.type;
                 return res.redirect("/dashboard")
               }
               else {
