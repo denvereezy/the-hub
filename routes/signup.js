@@ -4,7 +4,8 @@ exports.add = function (req, res, next) {
         var entity = {
             name  : req.body.name,
             logo  : req.body.logo,
-            address : req.body.address
+            address : req.body.address,
+            type : req.body.type
         };
 
         var user = {
