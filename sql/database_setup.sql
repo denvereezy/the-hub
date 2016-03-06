@@ -8,7 +8,8 @@ CREATE TABLE entity (
   id int not null auto_increment primary key,
   name varchar (100) not null,
   logo varchar (100) not null,
-  address varchar (100) not null
+  address varchar (100) not null,
+  type varchar (100) not null
 );
 
 CREATE TABLE user (
