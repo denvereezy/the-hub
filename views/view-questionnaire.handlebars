@@ -1,3 +1,4 @@
+{{#facilitator}}
 <h2>View Questionnaires</h2>
 
 <table class="table">
@@ -14,3 +15,23 @@
     </tr>
 {{/each}}
 </table>
+{{/facilitator}}
+
+{{#donor}}
+<h2>View </h2>
+
+<table class="table">
+  <thead class="thead-inverse">
+<tr>
+    <th>Questionnaire name:</th>
+    <th>Due Date:</th>
+</tr>
+ </thead>
+{{#each questionnaire}}
+    <tr>
+    <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">{{name}}</a></td>
+    <td>{{dueDate}}</td>
+    </tr>
+{{/each}}
+</table>
+{{/donor}}
