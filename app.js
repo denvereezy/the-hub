@@ -27,6 +27,7 @@ const answerQuestionnaire  = require('./routes/answerQuestions');
 const questions            = require('./routes/questions');
 const allocate             = require('./routes/allocateQuestionnaire');
 const router               = require('./routes/router');
+const rollup               = require('./routes/rolledUpData')
 
 const dbOptions = {
   host      : 'localhost',
