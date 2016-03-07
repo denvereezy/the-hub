@@ -1,6 +1,6 @@
-  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+  <!-- <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"> -->
         <h2>Setup Questionnaire - Step 2</h2>
-        <form class="col-md-8" action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
+        <form action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
             <h4>Add Question:</h4>
             <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
             <br /><br />
@@ -10,9 +10,9 @@
             <input type="submit" class="btn btn-primary" value="Create Question">
         </form>
 <br /><br />
-</div>
-  <div class="col-xs-12 .col-sm-6 .col-lg-8">
-        <form  method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
+<!-- </div> -->
+  <!-- <div class="col-sm-8 col-md-"> -->
+        <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
             <h3>Select Questions to add to Questionnaire:</h3>
             <table class="table">
               <thead class="thead-inverse">
@@ -32,4 +32,4 @@
             </table>
             <input type="submit" class="btn btn-primary" value="Add Questions to Questionnaire" />
         </form>
-    </div>
+    <!-- </div> -->
