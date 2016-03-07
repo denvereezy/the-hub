@@ -5,7 +5,7 @@ exports.show = function (req, res, next) {
            var base_questionnaire_id = req.body.base_questionnaire_id;
            rollupDataService.rollupMetrics(base_questionnaire_id)
                .then(function(values){
-                   res.render('', {
+                   res.render('questionnaire-results', {
                        values : values,
                        user:req.session.user,
                        entity:req.session.entity
