@@ -78,11 +78,13 @@ app.post('/questionnaire/allocate/down/:questionnaire_id', login.userCheck, allo
 app.post('/view-questionnaire/create', login.userCheck, setupQuestionnaire.create);
 app.post('/questionnaire/allocate/:id', login.userCheck, allocate.allocate);
 app.get('/view-questionnaire', login.userCheck, viewQuestionnaire.show);
+app.get('/view-questionnaires', login.userCheck, viewQuestionnaire.showResults);
 app.get('/answer-questionnaire', login.userCheck, answerQuestionnaire.show);
 app.get('/questionnaire/questions/view/:id', login.userCheck, questions.show);
-app.get('/questionnaire/:id/questions/:base_questionnaire_id/results', login.userCheck, questions.show);
+// app.get('/questionnaire/questions/view/:id/base-questionnaire/:base_questionnaire_id', login.userCheck, questions.metricResults);
+app.get('/questionnaire/:id/questions/:base_questionnaire_id/results', login.userCheck, questions.metricResults);
 app.get('/questionnaire/questions/:questionnaire_id', login.userCheck, answerQuestionnaire.showQuestions);
-app.post('/questionnaire/questions/view/:id', login.userCheck, setupQuestionnaire.linkMetricToQuestionnaire);
+app.post('/questionnaire/questions/view/:questionnaire_id', login.userCheck, setupQuestionnaire.linkMetricToQuestionnaire);
 app.post('/questionnaire/:questionnaire_id/answer/:questionnaire_metric_id', login.userCheck, answerQuestionnaire.answers);
 app.get('/logout', router.logout);
 
