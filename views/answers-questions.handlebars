@@ -1,0 +1,41 @@
+  <table class="table">
+    <thead class="thead-inverse">
+  <tr>
+    <th>title</th>
+    <th>description</th>
+    <th>answer</th>
+    <th>action</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each questions}}
+<form class="col-md-8" method="post" action="/questionnaire/{{questionnaire_id}}/answer/{{questionnaire_metric_id}}">
+  <tr>
+            <td>{{title}}</td><br>
+            <td>{{description}}</td>
+            <td><input type="number" class="form-control" name="value" value="{{value}}"/></td>
+            <td><input type="submit" id="button" class="btn btn-primary" value="Save" /></td>
+</tr>
+</form>
+{{/each}}
+  </tbody>
+  </table>
+
+  <div class="alert alert-success alert-dismissable" role="alert">
+       <p>Successfully updated.</p>
+         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+     </div>
+     <button onclick="goBack()">back</button>
+     <script>
+     $(document).ready(function(){
+         $('button').click(function(){
+             $('.alert').show()
+         })
+     });
+
+      function goBack(){
+        window.history.back();
+      };
+
+</script>
