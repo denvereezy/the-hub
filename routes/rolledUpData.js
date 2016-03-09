@@ -4,7 +4,6 @@ exports.showResults = function (req, res, next) {
            const rollupDataService = services.rollupDataService;
            rollupDataService.rollupMetrics()
                .then(function(values){
-                 console.log(values);
                    res.render('questionnaire-results', {
                        values : values,
                        user:req.session.user,

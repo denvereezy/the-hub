@@ -22,17 +22,19 @@
             <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}"/></td>
         </tr>
         {{/each}}
-    </table><br>
-  Select entity:  <select name='entity_id' class="form-control">
+    </table><br/>
+    <label for="input">Select entity</label>
+ <select name='entity_id' class="form-control">
       {{#each entities}}
-      <option type='text'class="form-control" name="entity_id" value='{{id}}'>{{name}}</option>
+      <option type='text'class="form-control" name="entity_id" value='{{id}}' id="input">{{name}}</option>
       {{/each}}
     </select>
-    <br />
+    <br /><br/>
     <input type="submit" class="btn btn-primary" value="Create new Questionnaire" />
+    <button class="btn btn-success" onclick="goBack()">back</button>
+    <br/> </br>
 </form>
 {{/facilitator}}
-<button class="btn btn-success" onclick="goBack()">back</button>
 <script>
   function goBack(){
     window.history.back();
