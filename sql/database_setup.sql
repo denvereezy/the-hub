@@ -72,6 +72,7 @@ CREATE TABLE questionnaire_metric(
   questionnaire_id int not null,
   metric_id int not null,
   value decimal (20.2),
+  status varchar(100),
   foreign key(questionnaire_id) references questionnaire(id),
   foreign key(metric_id) references metric(id)
 );
