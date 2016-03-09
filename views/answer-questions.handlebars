@@ -16,6 +16,7 @@
             <td><input type="number" class="form-control" name="value" value="{{value}}"/></td>
             <td><input type="submit" id="button" class="btn btn-primary" value="Save" /></td>
 </tr>
+            <button class="btn btn-success" onclick="goBack()">back</button>
 </form>
 {{/each}}
   </tbody>
@@ -31,4 +32,7 @@
              $('.alert').show()
          })
      });
+     function goBack(){
+       window.history.back();
+     }
 </script>
