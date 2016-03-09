@@ -27,11 +27,12 @@
                 </tr>
                 {{/each}}
             </table>
-            <input type="submit" class="btn btn-primary" value="Add Questions to Questionnaire" />
+            <input type="submit" class="btn btn-primary" value="Add Questions to Questionnaire" /><br />
+            <button class="btn btn-success" onclick="goBack()">back</button><br />
         </form>
-        <button class="btn btn-success" onclick="goBack()">back</button>
+
         <script>
-          function goBack(){
-            return window.history.back();
+          function goBack() {
+            window.history.back();
           }
         </script>
