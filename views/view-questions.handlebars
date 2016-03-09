@@ -23,14 +23,14 @@
         </tr>
         {{/each}}
     </table><br/>
-    <label for="input">Select entity</label>
+    <label for="input">Send questionnaire to:</label>
  <select name='entity_id' class="form-control">
       {{#each entities}}
       <option type='text'class="form-control" name="entity_id" value='{{id}}' id="input">{{name}}</option>
       {{/each}}
     </select>
     <br /><br/>
-    <input type="submit" class="btn btn-primary" value="Create new Questionnaire" />
+    <input type="submit" class="btn btn-primary" value="Send" />
     <button class="btn btn-success" onclick="goBack()">back</button>
     <br/> </br>
 </form>
