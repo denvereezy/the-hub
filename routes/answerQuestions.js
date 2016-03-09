@@ -43,11 +43,14 @@ var questionnaire_id = req.params.questionnaire_id;
 exports.answers = function  (req, res, next)  {
   req.getServices()
   .then(function(services){
-    var data = req.body;
+    var data = {
+      value:req.body.value,
+      status: 'answered'
+    };
     var questionnaire_id = req.params.questionnaire_id;
     var questionnaire_metric_id = req.params.questionnaire_metric_id;
     const answerDataService = services.answerDataService;
-    answerDataService.answeredMetrics({value:data.value}, questionnaire_metric_id)
+    answerDataService.answeredMetrics(data, questionnaire_metric_id)
     .then(function(results){
       res.redirect('/questionnaire/questions/' + questionnaire_id);
     })
