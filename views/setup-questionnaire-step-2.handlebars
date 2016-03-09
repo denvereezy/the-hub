@@ -1,32 +1,49 @@
-        <h2>Setup Questionnaire - Step 2</h2>
-        <form action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
-            <h4>Add Question:</h4>
-            <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
-            <br /><br />
-            <h4>Add Question description: </h4>
-            <textarea name="description" class="form-control" rows="5" cols="50" placeholder="Enter description of question" required></textarea>
-            <br /><br />
-            <input type="submit" class="btn btn-primary" value="Create Question">
-        </form>
-<br /><br />
-        <h3>Select Questions to add to Questionnaire:</h3>
-        <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
-            <table class="table">
-              <thead class="thead-inverse">
-                <tr>
-                    <th>Question</th>
-                    <th>Description</th>
-                    <th>Select</th>
-                </tr>
-              </thead>
-                {{#each metrics}}
-                <tr>
-                    <td>{{title}}</td>
-                    <td>{{description}}</td>
-                    <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{id}}"/></td>
-                </tr>
-                {{/each}}
-            </table>
-            <input type="submit" class="btn btn-primary" value="Add Questions to Questionnaire" />
-            <button class="btn btn-success" onclick="goBack()">back</button><br />
-        </form>
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Add new question(s)</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Select existing questions</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <h2>Setup Questionnaire - Step 2</h2>
+      <form action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
+          <h4>Add Question:</h4>
+          <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
+          <br /><br />
+          <h4>Add Question description: </h4>
+          <textarea name="description" class="form-control" rows="5" cols="50" placeholder="Enter description of question" required></textarea>
+          <br /><br />
+          <button class="btn btn-success" onclick="goBack()">back</button>
+          <input type="submit" class="btn btn-primary pull-right" value="Create Question">
+      </form>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="profile">
+      <h3>Select Questions to add to Questionnaire:</h3>
+      <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
+          <table class="table table-striped">
+            <thead class="thead-inverse">
+              <tr>
+                  <th>Question</th>
+                  <th>Description</th>
+                  <th>Select</th>
+              </tr>
+            </thead>
+              {{#each metrics}}
+              <tr>
+                  <td>{{title}}</td>
+                  <td>{{description}}</td>
+                  <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{id}}"/></td>
+              </tr>
+              {{/each}}
+          </table>
+          <button class="btn btn-success" onclick="goBack()">back</button>
+          <input type="submit" class="btn btn-primary pull-right" value="Add Questions to Questionnaire" />
+      </form><br />
+    </div>
+  </div>
+</div>
