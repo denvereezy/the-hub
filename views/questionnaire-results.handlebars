@@ -6,10 +6,36 @@
         <th>Title:</th>
         <th>Description:</th>
         <th>Value:</th>
+        <th>Action:</th>
     </tr>
   </thead>
 
     {{#each values}}
+    <form class="col-md-8" method="post" action="/questionnaire/{{questionnaire_id}}/base/{{base_questionnaire_id}}/rolledup-answers/{{questionnaire_metric_id}}">
+    <tr>
+        <td>{{title}}</td>
+        <td>{{description}}</td>
+        <td>{{value}}</td>
+        <td><input type="submit" id="button" class="btn btn-primary" value="Release" /></td>
+    </tr>
+    </form>
+    {{/each}}
+</table>
+<button class="btn btn-success" onclick="goBack()">back</button>
+{{/facilitator}}
+
+{{#donor}}
+<h3>Results:</h3>
+<table class="table table-striped">
+<thead class="thead-inverse">
+    <tr>
+        <th>Title:</th>
+        <th>Description:</th>
+        <th>Value:</th>
+    </tr>
+  </thead>
+
+    {{#each results}}
     <tr>
         <td>{{title}}</td>
         <td>{{description}}</td>
@@ -17,5 +43,5 @@
     </tr>
     {{/each}}
 </table>
-{{/facilitator}}
 <button class="btn btn-success" onclick="goBack()">back</button>
+{{/donor}}
