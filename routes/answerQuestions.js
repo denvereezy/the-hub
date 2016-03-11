@@ -79,12 +79,7 @@ exports.answeredQuestionnaire = function (req, res, next) {
 exports.releaseAnsweresToDonor = function  (req, res, next)  {
   req.getServices()
   .then(function(services){
-    // var questionnaire_id = req.params.questionnaire_id;
-    // const status = 'released';
-
-    // var questionnaire_id = req.params.questionnaire_id;
     var base_questionnaire_id = req.params.base_questionnaire_id;
-    // console.log("base_questionnaire_id" + base_questionnaire_id);
     const rollupDataService = services.rollupDataService;
     rollupDataService.releaseMetricsToDonor(base_questionnaire_id)
     .then(function(results){
