@@ -51,7 +51,6 @@ const facilitator = req.session.type === 'Facilitator';
                           rollupDataService.rollupMetrics(base_questionnaire_id),
                           rollupDataService.donorMetrics(id),
             function(questionnaire, questions, entities, values, results){
-              // console.log(values);
                   res.render('questionnaire-results', {
                       questionnaire  : questionnaire,
                       questions  : questions,
@@ -71,30 +70,3 @@ const facilitator = req.session.type === 'Facilitator';
           next(err);
       });
 };
-
-// exports.donorResults = function (req, res, next) {
-// var id = req.params.id;
-// var entity_id = req.session.entity_id;
-// var questionnaire_id = req.params.questionnaire_id;
-// const donor = req.session.type === 'Donor';
-// const facilitator = req.session.type === 'Facilitator';
-//   req.getServices()
-//       .then(function(services){
-//           const rollupDataService = services.rollupDataService;
-//               rollupDataService.donorMetrics(questionnaire_id),
-//             function(values){
-//               // console.log(values);
-//                   res.render('questionnaire-results', {
-//                       values : values,
-//                       questionnaire_id  : id,
-//                       donor:donor,
-//                       facilitator:facilitator,
-//                       user:req.session.user,
-//                       entity:req.session.entity
-//                   });
-//           });
-//       })
-//       .catch(function(err){
-//           next(err);
-//       });
-// };
