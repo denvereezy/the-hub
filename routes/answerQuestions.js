@@ -44,8 +44,7 @@ exports.answers = function  (req, res, next)  {
   req.getServices()
   .then(function(services){
     var data = {
-      value:req.body.value,
-      status: 'answered'
+      value:req.body.value
     };
     var questionnaire_id = req.params.questionnaire_id;
     var questionnaire_metric_id = req.params.questionnaire_metric_id;
@@ -58,4 +57,41 @@ exports.answers = function  (req, res, next)  {
         next(error);
       });
   })
-}
+};
+
+exports.answeredQuestionnaire = function (req, res, next) {
+  req.getServices()
+  .then(function(services){
+    var questionnaire_id = req.params.questionnaire_id;
+    const status = 'answered';
+    const answerDataService = services.answerDataService;
+    answerDataService.updateQuestionnaireStatus(status, questionnaire_id)
+    .then(function(results){
+      res.redirect('/dashboard');
+    })
+    .catch(function(error){
+      next(error);
+    });
+  })
+};
+
+
+exports.releaseAnsweresToDonor = function  (req, res, next)  {
+  req.getServices()
+  .then(function(services){
+    // var questionnaire_id = req.params.questionnaire_id;
+    // const status = 'released';
+
+    // var questionnaire_id = req.params.questionnaire_id;
+    var base_questionnaire_id = req.params.base_questionnaire_id;
+    // console.log("base_questionnaire_id" + base_questionnaire_id);
+    const rollupDataService = services.rollupDataService;
+    rollupDataService.releaseMetricsToDonor(base_questionnaire_id)
+    .then(function(results){
+      res.redirect('/dashboard' );
+    })
+      .catch(function(error){
+        next(error);
+      });
+  })
+};

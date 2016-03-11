@@ -1,3 +1,5 @@
+const Promise = require('bluebird');
+
 exports.show = function (req, res, next) {
    req.getServices()
        .then(function(services){
@@ -29,13 +31,16 @@ exports.showResults = function (req, res, next) {
            const facilitator = req.session.type === 'Facilitator';
            const viewQuestionnnaireDataService = services.viewQuestionnnaireDataService;
            var id = req.session.entity_id;
-           viewQuestionnnaireDataService.showQuestionnaires(id)
-               .then(function(questionnaire){
+           Promise.join(viewQuestionnnaireDataService.showQuestionnaires(id),viewQuestionnnaireDataService.showCreatedQuestionnaires(id),
+               function(questionnaire, donorQuestionnaires){
+                 console.log(questionnaire);
                    res.render('rollup', {
                        facilitatorQuestionnaire:questionnaire,
+                       donorQuestionnaires:donorQuestionnaires,
                        user:req.session.user,
                        entity:req.session.entity,
-                       facilitator:facilitator
+                       facilitator:facilitator,
+                       donor:donor
                    });
                });
        })
