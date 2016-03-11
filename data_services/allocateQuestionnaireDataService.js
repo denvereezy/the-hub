@@ -26,7 +26,7 @@ module.exports = function(connection) {
                 metric_id : metric_row.metric_id
               });
             });
-    }
+    };
 
     this.questionnaireInfo = function(questionnaire_id) {
       return queryService.executeQuery('select * from questionnaire where id  = ?', questionnaire_id);
