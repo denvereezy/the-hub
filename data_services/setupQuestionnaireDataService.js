@@ -18,9 +18,8 @@ module.exports = function(connection) {
     this.linkMetricToQuestionnaire = function(data) {
         return queryService.executeQuery('INSERT INTO questionnaire_metric set ?', data);
     };
+
     this.getQuestionnaireById = function(id) {
         return queryService.executeQuery('SELECT * FROM questionnaire WHERE id = ?',[id]);
     };
-
-
 };
