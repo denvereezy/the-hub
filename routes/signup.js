@@ -3,7 +3,6 @@ exports.add = function (req, res, next) {
       .then(function(services){
         var entity = {
             name  : req.body.name,
-            logo  : req.body.logo,
             address : req.body.address,
             type : req.body.type
         };
