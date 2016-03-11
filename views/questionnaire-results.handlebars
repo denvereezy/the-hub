@@ -18,8 +18,8 @@
     {{/each}}
 </table>
 <button class="btn btn-success" onclick="goBack()">back</button>
-<form class="pull-right" method="post" action="/questionnaire/{{questionnaire_id}}/base/{{base_questionnaire_id}}/rolledup-answers/{{questionnaire_metric_id}}">
-<input type="submit" id="button" class="btn btn-primary " value="Release" />
+<form class="pull-right" method="post" action="/questionnaire/{{base_questionnaire_id}}/rolledup-answers">
+<input type="submit" id="button" class="btn btn-primary" value="Release" />
 </form>
 {{/facilitator}}
 
