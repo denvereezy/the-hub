@@ -6,22 +6,21 @@
         <th>Title:</th>
         <th>Description:</th>
         <th>Value:</th>
-        <th>Action:</th>
     </tr>
   </thead>
 
     {{#each values}}
-    <form class="col-md-8" method="post" action="/questionnaire/{{questionnaire_id}}/base/{{base_questionnaire_id}}/rolledup-answers/{{questionnaire_metric_id}}">
     <tr>
         <td>{{title}}</td>
         <td>{{description}}</td>
         <td>{{value}}</td>
-        <td><input type="submit" id="button" class="btn btn-primary" value="Release" /></td>
     </tr>
-    </form>
     {{/each}}
 </table>
 <button class="btn btn-success" onclick="goBack()">back</button>
+<form class="pull-right" method="post" action="/questionnaire/{{questionnaire_id}}/base/{{base_questionnaire_id}}/rolledup-answers/{{questionnaire_metric_id}}">
+<input type="submit" id="button" class="btn btn-primary " value="Release" />
+</form>
 {{/facilitator}}
 
 {{#donor}}
