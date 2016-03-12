@@ -14,7 +14,7 @@ const facilitator = req.session.type === 'Facilitator';
           const rollupDataService = services.rollupDataService;
             Promise.join(setupQuestionnaireDataService.getQuestionnaireById(id),
                           questionDataService.showAll(id),
-                          allocateQuestionnaireDataService.showEntities(entity_id),
+                          allocateQuestionnaireDataService.showEntitiesForFacilitator(entity_id),
             function(questionnaire, questions, entities){
                   res.render('view-questions', {
                       questionnaire  : questionnaire,
