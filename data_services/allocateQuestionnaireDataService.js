@@ -6,8 +6,12 @@ module.exports = function(connection) {
     const queryService = new QueryService(connection);
     const sdqs = new SetupQuestionnaireDataService(connection);
 
-    this.showEntities = function(id)  {
-      return queryService.executeQuery('select * from entity where id != ?', id);
+    this.showEntitiesForDonor = function(id)  {
+      return queryService.executeQuery('select * from entity where id != ? and type = \'Facilitator\'', id);
+    };
+
+    this.showEntitiesForFacilitator = function(id)  {
+      return queryService.executeQuery('select * from entity where id != ? and type = \'Startup\'', id);
     };
 
     this.createChildQuestionnaire = function(data) {
