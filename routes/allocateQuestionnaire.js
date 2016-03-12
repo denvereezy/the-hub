@@ -4,7 +4,7 @@ exports.show = function (req, res, next) {
     req.getServices()
         .then(function(services){
             const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
-            allocateQuestionnaireDataService.showEntities(entity_id)
+            allocateQuestionnaireDataService.showEntitiesForDonor(entity_id)
             .then(function(entities){
                     res.render('allocateQuestionnaire', {
                         entities  : entities,
