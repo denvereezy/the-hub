@@ -1,30 +1,30 @@
 {{#facilitator}}
-  {{#if questionnaire.parent_questionnaire_id}}
-  <form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
+{{#if questionnaire.parent_questionnaire_id}}
+<form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
   {{else}}
   <form method="post" action="/questionnaire/allocate/down/{{questionnaire_id}}">
-  {{/if}}
+    {{/if}}
 
     <h3>Select questions entity must answer:</h3>
     <table class="table table-striped">
-  <thead class="thead-inverse">
+      <thead class="thead-inverse">
         <tr>
-            <th>Question</th>
-            <th>Description</th>
-            <th>Select</th>
+          <th>Question</th>
+          <th>Description</th>
+          <th>Select</th>
         </tr>
       </thead>
 
-        {{#each questions}}
-        <tr>
-            <td>{{title}}</td>
-            <td>{{description}}</td>
-            <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}"/></td>
-        </tr>
-        {{/each}}
+      {{#each questions}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{description}}</td>
+        <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}"/></td>
+      </tr>
+      {{/each}}
     </table><br/>
     <label for="input">Send questionnaire to:</label>
- <select name='entity_id' class="form-control">
+    <select name='entity_id' class="form-control">
       {{#each entities}}
       <option type='text'class="form-control" name="entity_id" value='{{id}}' id="input">{{name}}</option>
       {{/each}}
@@ -33,5 +33,5 @@
     <button class="btn btn-success" onclick="goBack()">back</button>
     <input type="submit" class="btn btn-primary pull-right" value="Send" />
     <br/> </br>
-</form>
-{{/facilitator}}
+  </form>
+  {{/facilitator}}
