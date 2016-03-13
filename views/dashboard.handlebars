@@ -1,14 +1,41 @@
-{{#donor}}
-<ul class="nav nav-pills col-md-8">
-  <li>
-    <a href="/questionnaire/setup/step1">Setup Questionnaire</a>
-  </li>
-  <li class="active">
-    <a href="/view-questionnaires">Questionnaire Results</a>
-  </li>
-</ul>
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Questionnaires</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Setup Questionnaire</a></li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      {{#donor}}
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Questionnaire name:</th>
+            <th>Due Date:</th>
+          </tr>
+        </thead>
+        {{#each donorQuestionnaires}}
+        <tr>
+          <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">{{name}}</a></td>
+          <td>{{dueDate}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      <!-- <button class="btn btn-success" onclick="goBack()">back</button> -->
+    </div>
+<div role="tabpanel" class="tab-pane" id="profile">
+    <form class="col-md-8" action="/questionnaire/setup/step1" method="POST">
+      <h2>Setup Questionnaire</h2>
+      <div class="form-group">
+        <label>Questionnaire Name:</label><input type="text" class="form-control" placeholder="ex. mLab" name="name" />
+        <label>Due date:</label><input type="date" class="form-control" name="dueDate" />
+      </div>
+      <!-- <button class="btn btn-success" onclick="goBack()">back</button> -->
+      <input type="submit" class="btn btn-primary pull-right">
+    </form>
+  </div>
 {{/donor}}
-
 {{#facilitator}}
 <ul class="nav nav-pills col-md-8">
   <li class="active">
@@ -27,3 +54,4 @@
   </li>
 </ul>
 {{/startup}}
+</div>
