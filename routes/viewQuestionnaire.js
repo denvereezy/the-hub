@@ -5,17 +5,19 @@ exports.show = function (req, res, next) {
        .then(function(services){
            const donor = req.session.type === 'Donor';
            const facilitator = req.session.type === 'Facilitator';
+           const startup = req.session.type === "Startup";
            const viewQuestionnnaireDataService = services.viewQuestionnnaireDataService;
            var id = req.session.entity_id;
            viewQuestionnnaireDataService.showQuestionnaires(id)
                .then(function(questionnaire){
-                   res.render('view-questionnaire', {
+                   res.render('dashboard', {
                        questionnaire : questionnaire,
                        facilitatorQuestionnaire:questionnaire,
                        user:req.session.user,
                        entity:req.session.entity,
                        donor:donor,
-                       facilitator:facilitator
+                       facilitator:facilitator,
+                       startup:startup
                    });
                });
        })
