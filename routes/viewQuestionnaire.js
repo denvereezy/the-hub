@@ -33,8 +33,7 @@ exports.showResults = function (req, res, next) {
            var id = req.session.entity_id;
            Promise.join(viewQuestionnnaireDataService.showQuestionnaires(id),viewQuestionnnaireDataService.showCreatedQuestionnaires(id),
                function(questionnaire, donorQuestionnaires){
-                 console.log(questionnaire);
-                   res.render('rollup', {
+                   res.render('dashboard', {
                        facilitatorQuestionnaire:questionnaire,
                        donorQuestionnaires:donorQuestionnaires,
                        user:req.session.user,
