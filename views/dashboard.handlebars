@@ -37,17 +37,38 @@
       <input type="submit" class="btn btn-primary pull-right">
     </form>
   </div>
-  </div>
+</div>
+</div>
 {{/donor}}
 {{#facilitator}}
-<ul class="nav nav-pills col-md-8">
-  <li class="active">
-    <a href="/view-questionnaire">View Questionnaires</a>
-  </li>
-  <li>
-    <a href="/view-questionnaires">Questionnaire Results</a>
-  </li>
-</ul>
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Received Questionnaires</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Questionnaire Results</a></li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Questionnaire name:</th>
+            <th>Due Date:</th>
+          </tr>
+        </thead>
+        {{#each questionnaire}}
+        <tr>
+          <td><a href="/questionnaire/questions/{{id}}">{{name}}</a></td>
+          <td>{{dueDate}}</td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+  </div>
+</div>
+</div>
 {{/facilitator}}
 
 {{#startup}}
