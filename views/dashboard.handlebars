@@ -62,21 +62,48 @@
         <tr>
           <td>{{name}}</td>
           <td>{{dueDate}}</td>
-          <td><a href="/questionnaire/questions/{{id}}"><button class="btn btn-primary">View</button></a></td>
+          <td><a href="/questionnaire/questions/view/{{id}}"><button class="btn btn-primary">View</button></a></td>
         </tr>
         {{/each}}
       </table>
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Questionnaire name:</th>
+            <th>Due Date:</th>
+            <th>Action:</th>
+          </tr>
+        </thead>
+        {{#each facilitatorQuestionnaire}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{dueDate}}</td>
+          <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results"><button class="btn btn-primary">View</button></a></td>
+        </tr>
+        {{/each}}
+      </table>
   </div>
 </div>
 </div>
 {{/facilitator}}
 
 {{#startup}}
-<ul class="nav nav-pills col-md-8">
-  <li class="active">
-    <a href="/answer-questionnaire">Answer Questionnaires</a>
-  </li>
-</ul>
+<h2>Received Questionnaires</h2>
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Questionnaire name:</th>
+      <th>Due Date:</th>
+    </tr>
+  </thead>
+  {{#each questionnaire}}
+  <tr>
+    <td>{{name}}</td>
+    <td>{{dueDate}}</td>
+    <td><a href="/questionnaire/questions/{{id}}"><button class="btn btn-primary">Answer</button></a></td>
+  </tr>
+  {{/each}}
+</table>
 {{/startup}}
