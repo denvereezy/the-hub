@@ -65,7 +65,7 @@ app.post('/signup/add', signup.add);
 app.get('/', router.login);
 app.post('/login', login.userLogin);
 app.use(login.userCheck);
-app.get('/dashboard', login.userCheck, router.dashboard);
+// app.get('/dashboard', login.userCheck, router.dashboard);
 app.get('/questionnaire/setup/step1', login.userCheck, router.questionnaire);
 app.post('/questionnaire/setup/step1/', login.userCheck, setupQuestionnaire.create);
 app.get('/questionnaire/setup/step2/:id', login.userCheck, setupQuestionnaire.show);
@@ -76,7 +76,7 @@ app.post('/questionnaire/allocate/down/:questionnaire_id', login.userCheck, allo
 app.post('/view-questionnaire/create', login.userCheck, setupQuestionnaire.create);
 app.post('/questionnaire/allocate/:id', login.userCheck, allocate.allocate);
 app.get('/view-questionnaire', login.userCheck, viewQuestionnaire.show);
-app.get('/view-questionnaires', login.userCheck, viewQuestionnaire.showResults);
+app.get('/dashboard', login.userCheck, viewQuestionnaire.showResults);
 app.get('/answer-questionnaire', login.userCheck, answerQuestionnaire.show);
 app.get('/questionnaire/questions/view/:id', login.userCheck, questions.show);
 app.get('/questionnaire/:id/questions/:base_questionnaire_id/results', login.userCheck, questions.metricResults);
