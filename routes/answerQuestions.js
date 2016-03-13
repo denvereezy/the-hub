@@ -3,12 +3,15 @@ const Promise = require('bluebird');
 exports.show = function (req, res, next) {
    req.getServices()
        .then(function(services){
+         const startup = req.session.type === "Startup";
+         console.log(startup);
            const viewQuestionnnaireDataService = services.viewQuestionnnaireDataService;
            var id = req.session.entity_id;
            viewQuestionnnaireDataService.showQuestionnaires(id)
                .then(function(questionnaire){
-                   res.render('answer-questionnaire', {
+                   res.render('dashboard', {
                        questionnaire : questionnaire,
+                       startup:startup,
                        user:req.session.user,
                        entity:req.session.entity
                    });
