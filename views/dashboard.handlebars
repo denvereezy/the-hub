@@ -55,12 +55,14 @@
           <tr>
             <th>Questionnaire name:</th>
             <th>Due Date:</th>
+            <th>Action:</th>
           </tr>
         </thead>
         {{#each questionnaire}}
         <tr>
-          <td><a href="/questionnaire/questions/{{id}}">{{name}}</a></td>
+          <td>{{name}}</td>
           <td>{{dueDate}}</td>
+          <td><a href="/questionnaire/questions/{{id}}"><button class="btn btn-primary">View</button></a></td>
         </tr>
         {{/each}}
       </table>
