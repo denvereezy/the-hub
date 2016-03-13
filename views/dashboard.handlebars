@@ -13,12 +13,14 @@
           <tr>
             <th>Questionnaire name:</th>
             <th>Due Date:</th>
+            <th>Action:</th>
           </tr>
         </thead>
         {{#each donorQuestionnaires}}
         <tr>
-          <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">{{name}}</a></td>
+          <td>{{name}}</td>
           <td>{{dueDate}}</td>
+          <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results"><button class="btn btn-primary">View</button></a></td>
         </tr>
         {{/each}}
       </table>
