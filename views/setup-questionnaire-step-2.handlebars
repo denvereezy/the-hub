@@ -9,10 +9,10 @@
     <div role="tabpanel" class="tab-pane active" id="home">
       <h2>Setup Questionnaire - Step 2</h2>
       <form action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
-        <h4>Add Question:</h4>
+        <h4>Add Question</h4>
         <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
         <br /><br />
-        <h4>Add Question description: </h4>
+        <h4>Add Question description </h4>
         <textarea name="description" class="form-control" rows="5" cols="50" placeholder="Enter description of question" required></textarea>
         <br /><br />
         <button class="btn btn-success" onclick="goBack()">back</button>
@@ -21,7 +21,7 @@
     </div>
 
     <div role="tabpanel" class="tab-pane" id="profile">
-      <h3>Select Questions to add to Questionnaire:</h3>
+      <h3>Select Questions to add to Questionnaire</h3>
       <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
         <table class="table table-striped">
           <thead class="thead-inverse">
