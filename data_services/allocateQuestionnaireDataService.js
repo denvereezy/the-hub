@@ -35,4 +35,8 @@ module.exports = function(connection) {
     this.questionnaireInfo = function(questionnaire_id) {
       return queryService.executeQuery('select * from questionnaire where id  = ?', questionnaire_id);
     };
+
+    this.showCreatedQuestionnaireInfo = function(entity_id, questionnaire_id){
+      return queryService.executeQuery('select questionnaire.name, entity.id as entity_id,questionnaire.id as questionnaire_id,title,description from questionnaire_metric inner join questionnaire on questionnaire_id = questionnaire.id inner join metric on metric_id = metric.id inner join entity on questionnaire.entity_id = entity.id where entity.id = ? and questionnaire.id = ?',[entity_id, questionnaire_id]);
+    };
 };
