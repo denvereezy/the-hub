@@ -55,10 +55,11 @@ exports.allocate = function(req, res, next){
 exports.allocateToSubEntity = function(req, res, next){
   var questionnaire_id = req.params.questionnaire_id;
   var childQuestionnaireId = null;
+  const selectedMetrics = req.body.selectedMetrics;
   var data = {
       entity_id : req.body.entity_id,
       parent_questionnaire_id : questionnaire_id,
-      metric_ids  : req.body.selectedMetrics
+      metric_ids  : Array.isArray(selectedMetrics) ? selectedMetrics : [selectedMetrics]
   };
   req.getServices()
     .then(function(services){
