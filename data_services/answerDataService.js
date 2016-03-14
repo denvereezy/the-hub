@@ -11,7 +11,7 @@ module.exports = function (connection) {
     return queryService.executeQuery('UPDATE questionnaire_metric SET status = ? WHERE questionnaire_id = ?', [status, questionnaire_id]);
   };
 
-  this.updateQuestionnaireStatus = function(questionnaire_id, status){
+  this.updateQuestionnaireStatus = function(status, questionnaire_id){
     return queryService.executeQuery('UPDATE questionnaire_metric SET status = ? WHERE questionnaire_id = ?', [status, questionnaire_id]);
   };
 };
