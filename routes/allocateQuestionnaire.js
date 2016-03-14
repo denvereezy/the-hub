@@ -23,6 +23,7 @@ exports.showCreatedQuestionnaire = function(req, res, next) {
   var entity_id = req.session.entity_id;
   var questionnaire_id = req.params.questionnaire_id;
   const donor = req.session.type === 'Donor';
+  const facilitator = req.session.type === 'Facilitator';
   req.getServices()
     .then(function(services) {
       const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
@@ -32,7 +33,8 @@ exports.showCreatedQuestionnaire = function(req, res, next) {
             questionnaire: results,
             user: req.session.user,
             entity: req.session.entity,
-            donor:donor
+            donor:donor,
+            facilitator:facilitator
           });
         });
     })
@@ -108,7 +110,7 @@ exports.allocateToSubEntity = function(req, res, next) {
           return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(questionnaireId, metric_ids);
         })
         .then(function(results) {
-          res.redirect('/dashboard');
+          res.redirect('/questionnaire/' + questionnaire_id);
         })
         .catch(function(error) {
           next(error);

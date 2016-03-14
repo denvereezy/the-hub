@@ -82,6 +82,7 @@ app.post('/questionnaire/questions/view/:questionnaire_id', login.userCheck, set
 app.post('/questionnaire/:questionnaire_id/answer/:questionnaire_metric_id', login.userCheck, answerQuestionnaire.answers);
 app.post('/questionnaire/:base_questionnaire_id/rolledup-answers',login.userCheck, answerQuestionnaire.releaseAnsweresToDonor);
 app.post('/questionnaire/submit/answered/:questionnaire_id', login.userCheck, answerQuestionnaire.answeredQuestionnaire);
+app.get('/questionnaire/:questionnaire_id', login.userCheck, allocate.showCreatedQuestionnaire);
 app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;

@@ -16,3 +16,22 @@
 </table>
 <a href="/dashboard"><button class="btn btn-primary pull-right">Close</button></a>
 {{/donor}}
+
+{{#facilitator}}
+<h2>Questionnaire contains:</h2>
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Title</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  {{#each questionnaire}}
+  <tr>
+    <td>{{title}}</td>
+    <td>{{description}}</td>
+  </tr>
+  {{/each}}
+</table>
+<a href="/dashboard"><button class="btn btn-primary pull-right">Close</button></a>
+{{/facilitator}}
