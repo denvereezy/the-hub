@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 .idea
 node_modules
-=======
+
 # Logs
 logs
 *.log
@@ -36,4 +35,3 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
->>>>>>> e127378dafa3ea7b028d17cd3d1f02a5820f7fc3
