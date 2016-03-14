@@ -24,20 +24,18 @@
         </tr>
         {{/each}}
       </table>
-      <!-- <button class="btn btn-success" onclick="goBack()">back</button> -->
     </div>
-<div role="tabpanel" class="tab-pane" id="profile">
-    <form class="col-md-8" action="/questionnaire/setup/step1" method="POST">
-      <h2>Setup Questionnaire</h2>
-      <div class="form-group">
-        <label>Questionnaire Name:</label><input type="text" class="form-control" placeholder="ex. mLab" name="name" />
-        <label>Due date:</label><input type="date" class="form-control" name="dueDate" />
-      </div>
-      <!-- <button class="btn btn-success" onclick="goBack()">back</button> -->
-      <input type="submit" class="btn btn-primary pull-right">
-    </form>
+    <div role="tabpanel" class="tab-pane" id="profile">
+      <form class="col-md-8" action="/questionnaire/setup/step1" method="POST">
+        <h2>Setup Questionnaire</h2>
+        <div class="form-group">
+          <label>Questionnaire Name:</label><input type="text" class="form-control" name="name" />
+          <label>Due date:</label><input type="date" class="form-control" name="dueDate" />
+        </div>
+        <input type="submit" class="btn btn-primary pull-right">
+      </form>
+    </div>
   </div>
-</div>
 </div>
 {{/donor}}
 {{#facilitator}}
@@ -62,7 +60,7 @@
         <tr>
           <td>{{name}}</td>
           <td>{{dueDate}}</td>
-          <td><a href="/questionnaire/questions/view/{{id}}"><button class="btn btn-primary">View</button></a></td>
+          <td><a href="/questionnaire/questions/view/{{id}}"><button class="btn btn-primary">Show</button></a></td>
         </tr>
         {{/each}}
       </table>
@@ -84,8 +82,8 @@
         </tr>
         {{/each}}
       </table>
+    </div>
   </div>
-</div>
 </div>
 {{/facilitator}}
 
@@ -96,6 +94,7 @@
     <tr>
       <th>Questionnaire name:</th>
       <th>Due Date:</th>
+      <th>Action:</th>
     </tr>
   </thead>
   {{#each questionnaire}}
