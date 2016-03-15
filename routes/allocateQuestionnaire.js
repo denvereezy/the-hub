@@ -33,8 +33,8 @@ exports.showCreatedQuestionnaire = function(req, res, next) {
             questionnaire: results,
             user: req.session.user,
             entity: req.session.entity,
-            donor:donor,
-            facilitator:facilitator
+            donor: donor,
+            facilitator: facilitator
           });
         });
     })

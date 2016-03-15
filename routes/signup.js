@@ -22,7 +22,7 @@ exports.add = function(req, res, next) {
           user.entity_id = data.insertId;
           return signupDataService.addUser(user);
         })
-      .then(function(results) {
+        .then(function(results) {
           return res.redirect('/');
         })
         .catch(function(err) {
