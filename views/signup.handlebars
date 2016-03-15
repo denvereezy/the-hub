@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,11 @@
   <title></title>
   <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script type="text/javascript">
+  <script type="text/javascript">
     WebFontConfig = {
-      google: { families: [ 'Lato:400,700:latin' ] }
+      google: {
+        families: ['Lato:400,700:latin']
+      }
     };
     (function() {
       var wf = document.createElement('script');
@@ -20,8 +23,8 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(wf, s);
     })();
-    </script>
-    <!--[if IE]>
+  </script>
+  <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 </head>
@@ -32,64 +35,66 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="#">The Hub</a>
       </div>
-    </nav>
-    <div class="container-fluid">
+  </nav>
+  <div class="container-fluid">
 
-      <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-        <form class="col-md-8" action="/signup/add" method="post">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <form class="col-md-8" action="/signup/add" method="post">
 
-          <h1>Registration</h1>
+        <h1>Registration</h1>
 
-          <h2>Organization details </h2>
+        <h2>Organization details </h2>
 
-          <div class="form-group">
-            <label for="name">Company Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="address ">Address</label>
-            <input type="text" class="form-control" id="address" name="address" required>
-          </div>
+        <div class="form-group">
+          <label for="name">Company Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="address ">Address</label>
+          <input type="text" class="form-control" id="address" name="address" required>
+        </div>
 
-          <div class="form-group">
-            <label for="logo ">Role</label>
-            <select class="form-control" name="type">
-              <option class="form-control">Donor</option>
-              <option class="form-control">Facilitator</option>
-              <option class="form-control">Startup</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="logo ">Role</label>
+          <select class="form-control" name="type">
+            <option class="form-control">Donor</option>
+            <option class="form-control">Facilitator</option>
+            <option class="form-control">Startup</option>
+          </select>
+        </div>
 
-          <h2>User details </h2>
+        <h2>User details </h2>
 
-          <div class="form-group">
-            <label for="name">First Name</label>
-            <input type="text" class="form-control" id="name" name="firstName" required>
-          </div>
-          <div class="form-group">
-            <label for="address ">Last Name</label>
-            <input type="text" class="form-control" id="address" name="lastName" required>
-          </div>
-          <div class="form-group">
-            <label for="logo ">Email</label>
-            <input type="email" class="form-control" id="logo " name="email" required>
-          </div>
-          <button class="btn btn-success" onclick="goBack()">Cancel</button>
-          <button type="submit" class="btn btn-success pull-right">Register on the Hub</button>
-        </form>
-      </div>
+        <div class="form-group">
+          <label for="name">First Name</label>
+          <input type="text" class="form-control" id="name" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="address ">Last Name</label>
+          <input type="text" class="form-control" id="address" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="logo ">Email</label>
+          <input type="email" class="form-control" id="logo " name="email" required>
+        </div>
+        <button class="btn btn-success" onclick="goBack()">Cancel</button>
+        <button type="submit" class="btn btn-success pull-right">Register on the Hub</button>
+      </form>
     </div>
-    <br />
-    <script>
-    $(document).ready(function(){
-      $('button').click(function(){
+  </div>
+  <br />
+  <script>
+    $(document).ready(function() {
+      $('button').click(function() {
         $('.alert').show()
       })
     });
-    function goBack(){
+
+    function goBack() {
       window.history.back();
     }
-    </script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-  </html>
+  </script>
+  <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>

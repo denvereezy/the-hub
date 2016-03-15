@@ -1,19 +1,19 @@
 {{#facilitator}}
-<h2>View Questionnaires</h2>
+  <h2>View Questionnaires</h2>
 
-<table class="table table-striped">
-  <thead class="thead-inverse">
-    <tr>
-      <th>Questionnaire name</th>
-      <th>Due Date</th>
-    </tr>
-  </thead>
-  {{#each questionnaire}}
-  <tr>
-    <td><a href="/questionnaire/questions/view/{{id}}">{{name}}</a></td>
-    <td>{{dueDate}}</td>
-  </tr>
-  {{/each}}
-</table>
+  <table class="table table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Questionnaire name</th>
+        <th>Due Date</th>
+      </tr>
+    </thead>
+    {{#each questionnaire}}
+      <tr>
+        <td><a href="/questionnaire/questions/view/{{id}}">{{name}}</a></td>
+        <td>{{dueDate}}</td>
+      </tr>
+    {{/each}}
+  </table>
 {{/facilitator}}
 <button class="btn btn-success" onclick="goBack()">back</button>

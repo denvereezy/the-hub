@@ -7,10 +7,10 @@
     </tr>
   </thead>
   {{#each questionnaire}}
-  <tr>
-    <td><a href="/questionnaire/questions/{{id}}">{{name}}</a></td>
-    <td>{{dueDate}}</td>
-  </tr>
+    <tr>
+      <td><a href="/questionnaire/questions/{{id}}">{{name}}</a></td>
+      <td>{{dueDate}}</td>
+    </tr>
   {{/each}}
 </table>
 <button class="btn btn-success" onclick="goBack()">back</button>

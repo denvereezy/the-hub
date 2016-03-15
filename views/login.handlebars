@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,11 @@
   <title>The Hub</title>
   <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script type="text/javascript">
+  <script type="text/javascript">
     WebFontConfig = {
-      google: { families: [ 'Lato:400,700:latin' ] }
+      google: {
+        families: ['Lato:400,700:latin']
+      }
     };
     (function() {
       var wf = document.createElement('script');
@@ -20,38 +23,39 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(wf, s);
     })();
-    </script>
-    <!--[if IE]>
+  </script>
+  <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
-    <nav class="navbar navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">The Hub</a>
-        </div>
-      </div>
-    </nav>
-    <div class="container-fluid">
-
-      <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-        <h2>Login:</h2>
-        <form class="col-md-8" method="post"  action="/login">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-          </div>
-          <button type="submit" class="btn btn-success">Login</button>
-          <p>Don't have an account ? <a href="/signup">signup</a></p>
-        </form>
+<body>
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">The Hub</a>
       </div>
     </div>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-  </html>
+  </nav>
+  <div class="container-fluid">
+
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h2>Login:</h2>
+      <form class="col-md-8" method="post" action="/login">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+        <p>Don't have an account ? <a href="/signup">signup</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -11,10 +11,12 @@
       <form action="/setup-questionnaire-step-2/addMetricToMetricTable/{{questionnaire_id}}" method="POST">
         <h4>Add Question</h4>
         <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
-        <br /><br />
+        <br />
+        <br />
         <h4>Add Question description </h4>
         <textarea name="description" class="form-control" rows="5" cols="50" placeholder="Enter description of question" required></textarea>
-        <br /><br />
+        <br />
+        <br />
         <button class="btn btn-success" onclick="goBack()">back</button>
         <input type="submit" class="btn btn-primary pull-right" value="Create Question">
       </form>
@@ -32,16 +34,19 @@
             </tr>
           </thead>
           {{#each metrics}}
-          <tr>
-            <td>{{title}}</td>
-            <td>{{description}}</td>
-            <td><input type="checkbox" class="form-control" name="selectedMetrics" value="{{id}}"/></td>
-          </tr>
+            <tr>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td>
+                <input type="checkbox" class="form-control" name="selectedMetrics" value="{{id}}" />
+              </td>
+            </tr>
           {{/each}}
         </table>
         <button class="btn btn-success" onclick="goBack()">back</button>
         <input type="submit" class="btn btn-primary pull-right" value="Add Questions to Questionnaire" />
-      </form><br />
+      </form>
+      <br />
     </div>
   </div>
 </div>
