@@ -24,10 +24,10 @@ module.exports = function(connection) {
   };
 
   this.editMetric = function(id) {
-    return queryService.executeQuery('', id);
+    return queryService.executeQuery('SELECT * FROM metric WHERE id = ?', id);
   };
 
   this.updateMetric = function(data, id) {
-    return queryService.executeQuery('', [data, id]);
+    return queryService.executeQuery('UPDATE metric SET ? WHERE id = ?', [data, id]);
   };
 };
