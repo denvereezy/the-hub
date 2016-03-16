@@ -31,6 +31,7 @@
               <th>Question</th>
               <th>Description</th>
               <th>Select</th>
+              <th>Action</th>
             </tr>
           </thead>
           {{#each metrics}}
@@ -40,6 +41,7 @@
               <td>
                 <input type="checkbox" class="form-control" name="selectedMetrics" value="{{id}}" />
               </td>
+              <td><a href=""><button class="btn btn-primary">Edit</button></a></td>
             </tr>
           {{/each}}
         </table>
