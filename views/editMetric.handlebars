@@ -1,14 +1,14 @@
-<form class="col-md-8" action="/questionnaire/question/update" method="POST">
+{{#metrics}}
+<form class="col-md-8" action="/questionnaire/question/update/{{id}}" method="POST">
   <h2>Edit metric</h2>
   <div class="form-group">
-    {{#metrics}}
     <label>Page Title</label>
     <input type="text" class="form-control" name="title" value="{{title}}" required/>
     <br />
     <label>Description</label>
     <input type="text" class="form-control" name="description" value="{{description}}" required/>
-    {{/metrics}}
   </div>
   <button class="btn btn-success" onclick="goBack()">Cancel</button>
   <input type="submit" class="btn btn-primary pull-right">
 </form>
+{{/metrics}}
