@@ -91,12 +91,12 @@ exports.linkMetricToQuestionnaire = function(req, res, next) {
 exports.edit = function(req, res, next) {
   req.getServices()
     .then(function(services) {
-      var id = req.params.id;
+      var id = req.params.metric_id;
       const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
       setupQuestionnaireDataService.editMetric(id)
         .then(function(results) {
-          res.render('edit', {
-            data: results[0]
+          res.render('editMetric', {
+            metrics: results[0]
           });
         })
         .catch(function(err) {
@@ -109,11 +109,11 @@ exports.update = function(req, res, next) {
   req.getServices()
     .then(function(services) {
       var data = req.body;
-      var id = req.params.id;
+      var id = req.params.metric_id;
       const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
       setupQuestionnaireDataService.updateMetric(data, id)
         .then(function(results) {
-          res.redirect('/');
+          res.redirect('/questionnaire/setup/step2/' + questionnaire_id);
         })
         .catch(function(err) {
           next(err);
