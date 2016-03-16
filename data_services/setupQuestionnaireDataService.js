@@ -22,4 +22,12 @@ module.exports = function(connection) {
   this.getQuestionnaireById = function(id) {
     return queryService.executeQuery('SELECT * FROM questionnaire WHERE id = ?', [id]);
   };
+
+  this.editMetric = function(id) {
+    return queryService.executeQuery('', id);
+  };
+
+  this.updateMetric = function(data, id) {
+    return queryService.executeQuery('', [data, id]);
+  };
 };
