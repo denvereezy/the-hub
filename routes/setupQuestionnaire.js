@@ -87,3 +87,36 @@ exports.linkMetricToQuestionnaire = function(req, res, next) {
       next(err);
     });
 };
+
+exports.edit = function(req, res, next) {
+  req.getServices()
+    .then(function(services) {
+      var id = req.params.id;
+      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+      setupQuestionnaireDataService.editMetric(id)
+        .then(function(results) {
+          res.render('edit', {
+            data: results[0]
+          });
+        })
+        .catch(function(err) {
+          next(err);
+        });
+    });
+};
+
+exports.update = function(req, res, next) {
+  req.getServices()
+    .then(function(services) {
+      var data = req.body;
+      var id = req.params.id;
+      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+      setupQuestionnaireDataService.updateMetric(data, id)
+        .then(function(results) {
+          res.redirect('/');
+        })
+        .catch(function(err) {
+          next(err);
+        });
+    });
+};
