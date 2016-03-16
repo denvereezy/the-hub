@@ -92,11 +92,15 @@ exports.edit = function(req, res, next) {
   req.getServices()
     .then(function(services) {
       var id = req.params.metric_id;
+      const user = req.session.user;
+      const entity = req.session.entity;
       const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
       setupQuestionnaireDataService.editMetric(id)
         .then(function(results) {
           res.render('editMetric', {
-            metrics: results[0]
+            metrics: results[0],
+            user: user,
+            entity: entity
           });
         })
         .catch(function(err) {
