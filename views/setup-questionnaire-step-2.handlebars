@@ -24,7 +24,6 @@
 
     <div role="tabpanel" class="tab-pane" id="profile">
       <h3>Select Questions to add to Questionnaire</h3>
-      <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
         <table class="table table-striped">
           <thead class="thead-inverse">
             <tr>
@@ -38,10 +37,11 @@
             <tr>
               <td>{{title}}</td>
               <td>{{description}}</td>
+              <td><a href="/questionnaire/question/{{id}}/edit"><button class="btn btn-primary">Edit</button></a></td>
+              <form method="post" action="/questionnaire/setup/step2/{{questionnaire_id}}">
               <td>
                 <input type="checkbox" class="form-control" name="selectedMetrics" value="{{id}}" />
               </td>
-              <td><a href="/questionnaire/question/{{id}}/edit"><button class="btn btn-primary">Edit</button></a></td>
             </tr>
           {{/each}}
         </table>
