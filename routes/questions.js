@@ -70,3 +70,42 @@ exports.metricResults = function(req, res, next) {
       next(err);
     });
 };
+
+exports.edit = function(req, res, next) {
+  req.getServices()
+    .then(function(services) {
+      var id = req.params.metric_id;
+      var questionnaire_id = req.params.questionnaire_id;
+      const user = req.session.user;
+      const entity = req.session.entity;
+      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+      setupQuestionnaireDataService.editMetric(id)
+        .then(function(results) {
+          res.render('editMetric', {
+            metrics: results[0],
+            user: user,
+            entity: entity,
+            questionnaire_id:questionnaire_id
+          });
+        })
+        .catch(function(err) {
+          next(err);
+        });
+    });
+};
+
+exports.update = function(req, res, next) {
+  req.getServices()
+    .then(function(services) {
+      var data = req.body;
+      var id = req.params.metric_id;
+      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+      setupQuestionnaireDataService.updateMetric(data, id)
+        .then(function(results) {
+          res.redirect('/questionnaire/setup/step2/' + questionnaire_id);
+        })
+        .catch(function(err) {
+          next(err);
+        });
+    });
+};
