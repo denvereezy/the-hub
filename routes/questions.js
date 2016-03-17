@@ -71,6 +71,23 @@ exports.metricResults = function(req, res, next) {
     });
 };
 
+exports.showEntityMetrics = function(req, res, next) {
+  req.getServices()
+    .then(function(services) {
+      var entity_id = req.session.entity_id;
+      const questionDataService = services.questionDataService;
+      questionDataService.entityMetrics(entity_id)
+        .then(function(results) {
+          res.render('dashboard', {
+            metricsList : results
+          });
+        })
+        .catch(function(err) {
+          next(err);
+        });
+    });
+};
+
 exports.edit = function(req, res, next) {
   req.getServices()
     .then(function(services) {
@@ -85,7 +102,7 @@ exports.edit = function(req, res, next) {
             metrics: results[0],
             user: user,
             entity: entity,
-            questionnaire_id:questionnaire_id
+            questionnaire_id: questionnaire_id
           });
         })
         .catch(function(err) {
