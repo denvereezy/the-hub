@@ -83,8 +83,8 @@ app.post('/questionnaire/:questionnaire_id/answer/:questionnaire_metric_id', log
 app.post('/questionnaire/:base_questionnaire_id/rolledup-answers',login.userCheck, answerQuestionnaire.releaseAnsweresToDonor);
 app.post('/questionnaire/submit/answered/:questionnaire_id', login.userCheck, answerQuestionnaire.answeredQuestionnaire);
 app.get('/questionnaire/:questionnaire_id', login.userCheck, allocate.showCreatedQuestionnaire);
-app.get('/questionnaire/question/:metric_id/edit',setupQuestionnaire.edit);
-app.post('/questionnaire/question/update/:metric_id',setupQuestionnaire.update);
+app.get('/questionnaire/question/:metric_id/edit',questions.edit);
+app.post('/questionnaire/question/update/:metric_id',questions.update);
 app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;
