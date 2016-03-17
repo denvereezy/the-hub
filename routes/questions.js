@@ -95,8 +95,8 @@ exports.edit = function(req, res, next) {
       var questionnaire_id = req.params.questionnaire_id;
       const user = req.session.user;
       const entity = req.session.entity;
-      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-      setupQuestionnaireDataService.editMetric(id)
+      const questionDataService = services.questionDataService;
+      questionDataService.editMetric(id)
         .then(function(results) {
           res.render('editMetric', {
             metrics: results[0],
@@ -116,8 +116,8 @@ exports.update = function(req, res, next) {
     .then(function(services) {
       var data = req.body;
       var id = req.params.metric_id;
-      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-      setupQuestionnaireDataService.updateMetric(data, id)
+      const questionDataService = services.questionDataService;
+      questionDataService.updateMetric(data, id)
         .then(function(results) {
           res.redirect('/questionnaire/setup/step2/' + questionnaire_id);
         })
