@@ -74,12 +74,14 @@ exports.metricResults = function(req, res, next) {
 exports.showEntityMetrics = function(req, res, next) {
   req.getServices()
     .then(function(services) {
+      const donor = req.session.type === 'Donor';
       var entity_id = req.session.entity_id;
       const questionDataService = services.questionDataService;
       questionDataService.entityMetrics(entity_id)
         .then(function(results) {
           res.render('dashboard', {
-            metricsList : results
+            metricsList : results,
+            donor : donor
           });
         })
         .catch(function(err) {
