@@ -75,6 +75,7 @@ app.post('/view-questionnaire/create', login.userCheck, setupQuestionnaire.creat
 app.post('/questionnaire/allocate/:id', login.userCheck, allocate.allocate);
 app.get('/dashboard', login.userCheck, viewQuestionnaire.show);
 app.get('/dashboard', login.userCheck, answerQuestionnaire.show);
+app.get('/dashboard', login.userCheck, questions.showEntityMetrics);
 app.get('/questionnaire/questions/view/:id', login.userCheck, questions.show);
 app.get('/questionnaire/:id/questions/:base_questionnaire_id/results', login.userCheck, questions.metricResults);
 app.get('/questionnaire/questions/:questionnaire_id', login.userCheck, answerQuestionnaire.showQuestions);
