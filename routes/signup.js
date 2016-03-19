@@ -11,7 +11,7 @@ exports.add = function(req, res, next) {
         email: req.body.email,
         role: 'admin',
         status: 'created',
-        password: 'password',
+        password: req.body.password,
         firstName: req.body.firstName,
         lastName: req.body.lastName
       };
