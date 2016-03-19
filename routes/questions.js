@@ -71,24 +71,24 @@ exports.metricResults = function(req, res, next) {
     });
 };
 
-exports.showEntityMetrics = function(req, res, next) {
-  req.getServices()
-    .then(function(services) {
-      const donor = req.session.type === 'Donor';
-      var entity_id = req.session.entity_id;
-      const questionDataService = services.questionDataService;
-      questionDataService.entityMetrics(entity_id)
-        .then(function(results) {
-          res.render('dashboard', {
-            metricsList : results,
-            donor : donor
-          });
-        })
-        .catch(function(err) {
-          next(err);
-        });
-    });
-};
+// exports.showEntityMetrics = function(req, res, next) {
+//   req.getServices()
+//     .then(function(services) {
+//       const donor = req.session.type === 'Donor';
+//       var entity_id = req.session.entity_id;
+//       const questionDataService = services.questionDataService;
+//       questionDataService.entityMetrics(entity_id)
+//         .then(function(results) {
+//           res.render('dashboard', {
+//             metricsList : results,
+//             donor : donor
+//           });
+//         })
+//         .catch(function(err) {
+//           next(err);
+//         });
+//     });
+// };
 
 exports.edit = function(req, res, next) {
   req.getServices()
@@ -121,7 +121,7 @@ exports.update = function(req, res, next) {
       const questionDataService = services.questionDataService;
       questionDataService.updateMetric(data, id)
         .then(function(results) {
-          res.redirect('/questionnaire/setup/step2/' + questionnaire_id);
+          res.redirect('/dashboard');
         })
         .catch(function(err) {
           next(err);
