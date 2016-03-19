@@ -1,31 +1,5 @@
 const Promise = require('bluebird');
 
-// exports.show = function(req, res, next) {
-//   req.getServices()
-//     .then(function(services) {
-//       const startup = req.session.type === "Startup";
-//       console.log(startup);
-//       const viewQuestionnnaireDataService = services.viewQuestionnnaireDataService;
-//       const questionDataService = services.questionDataService;
-//       var id = req.session.entity_id;
-//       Promise.join(viewQuestionnnaireDataService.showQuestionnaires(id),
-//       questionDataService.entityMetrics(id),
-//         function(questionnaire, metricsList) {
-//           console.log(metricsList);
-//           res.render('dashboard', {
-//             // questionnaire: questionnaire,
-//             metricsList: metricsList,
-//             startup: startup,
-//             user: req.session.user,
-//             entity: req.session.entity
-//           });
-//         });
-//     })
-//     .catch(function(err) {
-//       next(err);
-//     });
-// };
-
 exports.showQuestions = function(req, res, next) {
   var questionnaire_id = req.params.questionnaire_id;
   req.getServices()
