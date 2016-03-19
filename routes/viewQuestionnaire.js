@@ -7,12 +7,16 @@ exports.show = function(req, res, next) {
       const facilitator = req.session.type === 'Facilitator';
       const startup = req.session.type === "Startup";
       const viewQuestionnnaireDataService = services.viewQuestionnnaireDataService;
+      const questionDataService = services.questionDataService;
       var id = req.session.entity_id;
-      Promise.join(viewQuestionnnaireDataService.showQuestionnaires(id), viewQuestionnnaireDataService.showCreatedQuestionnaires(id),
-        function(questionnaire, donorQuestionnaires) {
+      Promise.join(viewQuestionnnaireDataService.showQuestionnaires(id),
+       viewQuestionnnaireDataService.showCreatedQuestionnaires(id),
+       questionDataService.entityMetrics(id),
+        function(questionnaire, donorQuestionnaires, metricsList) {
           res.render('dashboard', {
             facilitatorQuestionnaire: questionnaire,
             donorQuestionnaires: donorQuestionnaires,
+            metricsList:metricsList,
             questionnaire: questionnaire,
             user: req.session.user,
             entity: req.session.entity,
