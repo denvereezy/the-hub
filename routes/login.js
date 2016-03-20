@@ -16,11 +16,11 @@ exports.userLogin = function(req, res, next) {
       loginDataService.login(email)
         .then(function(results) {
           var user = results[0];
-          if(user === undefined){
+          if (user === undefined) {
             return res.render("login", {
-                 message : "Email or Password entered is Invalid",
-                 layout : false
-             })
+              message: "Email or Password entered is Invalid",
+              layout: false
+            })
           };
 
           bcrypt.compare(req.body.password, user.password, function(err, pass) {
@@ -33,9 +33,9 @@ exports.userLogin = function(req, res, next) {
               return res.redirect("/dashboard")
             } else {
               return res.render("login", {
-                   message : "Password entered is Invalid",
-                   layout : false
-               })
+                message: "Password entered is Invalid",
+                layout: false
+              })
             };
           });
         })
