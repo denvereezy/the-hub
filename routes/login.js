@@ -16,11 +16,14 @@ exports.userLogin = function(req, res, next) {
       loginDataService.login(email)
         .then(function(results) {
           var user = results[0];
-
+          console.log(user);
           if(user === undefined){
-            return res.redirect('/');
+            return res.render("login", {
+                 message : "Email or Password entered is Invalid",
+                 layout : false
+             })
           };
-          
+
           bcrypt.compare(req.body.password, user.password, function(err, pass) {
             if (pass) {
               req.session.user = user.firstName;
@@ -30,7 +33,10 @@ exports.userLogin = function(req, res, next) {
               req.session.type = user.type;
               return res.redirect("/dashboard")
             } else {
-              return res.redirect('/');
+              return res.render("login", {
+                   message : "Email or Password entered is Invalid",
+                   layout : false
+               })
             };
           });
         })
