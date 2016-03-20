@@ -16,7 +16,6 @@ exports.userLogin = function(req, res, next) {
       loginDataService.login(email)
         .then(function(results) {
           var user = results[0];
-          console.log(user);
           if(user === undefined){
             return res.render("login", {
                  message : "Email or Password entered is Invalid",
@@ -34,7 +33,7 @@ exports.userLogin = function(req, res, next) {
               return res.redirect("/dashboard")
             } else {
               return res.render("login", {
-                   message : "Email or Password entered is Invalid",
+                   message : "Password entered is Invalid",
                    layout : false
                })
             };
