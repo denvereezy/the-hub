@@ -16,6 +16,7 @@ const QuestionDataService               = require('./data_services/questionDataS
 const AllocateQuestionnaireDataService  = require('./data_services/allocateQuestionnaireDataService');
 const AnswerDataService                 = require('./data_services/answerDataService');
 const RollupDataService                 = require('./data_services/rollupDataService');
+const UserDataService                   = require('../data_services/userDataService');
 
 const signup               = require('./routes/signup');
 const setupQuestionnaire   = require('./routes/setupQuestionnaire');
@@ -44,7 +45,8 @@ const serviceSetupCallBack = function (connection) {
     questionDataService               : new QuestionDataService(connection),
     allocateQuestionnaireDataService  : new AllocateQuestionnaireDataService(connection),
     answerDataService                 : new AnswerDataService(connection),
-    rollupDataService                 : new RollupDataService(connection)
+    rollupDataService                 : new RollupDataService(connection),
+    userDataService                   : new UserDataService(connection)
   }
 };
 
