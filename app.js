@@ -16,7 +16,7 @@ const QuestionDataService               = require('./data_services/questionDataS
 const AllocateQuestionnaireDataService  = require('./data_services/allocateQuestionnaireDataService');
 const AnswerDataService                 = require('./data_services/answerDataService');
 const RollupDataService                 = require('./data_services/rollupDataService');
-const UserDataService                   = require('../data_services/userDataService');
+const UserDataService                   = require('./data_services/userDataService');
 
 const signup               = require('./routes/signup');
 const setupQuestionnaire   = require('./routes/setupQuestionnaire');
@@ -26,7 +26,8 @@ const answerQuestionnaire  = require('./routes/answerQuestions');
 const questions            = require('./routes/questions');
 const allocate             = require('./routes/allocateQuestionnaire');
 const router               = require('./routes/router');
-const rollup               = require('./routes/rolledUpData')
+const rollup               = require('./routes/rolledUpData');
+const users                = require('./routes/users');
 
 const dbOptions = {
   host      : 'localhost',
@@ -86,6 +87,7 @@ app.post('/questionnaire/submit/answered/:questionnaire_id', login.userCheck, an
 app.get('/questionnaire/:questionnaire_id', login.userCheck, allocate.showCreatedQuestionnaire);
 app.get('/questionnaire/question/:metric_id/edit',questions.edit);
 app.post('/questionnaire/question/update/:metric_id',questions.update);
+app.get('/users', users.showUsers);
 app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;
