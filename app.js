@@ -88,6 +88,7 @@ app.get('/questionnaire/:questionnaire_id', login.userCheck, allocate.showCreate
 app.get('/questionnaire/question/:metric_id/edit',questions.edit);
 app.post('/questionnaire/question/update/:metric_id',questions.update);
 app.get('/users', users.showUsers);
+app.post('/users/add', users.addUser);
 app.get('/logout', router.logout);
 
 const port = process.env.PORT || 8080;
