@@ -27,10 +27,12 @@ exports.addUser = function(req, res, next) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: 'password',
-        entity_id: req.session.entity_id
+        entity_id: req.session.entity_id,
+        role: 'admin',
+        status: 'invited'
       };
-      const userDataService = services.userDataService;
-      userDataService.addUserToEntity(data)
+      const signupDataService = services.signupDataService;
+      signupDataService.addUser(data)
         .then(function(results) {
           res.redirect('/users');
         })
