@@ -1,0 +1,41 @@
+<div>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Add users</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Users</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    <form class="col-md-8" action="/users/add" method="post">
+      <div class="form-group">
+        <br />
+        <label>First Name</label>
+        <input type="text" class="form-control" name="firstName" required/>
+        <br />
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="lastName" required/>
+        <br />
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" required/>
+      </div>
+      <input type="submit" class="btn btn-primary pull-right">
+    </form>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="profile">
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        {{#each users}}
+          <tr>
+            <td>{{firstName}}</td>
+            <td>{{email}}</td>
+          </tr>
+          {{/each}}
+      </table>
+    </div>
+  </div>
+</div>
