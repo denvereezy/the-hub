@@ -1,12 +1,16 @@
 exports.showUsers = function(req, res, next) {
   req.getServices()
-    .then(function(connection) {
+    .then(function(services) {
       const entity_id = req.session.entity_id;
+      const user = req.session.user;
+      const entity = req.session.entity;
       const userDataService = services.userDataService;
       userDataService.showEntityUsers(entity_id)
         .then(function(users) {
           res.render('users', {
-            users: users
+            users: users,
+            user:user,
+            entity:entity
           })
         })
     })
@@ -17,7 +21,7 @@ exports.showUsers = function(req, res, next) {
 
 exports.addUser = function(req, res, next) {
   req.getServices()
-    .then(function(connection) {
+    .then(function(services) {
       const data = {
         email: req.body.email,
         firstName: req.body.firstName,
