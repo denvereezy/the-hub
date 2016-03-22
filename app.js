@@ -82,7 +82,7 @@ app.get('/questionnaire/:id/questions/:base_questionnaire_id/results', login.use
 app.get('/questionnaire/questions/:questionnaire_id', login.userCheck, answerQuestionnaire.showQuestions);
 app.post('/questionnaire/questions/view/:questionnaire_id', login.userCheck, setupQuestionnaire.linkMetricToQuestionnaire);
 app.post('/questionnaire/:questionnaire_id/answer/:questionnaire_metric_id', login.userCheck, answerQuestionnaire.answers);
-app.post('/questionnaire/:base_questionnaire_id/rolledup-answers',login.userCheck, answerQuestionnaire.releaseAnsweresToDonor);
+app.post('/questionnaire/:base_questionnaire_id/rolledup-answers',login.userCheck, answerQuestionnaire.releaseAnswersToDonor);
 app.post('/questionnaire/submit/answered/:questionnaire_id', login.userCheck, answerQuestionnaire.answeredQuestionnaire);
 app.get('/questionnaire/:questionnaire_id', login.userCheck, allocate.showCreatedQuestionnaire);
 app.get('/questionnaire/question/:metric_id/edit',questions.edit);
