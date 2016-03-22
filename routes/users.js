@@ -9,8 +9,8 @@ exports.showUsers = function(req, res, next) {
         .then(function(users) {
           res.render('users', {
             users: users,
-            user:user,
-            entity:entity
+            user: user,
+            entity: entity
           })
         })
     })
@@ -40,4 +40,19 @@ exports.addUser = function(req, res, next) {
     .catch(function(error) {
       next(error);
     });
-};
+  };
+
+  exports.delete = function(req, res, next) {
+    req.getServices()
+      .then(function(services) {
+        const id = req.params.id;
+        const userDataService = services.userDataService;
+        userDataService.deleteUser(id)
+          .then(function(results) {
+            res.redirect('/users');
+          })
+      })
+      .catch(function(error) {
+        next(error);
+      });
+  };
