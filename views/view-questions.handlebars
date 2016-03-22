@@ -1,4 +1,12 @@
 {{#facilitator}}
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Questions</a></li>
+    <li role="presentation"><a href="#newquestions" aria-controls="newquestions" role="tab" data-toggle="tab">Add new question(s)</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="questions">
   {{#if questionnaire.parent_questionnaire_id}}
     <form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
   {{else}}
@@ -38,4 +46,7 @@
   <input type="submit" class="btn btn-primary pull-right" value="Send" />
   <br/> </br>
   </form>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="newquestions">
+  </div>
 {{/facilitator}}
