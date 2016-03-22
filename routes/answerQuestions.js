@@ -57,7 +57,7 @@ exports.answeredQuestionnaire = function(req, res, next) {
 };
 
 
-exports.releaseAnsweresToDonor = function(req, res, next) {
+exports.releaseAnswersToDonor = function(req, res, next) {
   req.getServices()
     .then(function(services) {
       var base_questionnaire_id = req.params.base_questionnaire_id;
