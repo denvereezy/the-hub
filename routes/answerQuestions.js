@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 
 exports.showQuestions = function(req, res, next) {
   var questionnaire_id = req.params.questionnaire_id;
+  var startup = req.session.type === 'Startup';
   req.getServices()
     .then(function(services) {
       const questionDataService = services.questionDataService;
@@ -12,7 +13,8 @@ exports.showQuestions = function(req, res, next) {
             questionnaire_id: questionnaire_id,
             questionnaire_metric_id: questions[0].questionnaire_metric_id,
             user: req.session.user,
-            entity: req.session.entity
+            entity: req.session.entity,
+            startup: startup
           });
         });
     })
