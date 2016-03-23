@@ -41,20 +41,12 @@ exports.metricResults = function(req, res, next) {
   const facilitator = req.session.type === 'Facilitator';
   req.getServices()
     .then(function(services) {
-      const questionDataService = services.questionDataService;
-      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
-      const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
       const rollupDataService = services.rollupDataService;
-      Promise.join(setupQuestionnaireDataService.getQuestionnaireById(id),
-        questionDataService.showAll(id),
-        allocateQuestionnaireDataService.showEntitiesForDonor(entity_id),
+      Promise.join(
         rollupDataService.rollupMetrics(base_questionnaire_id),
         rollupDataService.donorMetrics(id),
-        function(questionnaire, questions, entities, values, results) {
+        function(values, results) {
           res.render('questionnaire-results', {
-            questionnaire: questionnaire,
-            questions: questions,
-            entities: entities,
             values: values,
             questionnaire_id: id,
             base_questionnaire_id: base_questionnaire_id,
