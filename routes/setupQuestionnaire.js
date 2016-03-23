@@ -22,6 +22,7 @@ exports.create = function(req, res, next) {
 
 exports.show = function(req, res, next) {
   var questionnaire_id = req.params.id;
+  var donor = req.session.type === 'Donor';
   req.getServices()
     .then(function(services) {
       const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
@@ -33,7 +34,8 @@ exports.show = function(req, res, next) {
             metrics: metrics,
             questionnaire_id: questionnaire_id,
             user: req.session.user,
-            entity: req.session.entity
+            entity: req.session.entity,
+            donor: donor
           });
         });
     })
