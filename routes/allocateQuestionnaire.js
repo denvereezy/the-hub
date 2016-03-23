@@ -76,6 +76,26 @@ exports.allocate = function(req, res, next) {
     });
 };
 
+exports.addMetricForSubEntity = function(req, res, next) {
+  var questionnaire_id = req.params.questionnaire_id;
+  req.getServices()
+    .then(function(services) {
+      var data = {
+        title: req.body.title,
+        description: req.body.description,
+        entity_id: req.session.entity_id
+      };
+      const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+      setupQuestionnaireDataService.addMetricToMetricTable(data)
+        .then(function(results) {
+          res.redirect('/questionnaire/questions/view/' + questionnaire_id);
+        });
+    })
+    .catch(function(err) {
+      next(err);
+    });
+};
+
 exports.allocateToSubEntity = function(req, res, next) {
   var questionnaire_id = req.params.questionnaire_id;
   var childQuestionnaireId = null;
