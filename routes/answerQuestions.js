@@ -46,7 +46,7 @@ exports.answeredQuestionnaire = function(req, res, next) {
   req.getServices()
     .then(function(services) {
       var questionnaire_id = req.params.questionnaire_id;
-      const status = false;
+      const status = 'Answered';
       const answerDataService = services.answerDataService;
       answerDataService.updateQuestionnaireStatus(status, questionnaire_id)
         .then(function(results) {
