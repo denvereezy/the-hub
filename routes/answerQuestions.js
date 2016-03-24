@@ -8,17 +8,13 @@ exports.showQuestions = function(req, res, next) {
       const questionDataService = services.questionDataService;
       questionDataService.showAll(questionnaire_id)
         .then(function(questions) {
-          for (var question in questions) {
-            const submitted = questions[question].value > 0;
-          };
           res.render('answer-questions', {
             questions: questions,
             questionnaire_id: questionnaire_id,
             questionnaire_metric_id: questions[0].questionnaire_metric_id,
             user: req.session.user,
             entity: req.session.entity,
-            startup: startup,
-            submitted: submitted
+            startup: startup
           });
         });
     })
@@ -50,7 +46,7 @@ exports.answeredQuestionnaire = function(req, res, next) {
   req.getServices()
     .then(function(services) {
       var questionnaire_id = req.params.questionnaire_id;
-      const status = 'answered';
+      const status = false;
       const answerDataService = services.answerDataService;
       answerDataService.updateQuestionnaireStatus(status, questionnaire_id)
         .then(function(results) {
