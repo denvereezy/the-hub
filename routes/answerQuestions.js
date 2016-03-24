@@ -8,8 +8,8 @@ exports.showQuestions = function(req, res, next) {
       const questionDataService = services.questionDataService;
       questionDataService.showAll(questionnaire_id)
         .then(function(questions) {
-          for (var value in questions) {
-            const submitted = questions[value].value > 0;
+          for (var question in questions) {
+            const submitted = questions[question].value > 0;
           };
           res.render('answer-questions', {
             questions: questions,
