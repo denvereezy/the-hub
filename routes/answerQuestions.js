@@ -8,13 +8,17 @@ exports.showQuestions = function(req, res, next) {
       const questionDataService = services.questionDataService;
       questionDataService.showAll(questionnaire_id)
         .then(function(questions) {
+          for (var value in questions) {
+            const submitted = questions[value].value > 0;
+          };
           res.render('answer-questions', {
             questions: questions,
             questionnaire_id: questionnaire_id,
             questionnaire_metric_id: questions[0].questionnaire_metric_id,
             user: req.session.user,
             entity: req.session.entity,
-            startup: startup
+            startup: startup,
+            submitted: submitted
           });
         });
     })
