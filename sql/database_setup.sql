@@ -30,6 +30,7 @@ CREATE TABLE questionnaire (
   dueDate date not null,
   parent_questionnaire_id int,
   base_questionnaire_id int,
+  status varchar (100),
   foreign key (entity_id) references entity(id)
 );
 
