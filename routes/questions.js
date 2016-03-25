@@ -11,7 +11,6 @@ exports.show = function(req, res, next) {
       const questionDataService = services.questionDataService;
       const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
       const allocateQuestionnaireDataService = services.allocateQuestionnaireDataService;
-      const rollupDataService = services.rollupDataService;
       Promise.join(setupQuestionnaireDataService.getQuestionnaireById(id),
         questionDataService.showAll(id),
         allocateQuestionnaireDataService.showEntitiesForFacilitator(entity_id),
