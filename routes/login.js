@@ -18,7 +18,7 @@ exports.userLogin = function(req, res, next) {
           var user = results[0];
           if (user === undefined) {
             return res.render("login", {
-              message: "Email or Password entered is Invalid, please try again",
+              message: "Email entered is Invalid, please try again",
               layout: false
             })
           };
