@@ -1,5 +1,5 @@
 {{#startup}}
-<div class="alert alert-success alert-dismissable" role="alert">
+<div id="alerts" class="alert alert-success alert-dismissable fade in" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <p>Successfully updated.</p>
 </div>
@@ -23,7 +23,7 @@
             <input type="number" class="form-control" name="value" value="{{value}}"/>
           </td>
           <td>
-            <input type="submit" id="button" class="btn btn-primary" value="Save" />
+            <input type="submit" onclick="alert()" class="btn btn-primary" value="Save" />
           </td>
         </tr>
       </form>
