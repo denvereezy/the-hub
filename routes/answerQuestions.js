@@ -14,7 +14,8 @@ exports.showQuestions = function(req, res, next) {
             questionnaire_metric_id: questions[0].questionnaire_metric_id,
             user: req.session.user,
             entity: req.session.entity,
-            startup: startup
+            startup: startup,
+            if_answered: questions[0].status !== 'Answered'
           });
         });
     })
