@@ -15,7 +15,7 @@ exports.showQuestions = function(req, res, next) {
             user: req.session.user,
             entity: req.session.entity,
             startup: startup,
-            if_answered: questions[0].status !== 'Answered'
+            released: questions[0].status === 'Answered'
           });
         });
     })
