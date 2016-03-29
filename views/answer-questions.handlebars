@@ -1,50 +1,50 @@
 {{#startup}}
-<div id="alerts" class="alert alert-success alert-dismissable fade in" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <p>Successfully updated.</p>
-</div>
+  <div id="alerts" class="alert alert-success alert-dismissable fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <p>Successfully updated.</p>
+  </div>
 
-<table class="table table-striped">
-  <thead class="thead-inverse">
-    <tr>
-      <th>title</th>
-      <th>description</th>
-      <th>answer</th>
-      {{#if released}}
-      {{else}}
-      <th>action</th>
-      {{/if}}
-    </tr>
-  </thead>
-  <tbody>
-    {{#each questions}}
-      <form class="col-md-8" method="post" action="/questionnaire/{{questionnaire_id}}/answer/{{questionnaire_metric_id}}">
-        <tr>
-          <td>{{title}}</td>
-          <td>{{description}}</td>
-          {{#if ../released}}
-          <td>
-            <input type="number" class="form-control" name="value" value="{{value}}" disabled/>
-          </td>
-          {{else}}
-          <td>
-            <input type="number" class="form-control disabled" name="value" value="{{value}}"/>
-          </td>
-          <td>
-            <input type="submit" onclick="alert()" class="btn btn-primary" value="Save" />
-          </td>
-          {{/if}}
-        </tr>
-      </form>
-    {{/each}}
-  </tbody>
-</table>
-<button class="btn btn-success" onclick="goBack()">back</button>
-{{#if released}}
-  &nbsp;
-{{else}}
-<form class="pull-right" action="/questionnaire/submit/answered/{{questionnaire_id}}" method="post">
-  <input type="submit" class="btn btn-primary" value="Release" />
+  <table class="table table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th>title</th>
+        <th>description</th>
+        <th>answer</th>
+        {{#if released}}
+        {{else}}
+          <th>action</th>
+        {{/if}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each questions}}
+        <form class="col-md-8" method="post" action="/questionnaire/{{questionnaire_id}}/answer/{{questionnaire_metric_id}}">
+          <tr>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            {{#if ../released}}
+              <td>
+                <input type="number" class="form-control" name="value" value="{{value}}" disabled/>
+              </td>
+            {{else}}
+              <td>
+                <input type="number" class="form-control disabled" name="value" value="{{value}}" />
+              </td>
+              <td>
+                <input type="submit" onclick="alert()" class="btn btn-primary" value="Save" />
+              </td>
+            {{/if}}
+          </tr>
+        </form>
+      {{/each}}
+    </tbody>
+  </table>
+  <button class="btn btn-success" onclick="goBack()">back</button>
+  {{#if released}}
+    &nbsp;
+  {{else}}
+    <form class="pull-right" action="/questionnaire/submit/answered/{{questionnaire_id}}" method="post">
+      <input type="submit" class="btn btn-primary" value="Release" />
   {{/if}}
-</form>
+  </form>
 {{/startup}}
