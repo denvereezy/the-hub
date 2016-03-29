@@ -20,12 +20,10 @@
           <td>{{title}}</td>
           <td>{{description}}</td>
           <td>
-            <input type="number" class="form-control" name="value" value="{{value}}"/>
+            <input type="number" class="form-control input" name="value" value="{{value}}"/>
           </td>
           <td>
-            {{#unless value}}
             <input type="submit" onclick="alert()" class="btn btn-primary" value="Save" />
-            {{/unless}}
           </td>
         </tr>
       </form>
@@ -34,6 +32,8 @@
 </table>
 <button class="btn btn-success" onclick="goBack()">back</button>
 <form class="pull-right" action="/questionnaire/submit/answered/{{questionnaire_id}}" method="post">
+  {{#if_answered}}
   <input type="submit" class="btn btn-primary" value="Release" />
+  {{/if_answered}}
 </form>
 {{/startup}}
