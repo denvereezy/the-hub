@@ -10,7 +10,10 @@
       <th>title</th>
       <th>description</th>
       <th>answer</th>
+      {{#if released}}
+      {{else}}
       <th>action</th>
+      {{/if}}
     </tr>
   </thead>
   <tbody>
@@ -19,21 +22,29 @@
         <tr>
           <td>{{title}}</td>
           <td>{{description}}</td>
+          {{#if ../released}}
           <td>
-            <input type="number" class="form-control input" name="value" value="{{value}}"/>
+            <input type="number" class="form-control" name="value" value="{{value}}" disabled/>
+          </td>
+          {{else}}
+          <td>
+            <input type="number" class="form-control disabled" name="value" value="{{value}}"/>
           </td>
           <td>
             <input type="submit" onclick="alert()" class="btn btn-primary" value="Save" />
           </td>
+          {{/if}}
         </tr>
       </form>
     {{/each}}
   </tbody>
 </table>
 <button class="btn btn-success" onclick="goBack()">back</button>
+{{#if released}}
+  &nbsp;
+{{else}}
 <form class="pull-right" action="/questionnaire/submit/answered/{{questionnaire_id}}" method="post">
-  {{#if_answered}}
   <input type="submit" class="btn btn-primary" value="Release" />
-  {{/if_answered}}
+  {{/if}}
 </form>
 {{/startup}}
