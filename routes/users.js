@@ -1,3 +1,6 @@
+const nodemailer = require('nodemailer');
+const uuid = require('node-uuid');
+
 exports.showUsers = function(req, res, next) {
   req.getServices()
     .then(function(services) {
@@ -29,8 +32,32 @@ exports.addUser = function(req, res, next) {
         password: 'password',
         entity_id: req.session.entity_id,
         role: 'admin',
-        status: 'invited'
+        status: 'invited',
+        token: uuid.v4()
       };
+
+      var mailOpts, smtpConfig;
+
+      smtpConfig = nodemailer.createTransport('SMTP', {
+        service: 'Gmail',
+        auth: {
+          user: 'APP EMAIL',
+          pass: 'APP PASSWORD'
+        }
+      });
+
+      mailOpts = {
+        from: req.session.entity,
+        to: data.email,
+        subject: 'invite to join',
+        text: 'You have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'https://hub.projectcodex.co/confirm/' + data.token
+      };
+
+      smtpConfig.sendMail(mailOpts, function(error, response) {
+        if (error) {
+          console.log(error);
+        }
+      });
       const signupDataService = services.signupDataService;
       signupDataService.addUser(data)
         .then(function(results) {
@@ -40,19 +67,19 @@ exports.addUser = function(req, res, next) {
     .catch(function(error) {
       next(error);
     });
-  };
+};
 
-  exports.delete = function(req, res, next) {
-    req.getServices()
-      .then(function(services) {
-        const id = req.params.id;
-        const userDataService = services.userDataService;
-        userDataService.deleteUser(id)
-          .then(function(results) {
-            res.redirect('/users');
-          })
-      })
-      .catch(function(error) {
-        next(error);
-      });
-  };
+exports.delete = function(req, res, next) {
+  req.getServices()
+    .then(function(services) {
+      const id = req.params.id;
+      const userDataService = services.userDataService;
+      userDataService.deleteUser(id)
+        .then(function(results) {
+          res.redirect('/users');
+        })
+    })
+    .catch(function(error) {
+      next(error);
+    });
+};
