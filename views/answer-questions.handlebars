@@ -23,7 +23,9 @@
             <input type="number" class="form-control" name="value" value="{{value}}"/>
           </td>
           <td>
+            {{#unless value}}
             <input type="submit" onclick="alert()" class="btn btn-primary" value="Save" />
+            {{/unless}}
           </td>
         </tr>
       </form>
