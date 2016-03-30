@@ -29,7 +29,7 @@ exports.addUser = function(req, res, next) {
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        password: 'password',
+        password: '',
         entity_id: req.session.entity_id,
         role: 'admin',
         status: 'invited',
