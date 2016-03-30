@@ -50,23 +50,36 @@ exports.addUser = function(req, res, next) {
         from: req.session.entity,
         to: data.email,
         subject: 'invite to join',
-        text: 'You have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'https://hub.projectcodex.co/confirm/' + data.token
+        text: 'You have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'https://hub.projectcodex.co/account/verifyaccount/' + data.token
       };
 
-      smtpConfig.sendMail(mailOpts, function(error, response) {
-        if (error) {
-          console.log(error);
-        }
-      });
+      smtpConfig.sendMail(mailOpts);
+
       const signupDataService = services.signupDataService;
       signupDataService.addUser(data)
         .then(function(results) {
           res.redirect('/users');
         })
-    })
     .catch(function(error) {
       next(error);
     });
+  });
+};
+
+exports.confirmUser = function (req, res, next) {
+  req.getServices()
+  .then(function(services) {
+    const token = req.params.token;
+    const password = req.body.password;
+    const userDataSevice = services.userDataSevice;
+    userDataSevice.confirmAccount(password, token)
+    .then(function(results) {
+      res.redirect('/');
+    })
+  })
+  .catch(function(error) {
+    next(error);
+  });
 };
 
 exports.delete = function(req, res, next) {
