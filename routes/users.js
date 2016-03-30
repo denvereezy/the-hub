@@ -41,8 +41,8 @@ exports.addUser = function(req, res, next) {
       smtpConfig = nodemailer.createTransport('SMTP', {
         service: 'Gmail',
         auth: {
-          user: 'APP EMAIL',
-          pass: 'APP PASSWORD'
+          user: 'denverdaniels59@gmail.com',
+          pass: 'julinda56'
         }
       });
 
@@ -50,7 +50,7 @@ exports.addUser = function(req, res, next) {
         from: req.session.entity,
         to: data.email,
         subject: 'invite to join',
-        text: 'You have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'https://hub.projectcodex.co/account/verifyaccount/' + data.token
+        text: data.firstName + ' you have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'https://hub.projectcodex.co/account/verifyaccount/' + data.token
       };
 
       smtpConfig.sendMail(mailOpts);
@@ -71,8 +71,22 @@ exports.confirmUser = function (req, res, next) {
   .then(function(services) {
     const token = req.params.token;
     const password = req.body.password;
-    const userDataSevice = services.userDataSevice;
-    userDataSevice.confirmAccount(password, token)
+    const confirmPassword = req.body.password2;
+    const user = {
+      token: null,
+      status: 'active'
+    };
+
+    if (confirmPassword === password) {
+      data.password = confirmPassword;
+    }
+    else{
+      req.flash('alert', 'Passwords does not match, please try again');
+      res.redirect('/account/verifyaccount/' + token)
+    }
+
+    const userDataService = services.userDataService;
+    userDataService.confirmAccount(user, token)
     .then(function(results) {
       res.redirect('/');
     })
