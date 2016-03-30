@@ -26,6 +26,7 @@ exports.verifyaccount = function(req, res) {
 res.render('verifyaccount',{
   user: req.session.user,
   entity: req.session.entity,
-  layout: false
+  layout: false,
+  token:req.params.token
 });
 };
