@@ -6,6 +6,7 @@ const express      = require('express'),
       mysql        = require('mysql'),
       connectionPv = require('connection-provider'),
       compression  = require('compression'),
+      flash        = require('express-flash'),
       app          = express();
 
 const SignupDataService                 = require('./data_services/signupDataService');
@@ -58,6 +59,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended : false }));
 app.use(bodyParser.json());
 app.use(compression());
+app.use(flash());
 app.engine('handlebars', exhbs({defaultLayout : 'main'}));
 app.set('view engine', 'handlebars');
 
@@ -66,7 +68,7 @@ app.get('/signup', router.signup);
 app.post('/signup/add', signup.add);
 app.get('/', router.login);
 app.post('/login', login.userLogin);
-app.get('/account/verifyaccount/:token', router.verifyaccount)
+app.get('/account/verifyaccount/:token', router.verifyaccount);
 app.post('/user/confirm/:token',users.confirmUser);
 app.use(login.userCheck);
 app.get('/questionnaire/setup/step1', login.userCheck, router.questionnaire);
