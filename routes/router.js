@@ -21,3 +21,11 @@ exports.logout = function(req, res) {
   delete req.session.user
   res.redirect("/");
 };
+
+exports.verifyaccount = function(req, res) {
+res.render('verifyaccount',{
+  user: req.session.user,
+  entity: req.session.entity,
+  layout: false
+});
+};
