@@ -41,8 +41,8 @@ exports.addUser = function(req, res, next) {
       smtpConfig = nodemailer.createTransport('SMTP', {
         service: 'Gmail',
         auth: {
-          user: 'denverdaniels59@gmail.com',
-          pass: 'julinda56'
+          user: 'APP EMAIL',
+          pass: 'APP PASSWORD'
         }
       });
 
