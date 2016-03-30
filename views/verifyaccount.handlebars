@@ -46,7 +46,9 @@
         <div class="form-group">
           <label>Set Password: </label>
           <br />
-          {{messages.alert}}
+          {{#if messages.alert}}
+          <p class="alert alert-danger">{{messages.alert}}</p>
+          {{/if}}
           <input class="form-control" type="password" name="password" required/>
           <br />
           <br />
