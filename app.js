@@ -66,6 +66,8 @@ app.get('/signup', router.signup);
 app.post('/signup/add', signup.add);
 app.get('/', router.login);
 app.post('/login', login.userLogin);
+app.get('/account/verifyaccount/:token', router.verifyaccount)
+app.post('/user/confirm/:token',users.confirmUser);
 app.use(login.userCheck);
 app.get('/questionnaire/setup/step1', login.userCheck, router.questionnaire);
 app.post('/questionnaire/setup/step1/', login.userCheck, setupQuestionnaire.create);
