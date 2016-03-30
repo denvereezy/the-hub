@@ -20,6 +20,7 @@ CREATE TABLE user (
   password varchar (100) not null,
   firstName varchar (100) not null,
   lastName varchar (100) not null,
+  token varchar (100),
   foreign key (entity_id) references entity(id)
 );
 
