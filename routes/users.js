@@ -50,7 +50,7 @@ exports.addUser = function(req, res, next) {
         from: req.session.entity,
         to: data.email,
         subject: 'invite to join',
-        text: data.firstName + ' you have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'https://hub.projectcodex.co/account/verifyaccount/' + data.token
+        text: data.firstName + ' you have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'hub.projectcodex.co/account/verifyaccount/' + data.token
       };
 
       smtpConfig.sendMail(mailOpts);
@@ -78,7 +78,7 @@ exports.confirmUser = function (req, res, next) {
     };
 
     if (confirmPassword === password) {
-      data.password = confirmPassword;
+      user.password = confirmPassword;
     }
     else{
       req.flash('alert', 'Passwords does not match, please try again');
