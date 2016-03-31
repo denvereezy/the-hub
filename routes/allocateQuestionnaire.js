@@ -68,6 +68,7 @@ exports.allocate = function(req, res, next) {
           return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(childQuestionnaireId, parent_questionnaire_metrics);
         })
         .then(function(results) {
+          req.flash('success', 'Questionnaire send successfully');
           res.redirect('/questionnaire/' + questionnaire_id);
         })
         .catch(function(error) {
@@ -130,6 +131,7 @@ exports.allocateToSubEntity = function(req, res, next) {
           return allocateQuestionnaireDataService.allocateMetricListToQuestionaire(questionnaireId, metric_ids);
         })
         .then(function(results) {
+          req.flash('success', 'Questionnaire send successfully');
           res.redirect('/questionnaire/' + questionnaire_id);
         })
         .catch(function(error) {
