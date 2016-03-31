@@ -88,6 +88,7 @@ exports.confirmUser = function (req, res, next) {
     const userDataService = services.userDataService;
     userDataService.confirmAccount(user, token)
     .then(function(results) {
+      req.flash('success', 'Password reset was successful');
       res.redirect('/');
     })
   })
