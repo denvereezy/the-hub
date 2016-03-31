@@ -40,10 +40,13 @@
   <div class="container-fluid">
 
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      {{#if messages.success}}
+        <p class="alert alert-success">{{messages.success}}</p>
+      {{/if}}
       <h2>Login:</h2>
-      {{#if message}}
-						<p class="alert alert-danger">{{message}}</p>
-					{{/if}}
+      {{#if messages.alert}}
+        <p class="alert alert-danger">{{messages.alert}}</p>
+      {{/if}}
       <form class="col-md-8" method="post" action="/login">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
