@@ -19,6 +19,9 @@ exports.userLogin = function(req, res, next) {
           if (user === undefined) {
             req.flash('alert', 'Email or Password entered is Invalid, please try again');
             return res.redirect("/");
+          } else if (user.status === 'invited') {
+            req.flash('alert', 'Email or Password entered is Invalid, please try again');
+            return res.redirect("/");
           };
 
           bcrypt.compare(req.body.password, user.password, function(err, pass) {
@@ -33,9 +36,9 @@ exports.userLogin = function(req, res, next) {
               req.flash('alert', 'Email or Password entered is Invalid, please try again');
               return res.redirect("/")
             };
+          })
+        })
     })
-  })
-})
     .catch(function(err) {
       next(err);
     });
