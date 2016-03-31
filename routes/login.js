@@ -17,10 +17,8 @@ exports.userLogin = function(req, res, next) {
         .then(function(results) {
           var user = results[0];
           if (user === undefined) {
-            return res.render("login", {
-              message: "Email entered is Invalid, please try again",
-              layout: false
-            })
+            req.flash('alert', 'Email or Password entered is Invalid, please try again');
+            return res.redirect("/");
           };
 
           bcrypt.compare(req.body.password, user.password, function(err, pass) {
@@ -32,14 +30,12 @@ exports.userLogin = function(req, res, next) {
               req.session.type = user.type;
               return res.redirect("/dashboard")
             } else {
-              return res.render("login", {
-                message: "Password entered is Invalid, please try again",
-                layout: false
-              })
+              req.flash('alert', 'Email or Password entered is Invalid, please try again');
+              return res.redirect("/")
             };
-          });
-        })
     })
+  })
+})
     .catch(function(err) {
       next(err);
     });
