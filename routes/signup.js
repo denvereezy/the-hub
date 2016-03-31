@@ -10,7 +10,7 @@ exports.add = function(req, res, next) {
       var user = {
         email: req.body.email,
         role: 'admin',
-        status: 'created',
+        status: 'active',
         password: req.body.password,
         firstName: req.body.firstName,
         lastName: req.body.lastName
