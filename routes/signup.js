@@ -23,6 +23,7 @@ exports.add = function(req, res, next) {
           return signupDataService.addUser(user);
         })
         .then(function(results) {
+          req.flash('success', 'Sign up was successful');
           return res.redirect('/');
         })
         .catch(function(err) {
