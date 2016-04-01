@@ -1,4 +1,7 @@
 {{#donor}}
+{{#if success}}
+<p class="alert alert-success">{{success}}</p>
+{{/if}}
   <h2>Questionnaire contains:</h2>
   <table class="table table-striped">
     <thead class="thead-inverse">
@@ -20,6 +23,9 @@
 {{/donor}}
 
 {{#facilitator}}
+{{#if success}}
+<p class="alert alert-success">{{success}}</p>
+{{/if}}
   <h2>Questionnaire contains:</h2>
   <table class="table table-striped">
     <thead class="thead-inverse">
