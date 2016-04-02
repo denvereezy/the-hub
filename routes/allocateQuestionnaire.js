@@ -34,7 +34,8 @@ exports.showCreatedQuestionnaire = function(req, res, next) {
             user: req.session.user,
             entity: req.session.entity,
             donor: donor,
-            facilitator: facilitator
+            facilitator: facilitator,
+            success: 'Questions added successfully'
           });
         });
     })
