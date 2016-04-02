@@ -53,11 +53,10 @@ exports.addUser = function(req, res, next) {
         text: data.firstName + ' you have been invited by ' + req.session.entity + ' to become a user. Please follow the link to setup your password. Your current email address is used to login.' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
       };
 
-      smtpConfig.sendMail(mailOpts);
-
       const signupDataService = services.signupDataService;
       signupDataService.addUser(data)
         .then(function(results) {
+          smtpConfig.sendMail(mailOpts);
           res.redirect('/users');
         })
     .catch(function(error) {
@@ -66,35 +65,34 @@ exports.addUser = function(req, res, next) {
   });
 };
 
-exports.confirmUser = function (req, res, next) {
+exports.confirmUser = function(req, res, next) {
   req.getServices()
-  .then(function(services) {
-    const token = req.params.token;
-    const password = req.body.password;
-    const confirmPassword = req.body.password2;
-    const user = {
-      token: null,
-      status: 'active'
-    };
+    .then(function(services) {
+      const token = req.params.token;
+      const password = req.body.password;
+      const confirmPassword = req.body.password2;
+      const user = {
+        token: null,
+        status: 'active'
+      };
 
-    if (confirmPassword === password) {
-      user.password = confirmPassword;
-    }
-    else{
-      req.flash('alert', 'Passwords does not match, please try again');
-      res.redirect('/account/verifyaccount/' + token)
-    }
+      if (confirmPassword === password) {
+        user.password = confirmPassword;
+      } else {
+        req.flash('alert', 'Passwords does not match, please try again');
+        res.redirect('/account/verifyaccount/' + token)
+      }
 
-    const userDataService = services.userDataService;
-    userDataService.confirmAccount(user, token)
-    .then(function(results) {
-      req.flash('success', 'Password reset was successful');
-      res.redirect('/');
+      const userDataService = services.userDataService;
+      userDataService.confirmAccount(user, token)
+        .then(function(results) {
+          req.flash('success', 'Password reset was successful');
+          res.redirect('/');
+        })
     })
-  })
-  .catch(function(error) {
-    next(error);
-  });
+    .catch(function(error) {
+      next(error);
+    });
 };
 
 exports.delete = function(req, res, next) {
