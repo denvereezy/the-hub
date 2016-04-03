@@ -14,6 +14,7 @@ exports.show = function(req, res, next) {
       Promise.join(setupQuestionnaireDataService.getQuestionnaireById(id),
         questionDataService.showAll(id),
         allocateQuestionnaireDataService.showEntitiesForFacilitator(entity_id),
+        allocateQuestionnaireDataService.showFacilitatorCrearedQuestions(questionnaire_id, entity_id),
         function(questionnaire, questions, entities) {
           res.render('view-questions', {
             questionnaire: questionnaire,
