@@ -2,7 +2,8 @@
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Questions</a></li>
+    <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Questionnaire Questions</a></li>
+    <li role="presentation"><a href="#linkquestions" aria-controls="linkquestions" role="tab" data-toggle="tab">Link questions to questionnaire</a></li>
     <li role="presentation"><a href="#newquestions" aria-controls="newquestions" role="tab" data-toggle="tab">Add new question(s)</a></li>
   </ul>
   <div class="tab-content">
@@ -24,16 +25,6 @@
     </thead>
 
     {{#each questions}}
-      <tr>
-        <td>{{title}}</td>
-        <td>{{description}}</td>
-        <td>
-          <input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}" />
-        </td>
-      </tr>
-    {{/each}}
-  
-    {{#each facilitatorQuestions}}
       <tr>
         <td>{{title}}</td>
         <td>{{description}}</td>
@@ -71,4 +62,24 @@
       <input type="submit" class="btn btn-primary pull-right" value="Create Question">
     </form>
   </div>
+    <div role="tabpanel" class="tab-pane" id="linkquestions">
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Question</th>
+            <th>Description</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+      {{#each facilitatorQuestions}}
+        <tr>
+          <td>{{title}}</td>
+          <td>{{description}}</td>
+          <td>
+            <input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}" />
+          </td>
+        </tr>
+      {{/each}}
+      <table>
+    </div>
 {{/facilitator}}
