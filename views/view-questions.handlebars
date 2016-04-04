@@ -32,6 +32,16 @@
         </td>
       </tr>
     {{/each}}
+  
+    {{#each facilitatorQuestions}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{description}}</td>
+        <td>
+          <input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}" />
+        </td>
+      </tr>
+    {{/each}}
   </table>
   <br/>
   <label for="input">Send questionnaire to:</label>
