@@ -63,6 +63,7 @@
     </form>
   </div>
     <div role="tabpanel" class="tab-pane" id="linkquestions">
+      <form action="/questionnaire/facilitatorQuestions/link/{{questionnaire_id}}" method="post">
       <table class="table table-striped">
         <thead class="thead-inverse">
           <tr>
@@ -81,5 +82,7 @@
         </tr>
       {{/each}}
       <table>
+        <input type="submit" class="btn btn-primary pull-right" value="link" />
+      </form>
     </div>
 {{/facilitator}}
