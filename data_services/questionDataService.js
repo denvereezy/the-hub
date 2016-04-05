@@ -20,6 +20,6 @@ module.exports = function(connection) {
   };
 
   this.showFacilitatorCreatedQuestions = function(entity_id) {
-    return queryService.executeQuery('SELECT * from metric inner join entity on metric.entity_id = entity.id where entity.id = ?', entity_id);
+    return queryService.executeQuery('SELECT metric.id as metric_id, title, description, entity_id from metric inner join entity on metric.entity_id = entity.id where entity.id = ?', entity_id);
   };
 };
