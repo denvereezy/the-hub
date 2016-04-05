@@ -102,3 +102,29 @@ exports.update = function(req, res, next) {
         });
     });
 };
+
+exports.linkFacilitatorMetricsToQuestionnaire = function(req, res, next) {
+  var questionnaire_id = req.params.questionnaire_id;
+  var setupQuestionnaireDataService;
+  req.getServices()
+    .then(function(services) {
+      var rawMetricIds = req.body.selectedMetrics;
+      // ensure that if only one question is selected we still have a list of metric ids - html quirk...
+      const selectedMetricIds = Array.isArray(rawMetricIds) ? rawMetricIds : [rawMetricIds];
+      setupQuestionnaireDataService = services.setupQuestionnaireDataService;
+      return selectedMetricIds;
+    })
+    .mapSeries(function(metric_id) {
+      var data = {
+        metric_id: metric_id,
+        questionnaire_id: questionnaire_id
+      };
+      return setupQuestionnaireDataService.linkMetricToQuestionnaire(data);
+    })
+    .then(function(results) {
+      res.redirect('/questionnaire/questions/view/' + questionnaire_id);
+    })
+    .catch(function(err) {
+      next(err);
+    });
+};
