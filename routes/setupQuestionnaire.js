@@ -7,7 +7,7 @@ exports.create = function(req, res, next) {
         entity_id: req.session.entity_id,
         name: req.body.name,
         dueDate: req.body.dueDate,
-        base_questionnaire_id: 0	
+        base_questionnaire_id: 0
       };
       const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
       setupQuestionnaireDataService.create(data)
@@ -67,7 +67,8 @@ exports.addMetricToMetricTable = function(req, res, next) {
 };
 
 exports.linkMetricToQuestionnaire = function(req, res, next) {
-  var questionnaire_id = req.params.id;
+  var questionnaire_id = req.params.questionnaire_id;
+  console.log(questionnaire_id);
   var setupQuestionnaireDataService;
   req.getServices()
     .then(function(services) {
