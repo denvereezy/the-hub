@@ -13,7 +13,7 @@ exports.create = function(req, res, next) {
       setupQuestionnaireDataService.create(data)
         .then(function(results) {
           var id = results.insertId;
-          req.flash('success', 'Sign up was successful');
+          req.flash('success', 'Successfully created questionnaire');
           res.redirect('/questionnaire/setup/step2/' + id);
         })
     })
