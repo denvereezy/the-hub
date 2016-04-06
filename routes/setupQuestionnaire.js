@@ -67,8 +67,7 @@ exports.addMetricToMetricTable = function(req, res, next) {
 };
 
 exports.linkMetricToQuestionnaire = function(req, res, next) {
-  var questionnaire_id = req.params.questionnaire_id;
-  console.log(questionnaire_id);
+  var questionnaire_id = req.params.id;
   var setupQuestionnaireDataService;
   req.getServices()
     .then(function(services) {
