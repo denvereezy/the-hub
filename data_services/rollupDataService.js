@@ -3,7 +3,7 @@ const QueryService = require('../data_services/query-service');
 module.exports = function(connection) {
   const queryService = new QueryService(connection);
   this.rollupMetrics = function(base_questionnaire_id) {
-    return queryService.executeQuery('SELECT questionnaire.id as questionnaire_id, name, sum(value) as value, title, description, metric_id, questionnaire_metric.id as questionnaire_metric_id FROM questionnaire inner join questionnaire_metric on questionnaire_id = questionnaire.id inner join metric on questionnaire_metric.metric_id = metric.id WHERE status = \'answered\' group by metric_id, name, title, description, questionnaire_id, questionnaire_metric_id', base_questionnaire_id);
+    return queryService.executeQuery('SELECT sum(value) as value, title, description, metric_id FROM questionnaire inner join questionnaire_metric on questionnaire_id = questionnaire.id inner join metric on questionnaire_metric.metric_id = metric.id WHERE status = \'answered\' and base_questionnaire_id = ? group by metric_id, title, description', base_questionnaire_id);
   };
 
   this.releaseMetricsToDonor = function(base_questionnaire_id) {
