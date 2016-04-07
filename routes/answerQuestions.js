@@ -64,6 +64,7 @@ exports.releaseAnswersToDonor = function(req, res, next) {
   req.getServices()
     .then(function(services) {
       var base_questionnaire_id = req.params.base_questionnaire_id;
+      console.log(base_questionnaire_id);
       const rollupDataService = services.rollupDataService;
       rollupDataService.releaseMetricsToDonor(base_questionnaire_id)
         .then(function(results) {
