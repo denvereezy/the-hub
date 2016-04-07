@@ -83,6 +83,7 @@ app.post('/questionnaire/allocate/:id', login.userCheck, allocate.allocate);
 app.get('/dashboard', login.userCheck, viewQuestionnaire.show);
 app.get('/questionnaire/questions/view/:id', login.userCheck, questions.show);
 app.get('/questionnaire/:id/questions/:base_questionnaire_id/results', login.userCheck, questions.metricResults);
+app.get('/questionnaire/:questionnaire_id/questions/results', login.userCheck, questions.donorMetricResults);
 app.get('/questionnaire/questions/:questionnaire_id', login.userCheck, answerQuestionnaire.showQuestions);
 app.post('/questionnaire/questions/view/:questionnaire_id', login.userCheck, setupQuestionnaire.linkMetricToQuestionnaire);
 app.post('/questionnaire/facilitatorQuestions/link/:questionnaire_id', login.userCheck, questions.linkFacilitatorMetricsToQuestionnaire);
