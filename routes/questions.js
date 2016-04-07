@@ -71,8 +71,8 @@ exports.donorMetricResults = function(req, res, next) {
   req.getServices()
     .then(function(services) {
       const rollupDataService = services.rollupDataService;
-        rollupDataService.donorMetrics(questionnaire_id),
-        function(values) {
+        rollupDataService.donorMetrics(questionnaire_id)
+        .then(function(values) {
           res.render('donor-questionnaire-results', {
             values: values,
             questionnaire_id: questionnaire_id,
