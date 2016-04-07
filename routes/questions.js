@@ -64,6 +64,29 @@ exports.metricResults = function(req, res, next) {
     });
 };
 
+exports.donorMetricResults = function(req, res, next) {
+  var questionnaire_id = req.params.questionnaire_id;
+  var entity_id = req.session.entity_id;
+  const donor = req.session.type === 'Donor';
+  req.getServices()
+    .then(function(services) {
+      const rollupDataService = services.rollupDataService;
+        rollupDataService.donorMetrics(questionnaire_id),
+        function(values) {
+          res.render('donor-questionnaire-results', {
+            values: values,
+            questionnaire_id: questionnaire_id,
+            donor: donor,
+            user: req.session.user,
+            entity: req.session.entity
+          });
+        });
+    })
+    .catch(function(err) {
+      next(err);
+    });
+};
+
 exports.edit = function(req, res, next) {
   req.getServices()
     .then(function(services) {
