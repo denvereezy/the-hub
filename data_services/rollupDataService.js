@@ -25,7 +25,7 @@ console.log("base_questionnaire_id " + base_questionnaire_id);
 
   };
 
-  this.donorMetrics = function(id) {
-    return queryService.executeQuery('SELECT  questionnaire_id,metric_id, value, name,title, description FROM questionnaire inner join questionnaire_metric on questionnaire_id = questionnaire.id inner join metric on questionnaire_metric.metric_id = metric.id WHERE status = \'released\' and questionnaire_id = ?', id);
+  this.donorMetrics = function(questionnaire_id) {
+    return queryService.executeQuery('SELECT  questionnaire_id,metric_id, value, name,title, description FROM questionnaire inner join questionnaire_metric on questionnaire_id = questionnaire.id inner join metric on questionnaire_metric.metric_id = metric.id WHERE status = \'released\' and questionnaire_id = ?', questionnaire_id);
   };
 };
