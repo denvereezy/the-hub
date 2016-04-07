@@ -7,16 +7,15 @@ module.exports = function(connection) {
   };
 
   this.releaseMetricsToDonor = function(base_questionnaire_id) {
-
-    const findSQL = "SELECT  base_questionnaire_id, metric_id, sum(value) as value, name FROM questionnaire " +
+console.log("base_questionnaire_id " + base_questionnaire_id);
+    const findSQL = "SELECT  base_questionnaire_id, metric_id, sum(value) as value FROM questionnaire " +
       "inner join questionnaire_metric on questionnaire_id = questionnaire.id " +
-      "inner join metric on questionnaire_metric.metric_id = metric.id " +
-      "WHERE status = \'answered\' and base_questionnaire_id = ? group by metric_id, value, name, base_questionnaire_id";
+      "WHERE status = \'answered\' and base_questionnaire_id = 20 group by base_questionnaire_id, metric_id";
 
     const updateSQL = "update questionnaire_metric set value = ?, status = \'released\' where questionnaire_id = ? and metric_id = ?";
 
     return queryService
-      .executeQuery(findSQL, [base_questionnaire_id])
+      .executeQuery(findSQL, base_questionnaire_id)
       .mapSeries(function(metricDetails) {
         return queryService.executeQuery(updateSQL, [metricDetails.value,
           metricDetails.base_questionnaire_id,
