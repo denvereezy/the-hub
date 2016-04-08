@@ -57,6 +57,7 @@ exports.addUser = function(req, res, next) {
       signupDataService.addUser(data)
         .then(function(results) {
           smtpConfig.sendMail(mailOpts);
+          req.flash('success', 'user added successfully');
           res.redirect('/users');
         })
     .catch(function(error) {
@@ -102,6 +103,7 @@ exports.delete = function(req, res, next) {
       const userDataService = services.userDataService;
       userDataService.deleteUser(id)
         .then(function(results) {
+          req.flash('success', 'user removed');
           res.redirect('/users');
         })
     })
