@@ -35,6 +35,7 @@ exports.answers = function(req, res, next) {
       const answerDataService = services.answerDataService;
       answerDataService.answeredMetrics(data, questionnaire_metric_id)
         .then(function(results) {
+          req.flash('success', 'question answered successfully');
           res.redirect('/questionnaire/questions/' + questionnaire_id);
         })
         .catch(function(error) {
