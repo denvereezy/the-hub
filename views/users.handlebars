@@ -4,6 +4,9 @@
     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Users</a></li>
   </ul>
   <div class="tab-content">
+    {{#if success}}
+    <p class='alert alert-success'>{{success}}</p>
+    {{/if}}
     <div role="tabpanel" class="tab-pane active" id="home">
       <form class="col-md-8" action="/users/add" method="post">
         <div class="form-group">
