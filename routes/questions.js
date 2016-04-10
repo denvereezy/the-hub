@@ -118,6 +118,7 @@ exports.update = function(req, res, next) {
       const questionDataService = services.questionDataService;
       questionDataService.updateMetric(data, id)
         .then(function(results) {
+          req.flash('success', 'Metric updated successfully');
           res.redirect('/dashboard');
         })
         .catch(function(err) {
