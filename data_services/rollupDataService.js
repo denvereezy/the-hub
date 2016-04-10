@@ -9,7 +9,7 @@ module.exports = function(connection) {
     this.releaseMetricsToDonor = function(base_questionnaire_id) {
         const findSQL = "SELECT  base_questionnaire_id, metric_id, sum(value) as value FROM questionnaire " +
             "inner join questionnaire_metric on questionnaire_id = questionnaire.id " +
-            "WHERE status = \'answered\' and base_questionnaire_id = 20 group by base_questionnaire_id, metric_id";
+            "WHERE status = \'answered\' and base_questionnaire_id = ? group by base_questionnaire_id, metric_id";
 
         const updateSQL = "update questionnaire_metric set value = ?, status = \'released\' where questionnaire_id = ? and metric_id = ?";
 
