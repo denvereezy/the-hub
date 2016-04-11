@@ -4,6 +4,8 @@ CREATE USER admin@localhost IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON the_hub.* TO admin@localhost;
 FLUSH PRIVILEGES;
 
+use the_hub;
+
 CREATE TABLE entity (
   id int not null auto_increment primary key,
   name varchar (100) not null,
