@@ -6,8 +6,7 @@ exports.create = function(req, res, next) {
       var data = {
         entity_id: req.session.entity_id,
         name: req.body.name,
-        dueDate: req.body.dueDate,
-        base_questionnaire_id: 0
+        dueDate: req.body.dueDate
       };
       const setupQuestionnaireDataService = services.setupQuestionnaireDataService;
       setupQuestionnaireDataService.create(data)
