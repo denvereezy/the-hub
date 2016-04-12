@@ -27,6 +27,7 @@ exports.userLogin = function(req, res, next) {
           bcrypt.compare(req.body.password, user.password, function(err, pass) {
             if (pass) {
               req.session.user = user.firstName;
+              req.session.email = user.email;
               req.session.role = user.role;
               req.session.entity_id = user.entity_id;
               req.session.entity = user.name;
