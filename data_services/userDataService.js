@@ -19,7 +19,7 @@ module.exports = function(connection) {
   const queryService = new QueryService(connection);
 
   this.showEntityUsers = function(entity_id, user) {
-    return queryService.executeQuery('select * from user where entity_id = ? and firstName != ?', [entity_id, user]);
+    return queryService.executeQuery('select * from user where entity_id = ? and email != ?', [entity_id, user]);
   };
 
   this.deleteUser = function(id) {
