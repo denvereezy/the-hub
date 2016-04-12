@@ -5,10 +5,11 @@ exports.showUsers = function(req, res, next) {
     req.getServices()
         .then(function(services) {
             const entity_id = req.session.entity_id;
-            const user = req.session.email;
+            const email = req.session.email;
+            const user = req.session.user;
             const entity = req.session.entity;
             const userDataService = services.userDataService;
-            userDataService.showEntityUsers(entity_id, user)
+            userDataService.showEntityUsers(entity_id, email)
                 .then(function(users) {
                     res.render('users', {
                         users: users,
