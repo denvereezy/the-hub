@@ -18,8 +18,8 @@ var encryptPassword = function(password) {
 module.exports = function(connection) {
   const queryService = new QueryService(connection);
 
-  this.showEntityUsers = function(entity_id, user) {
-    return queryService.executeQuery('select * from user where entity_id = ? and email != ?', [entity_id, user]);
+  this.showEntityUsers = function(entity_id, email) {
+    return queryService.executeQuery('select * from user where entity_id = ? and email != ?', [entity_id, email]);
   };
 
   this.deleteUser = function(id) {
