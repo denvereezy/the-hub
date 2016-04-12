@@ -5,8 +5,12 @@
   </ul>
   <div class="tab-content">
     {{#if messages.success}}
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <p class='alert alert-success alert-dismissable fade in'>{{messages.success}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{/if}}
+    {{#if messages.alert}}
+    <p class='alert alert-danger alert-dismissable fade in'>{{messages.alert}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     {{/if}}
     <div role="tabpanel" class="tab-pane active" id="home">
       <form class="col-md-8" action="/users/add" method="post">
