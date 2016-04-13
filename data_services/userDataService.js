@@ -34,8 +34,4 @@ module.exports = function(connection) {
       });
   };
 
-  this.checkEmailAvailablity = function() {
-    return queryService.executeQuery('select email from user');
-  };
-
 };
