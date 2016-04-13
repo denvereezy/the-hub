@@ -10,7 +10,7 @@ module.exports = function(connection) {
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(data.Password, salt, function(err, hash) {
           if (err) {
-            return console.log(err);
+            return err;
           }
           data.Password = hash;
           connection.query('insert into user set ?', data, function(err, results) {
