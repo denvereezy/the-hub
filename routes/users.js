@@ -116,7 +116,7 @@ exports.delete = function(req, res, next) {
             const userDataService = services.userDataService;
             userDataService.deleteUser(id)
                 .then(function(results) {
-                    req.flash('success', 'user removed');
+                    req.flash('success', 'user removed successfully');
                     res.redirect('/users');
                 })
         })
