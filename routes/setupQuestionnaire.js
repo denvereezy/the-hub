@@ -1,5 +1,3 @@
-const Promise = require('bluebird');
-
 exports.create = function(req, res, next) {
   req.getServices()
     .then(function(services) {
