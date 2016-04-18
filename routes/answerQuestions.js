@@ -1,5 +1,3 @@
-const Promise = require('bluebird');
-
 exports.showQuestions = function(req, res, next) {
   var questionnaire_id = req.params.questionnaire_id;
   var startup = req.session.type === 'Startup';
