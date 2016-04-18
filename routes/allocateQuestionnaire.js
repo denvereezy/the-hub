@@ -139,6 +139,4 @@ exports.allocateToSubEntity = function(req, res, next) {
           next(error);
         });
     });
-
-
 };
