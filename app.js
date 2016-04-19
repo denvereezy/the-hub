@@ -73,6 +73,7 @@ app.get('/', router.login);
 app.post('/login', login.userLogin);
 app.get('/account/verifyaccount/:token', router.verifyaccount);
 app.post('/user/confirm/:token',users.confirmUser);
+app.get('/root', superUser.showRequests);
 app.use(login.userCheck);
 app.get('/questionnaire/setup/step1', login.userCheck, router.questionnaire);
 app.post('/questionnaire/setup/step1/', login.userCheck, setupQuestionnaire.create);
@@ -101,6 +102,7 @@ app.get('/users', login.userCheck, users.showUsers);
 app.post('/users/add', login.userCheck, users.addUser);
 app.get('/users/delete/:id', login.userCheck, users.delete);
 app.get('/logout', router.logout);
+
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {
