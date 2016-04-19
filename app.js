@@ -18,6 +18,7 @@ const AllocateQuestionnaireDataService  = require('./data_services/allocateQuest
 const AnswerDataService                 = require('./data_services/answerDataService');
 const RollupDataService                 = require('./data_services/rollupDataService');
 const UserDataService                   = require('./data_services/userDataService');
+const SuperUserDataService              = require('./data_services/superUSerDataService');
 
 const signup               = require('./routes/signup');
 const setupQuestionnaire   = require('./routes/setupQuestionnaire');
@@ -29,6 +30,7 @@ const allocate             = require('./routes/allocateQuestionnaire');
 const router               = require('./routes/router');
 const rollup               = require('./routes/rolledUpData');
 const users                = require('./routes/users');
+const superUser            = require('./routes/superUser');
 
 const dbOptions = {
   host      : 'localhost',
@@ -48,7 +50,8 @@ const serviceSetupCallBack = function (connection) {
     allocateQuestionnaireDataService  : new AllocateQuestionnaireDataService(connection),
     answerDataService                 : new AnswerDataService(connection),
     rollupDataService                 : new RollupDataService(connection),
-    userDataService                   : new UserDataService(connection)
+    userDataService                   : new UserDataService(connection),
+    superUserDataService              : new SuperUserDataService(connection)
   }
 };
 
