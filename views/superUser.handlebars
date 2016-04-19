@@ -1,0 +1,32 @@
+<div>
+  <div class="tab-content">
+    {{#if messages.success}}
+    <p class='alert alert-success alert-dismissable fade in'>{{messages.success}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{/if}}
+    {{#if messages.alert}}
+    <p class='alert alert-danger alert-dismissable fade in'>{{messages.alert}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{/if}}
+
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        {{#each users}}
+          <tr>
+            <td>{{firstName}}</td>
+            <td>{{email}}</td>
+            <td>{{status}}</td>
+            <td><a href="/users/delete/{{id}}"><button class="btn btn-success">Accept</button></a>
+            <a href="/users/delete/{{id}}"><button class="btn btn-primary">Reject</button></a></td>
+          </tr>
+        {{/each}}
+      </table>
+  </div>
+</div>
