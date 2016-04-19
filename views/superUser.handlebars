@@ -18,11 +18,11 @@
             <th>Action</th>
           </tr>
         </thead>
-        {{#each users}}
+        {{#each requests}}
           <tr>
-            <td>{{firstName}}</td>
+            <td>{{firstname}}</td>
             <td>{{email}}</td>
-            <td>{{status}}</td>
+            <td>{{name}}</td>
             <td><a href="/users/delete/{{id}}"><button class="btn btn-success">Accept</button></a>
             <a href="/users/delete/{{id}}"><button class="btn btn-primary">Reject</button></a></td>
           </tr>
