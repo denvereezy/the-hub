@@ -19,8 +19,8 @@ exports.add = function(req, res, next) {
                         var user = {
                             email: req.body.email,
                             role: 'admin',
-                            status: 'active',
-                            password: req.body.password,
+                            status: 'pending',
+                            password: '',
                             firstName: req.body.firstName,
                             lastName: req.body.lastName
                         };
@@ -32,7 +32,7 @@ exports.add = function(req, res, next) {
                                 return signupDataService.addUser(user);
                             })
                             .then(function(results) {
-                                req.flash('success', 'Sign up was successful');
+                                // req.flash('success', 'Sign up was successful');
                                 return res.redirect('/');
                             })
                             .catch(function(err) {
