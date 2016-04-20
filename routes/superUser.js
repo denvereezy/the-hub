@@ -15,3 +15,33 @@ exports.showRequests = function(req, res, next) {
             next(err);
         });
 };
+
+exports.rejectRequest = function(req, res, next) {
+    req.getServices()
+        .then(function(services) {
+            var id = req.params.id;
+            const superUserDataService = services.superUserDataService;
+            superUserDataService.rejectRequest(id)
+                .then(function(results) {
+                    res.redirect('/root');
+                })
+                .catch(function(err) {
+                    next(err);
+                });
+        });
+};
+
+exports.acceptRequest = function(req, res, next) {
+    req.getServices()
+        .then(function(services) {
+            var id = req.params.id;
+            const superUserDataService = services.superUserDataService;
+            superUserDataService.acceptRequest(id)
+                .then(function(results) {
+                    res.redirect('/root');
+                })
+                .catch(function(err) {
+                    next(err);
+                });
+        });
+};
