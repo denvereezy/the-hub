@@ -7,7 +7,8 @@ exports.showRequests = function(req, res, next) {
                     res.render('superUser', {
                         requests: requests,
                         user: req.session.user,
-                        entity: req.session.entity
+                        entity: req.session.entity,
+                        layout:false
                     });
                 })
         })
