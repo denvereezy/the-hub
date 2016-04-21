@@ -73,7 +73,6 @@ app.get('/', router.login);
 app.post('/login', login.userLogin);
 app.get('/account/verifyaccount/:token', router.verifyaccount);
 app.post('/user/confirm/:token',users.confirmUser);
-app.get('/root', superUser.showRequests);
 app.use(login.userCheck);
 app.get('/questionnaire/setup/step1', login.userCheck, router.questionnaire);
 app.post('/questionnaire/setup/step1/', login.userCheck, setupQuestionnaire.create);
@@ -102,6 +101,11 @@ app.get('/users', login.userCheck, users.showUsers);
 app.post('/users/add', login.userCheck, users.addUser);
 app.get('/users/delete/:id', login.userCheck, users.delete);
 app.get('/logout', router.logout);
+
+app.use(login.checkSuperUser);
+app.get('/root',login.checkSuperUser, superUser.showRequests);
+app.get('/users/request/accept/:user_id',login.checkSuperUser, superUser.acceptRequest);
+app.get('/users/request/reject/:user_id',login.checkSuperUser, superUser.rejectRequest);
 
 
 const port = process.env.PORT || 8080;
