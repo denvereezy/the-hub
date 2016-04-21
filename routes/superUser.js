@@ -19,7 +19,7 @@ exports.showRequests = function(req, res, next) {
 exports.rejectRequest = function(req, res, next) {
     req.getServices()
         .then(function(services) {
-            var id = req.params.id;
+            var id = req.params.user_id;
             const superUserDataService = services.superUserDataService;
             superUserDataService.rejectRequest(id)
                 .then(function(results) {
@@ -34,7 +34,7 @@ exports.rejectRequest = function(req, res, next) {
 exports.acceptRequest = function(req, res, next) {
     req.getServices()
         .then(function(services) {
-            var id = req.params.id;
+            var id = req.params.user_id;
             const superUserDataService = services.superUserDataService;
             superUserDataService.acceptRequest(id)
                 .then(function(results) {
