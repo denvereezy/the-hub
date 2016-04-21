@@ -15,6 +15,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Company</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -23,11 +24,12 @@
                     <td>{{firstname}}</td>
                     <td>{{email}}</td>
                     <td>{{name}}</td>
+                    <td>{{status}}</td>
                     <td>
-                        <a href="/users/request/accept/{{id}}">
+                        <a href="/users/request/accept/{{user_id}}">
                             <button class="btn btn-success">Accept</button>
                         </a>
-                        <a href="/users/request/reject/{{id}}">
+                        <a href="/users/request/reject/{{user_id}}">
                             <button class="btn btn-primary">Reject</button>
                         </a>
                     </td>
