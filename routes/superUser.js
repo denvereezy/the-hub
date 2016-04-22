@@ -1,3 +1,6 @@
+const nodemailer = require('nodemailer');
+const uuid = require('node-uuid');
+
 exports.showRequests = function(req, res, next) {
     req.getServices()
         .then(function(services) {
@@ -8,7 +11,7 @@ exports.showRequests = function(req, res, next) {
                         requests: requests,
                         user: req.session.user,
                         entity: req.session.entity,
-                        layout:false
+                        layout: false
                     });
                 })
         })
@@ -17,27 +20,19 @@ exports.showRequests = function(req, res, next) {
         });
 };
 
-exports.rejectRequest = function(req, res, next) {
+exports.handleRequest = function(req, res, next) {
     req.getServices()
         .then(function(services) {
             var id = req.params.user_id;
-            const superUserDataService = services.superUserDataService;
-            superUserDataService.rejectRequest(id)
-                .then(function(results) {
-                    res.redirect('/root');
-                })
-                .catch(function(err) {
-                    next(err);
-                });
-        });
-};
+            var status;
 
-exports.acceptRequest = function(req, res, next) {
-    req.getServices()
-        .then(function(services) {
-            var id = req.params.user_id;
+            if (req.body.status === 'Accept') {
+                status = 'active';
+            } else if (req.body.status === 'Reject') {
+                status = 'rejected';
+            };
             const superUserDataService = services.superUserDataService;
-            superUserDataService.acceptRequest(id)
+            superUserDataService.handleRequest(status, id)
                 .then(function(results) {
                     res.redirect('/root');
                 })
