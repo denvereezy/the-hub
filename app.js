@@ -69,6 +69,7 @@ app.set('view engine', 'handlebars');
 
 app.get('/signup', router.signup);
 app.post('/signup/add', signup.add);
+app.get('/message',router.message);
 app.get('/', router.login);
 app.post('/login', login.userLogin);
 app.get('/account/verifyaccount/:token', router.verifyaccount);
