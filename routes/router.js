@@ -30,3 +30,9 @@ exports.verifyaccount = function(req, res) {
         token: req.params.token
     });
 };
+
+exports.message = function(req, res) {
+    res.render('message', {
+      layout: false
+    });
+};
