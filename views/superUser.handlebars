@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Login</title>
+    <title>Root</title>
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script type="text/javascript">
@@ -81,12 +81,10 @@
                             <td>{{name}}</td>
                             <td>{{status}}</td>
                             <td>
-                                <a href="/users/request/accept/{{user_id}}">
-                                    <button class="btn btn-success">Accept</button>
-                                </a>
-                                <a href="/users/request/reject/{{user_id}}">
-                                    <button class="btn btn-primary">Reject</button>
-                                </a>
+                              <form class="" action="/users/request/verify/{{user_id}}" method="post">
+                                    <input type="submit" class="btn btn-success" name="status" value="Accept"/>
+                                    <input type="submit" class="btn btn-primary" name="status" value="Reject"/>
+                              </form>
                             </td>
                         </tr>
                     {{/each}}
