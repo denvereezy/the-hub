@@ -7,11 +7,7 @@ module.exports = function(connection) {
         return queryService.executeQuery('select user.id as user_id, firstname, email, name, status from user inner join entity on user.entity_id = entity.id where status = \'pending\' or status = \'rejected\'');
     };
 
-    this.acceptRequest = function(id) {
-        return queryService.executeQuery('update user set status = \'active\' where id = ?', id);
-    };
-
-    this.rejectRequest = function(id) {
-        return queryService.executeQuery('update user set status = \'rejected\' where id = ?', id);
+    this.handleRequest = function(status, id) {
+        return queryService.executeQuery('update user set status = ? where id = ?', [status, id]);
     };
 };
