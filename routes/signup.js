@@ -33,7 +33,7 @@ exports.add = function(req, res, next) {
                             })
                             .then(function(results) {
                                 // req.flash('success', 'Sign up was successful');
-                                return res.redirect('/');
+                                return res.redirect('/message');
                             })
                             .catch(function(err) {
                                 next(err);
