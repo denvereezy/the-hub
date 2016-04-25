@@ -1,9 +1,9 @@
 {{#startup}}
-{{#if messages.success}}
-    <div class="alert alert-success alert-dismissable fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{#if messages.success}}
+        <div class="alert alert-success alert-dismissable fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <p>{{messages.success}}</p>
-    </div>
+        </div>
     {{/if}}
 
     <table class="table table-striped">
