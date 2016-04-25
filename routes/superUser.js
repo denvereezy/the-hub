@@ -28,6 +28,23 @@ exports.handleRequest = function(req, res, next) {
 
             if (req.body.status === 'Accept') {
                 status = 'active';
+                var mailOpts, smtpConfig;
+
+                smtpConfig = nodemailer.createTransport('SMTP', {
+                    service: 'Gmail',
+                    auth: {
+                        user: 'APP EMAIL',
+                        pass: 'APP PASSWORD'
+                    }
+                });
+
+                mailOpts = {
+                    from: 'Findivity',
+                    to: data.email,
+                    subject: 'invite to join',
+                    text: data.firstName 'your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
+                };
+
             } else if (req.body.status === 'Reject') {
                 status = 'rejected';
             };
