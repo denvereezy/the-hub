@@ -1,88 +1,88 @@
 {{#facilitator}}
-<div>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Questionnaire Questions</a></li>
-    <li role="presentation"><a href="#linkquestions" aria-controls="linkquestions" role="tab" data-toggle="tab">Link questions to questionnaire</a></li>
-    <li role="presentation"><a href="#newquestions" aria-controls="newquestions" role="tab" data-toggle="tab">Add new question(s)</a></li>
-  </ul>
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="questions">
-  {{#if questionnaire.parent_questionnaire_id}}
-    <form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
-  {{else}}
-    <form method="post" action="/questionnaire/allocate/down/{{questionnaire_id}}">
-  {{/if}}
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Questionnaire Questions</a></li>
+            <li role="presentation"><a href="#linkquestions" aria-controls="linkquestions" role="tab" data-toggle="tab">Link questions to questionnaire</a></li>
+            <li role="presentation"><a href="#newquestions" aria-controls="newquestions" role="tab" data-toggle="tab">Add new question(s)</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="questions">
+                {{#if questionnaire.parent_questionnaire_id}}
+                    <form method="post" action="/questionnaire/questions/view/{{questionnaire_id}}">
+                {{else}}
+                    <form method="post" action="/questionnaire/allocate/down/{{questionnaire_id}}">
+                {{/if}}
 
-  <h3>Select questions entity must answer:</h3>
-  <table class="table table-striped">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Question</th>
-        <th>Description</th>
-        <th>Select</th>
-      </tr>
-    </thead>
+                <h3>Select questions entity must answer:</h3>
+                <table class="table table-striped">
 
-    {{#each questions}}
-      <tr>
-        <td>{{title}}</td>
-        <td>{{description}}</td>
-        <td>
-          <input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}" />
-        </td>
-      </tr>
-    {{/each}}
-  </table>
-  <br/>
-  <label for="input">Send questionnaire to:</label>
-  <select name='entity_id' class="form-control">
-    {{#each entities}}
-      <option type='text' class="form-control" name="entity_id" value='{{id}}' id="input">{{name}}</option>
-    {{/each}}
-  </select>
-  <br />
-  <br/>
-  <button class="btn btn-success" onclick="goBack()">back</button>
-  <input type="submit" class="btn btn-primary pull-right" value="Send" />
-  <br/> </br>
-  </form>
-  </div>
-  <div role="tabpanel" class="tab-pane" id="newquestions">
-    <form action="/questionnaire/questions/add/{{questionnaire_id}}" method="POST">
-      <h4>Title</h4>
-      <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
-      <br />
-      <br />
-      <h4>Description </h4>
-      <textarea name="description" class="form-control" rows="5" cols="50" placeholder="Enter description of question" required></textarea>
-      <br />
-      <br />
-      <button class="btn btn-success" onclick="goBack()">back</button>
-      <input type="submit" class="btn btn-primary pull-right" value="Create Question">
-    </form>
-  </div>
-    <div role="tabpanel" class="tab-pane" id="linkquestions">
-      <form action="/questionnaire/facilitatorQuestions/link/{{questionnaire_id}}" method="post">
-      <table class="table table-striped">
-        <thead class="thead-inverse">
-          <tr>
-            <th>Question</th>
-            <th>Description</th>
-            <th>Select</th>
-          </tr>
-        </thead>
-      {{#each facilitatorQuestions}}
-        <tr>
-          <td>{{title}}</td>
-          <td>{{description}}</td>
-          <td>
-            <input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}" />
-          </td>
-        </tr>
-      {{/each}}
-      <table>
-        <input type="submit" class="btn btn-primary pull-right" value="link" />
-      </form>
-    </div>
+                        <tr>
+                            <th>Question</th>
+                            <th>Description</th>
+                            <th>Select</th>
+                        </tr>
+                    </thead>
+
+                    {{#each questions}}
+                        <tr>
+                            <td>{{title}}</td>
+                            <td>{{description}}</td>
+                            <td>
+                                <input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}" />
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+                <br/>
+                <label for="input">Send questionnaire to:</label>
+                <select name='entity_id' class="form-control">
+                    {{#each entities}}
+                        <option type='text' class="form-control" name="entity_id" value='{{id}}' id="input">{{name}}</option>
+                    {{/each}}
+                </select>
+                <br />
+                <br/>
+                <button class="btn btn-success" onclick="goBack()">back</button>
+                <input type="submit" class="btn btn-primary pull-right" value="Send" />
+                <br/> </br>
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="newquestions">
+                <form action="/questionnaire/questions/add/{{questionnaire_id}}" method="POST">
+                    <h4>Title</h4>
+                    <textarea name="title" class="form-control" rows="5" cols="50" placeholder="Enter question here" required></textarea>
+                    <br />
+                    <br />
+                    <h4>Description </h4>
+                    <textarea name="description" class="form-control" rows="5" cols="50" placeholder="Enter description of question" required></textarea>
+                    <br />
+                    <br />
+                    <button class="btn btn-success" onclick="goBack()">back</button>
+                    <input type="submit" class="btn btn-primary pull-right" value="Create Question">
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="linkquestions">
+                <form action="/questionnaire/facilitatorQuestions/link/{{questionnaire_id}}" method="post">
+                    <table class="table table-striped">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Question</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        {{#each facilitatorQuestions}}
+                            <tr>
+                                <td>{{title}}</td>
+                                <td>{{description}}</td>
+                                <td>
+                                    <input type="checkbox" class="form-control" name="selectedMetrics" value="{{metric_id}}" />
+                                </td>
+                            </tr>
+                        {{/each}}
+                        <table>
+                            <input type="submit" class="btn btn-primary pull-right" value="link" />
+                </form>
+            </div>
 {{/facilitator}}
