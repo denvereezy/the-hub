@@ -1,172 +1,180 @@
 {{#if messages.success}}
     <div class="alert alert-success alert-dismissable fade in" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p>{{messages.success}}</p>
+        <p>{{messages.success}}</p>
     </div>
-    {{/if}}
+{{/if}}
 {{#donor}}
-  <div>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Questionnaire Results</a></li>
-      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Setup Questionnaire</a></li>
-      <li role="presentation"><a href="#metrics" aria-controls="metrics" role="tab" data-toggle="tab">Metrics</a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="home">
-        <table class="table table-striped">
-          <thead class="thead-inverse">
-            <tr>
-              <th>Questionnaire name</th>
-              <th>Due Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          {{#each donorQuestionnaires}}
-            <tr>
-              <td>{{name}}</td>
-              <td>{{dueDate}}</td>
-              <td style="width: 12%;">
-                <a href="/questionnaire/{{id}}/questions/results">
-                  <button class="btn btn-primary">View</button>
-                </a>
-              </td>
-            </tr>
-          {{/each}}
-        </table>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="profile">
-        <form class="col-md-8" action="/questionnaire/setup/step1" method="POST">
-          <h2>Setup Questionnaire</h2>
-          <div class="form-group">
-            <label>Questionnaire Name</label>
-            <input type="text" class="form-control" name="name" required/>
-            <label>Due date</label>
-            <input type="date" class="form-control" name="dueDate" required/>
-          </div>
-          <input type="submit" class="btn btn-primary pull-right">
-        </form>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="metrics">
-          <table class="table table-striped">
-            <thead class="thead-inverse">
-              <tr>
-                <th>Question</th>
-                <th>Description</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            {{#each metricsList}}
-              <tr>
-                <td>{{title}}</td>
-                <td>{{description}}</td>
-                <td><a href="/questionnaire/question/{{id}}/edit"><button class="btn btn-primary">Edit</button></a></td>
-              </tr>
-            {{/each}}
-          </table>
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Questionnaire Results</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Setup Questionnaire</a></li>
+            <li role="presentation"><a href="#metrics" aria-controls="metrics" role="tab" data-toggle="tab">Metrics</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <table class="table table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Questionnaire name</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {{#each donorQuestionnaires}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{dueDate}}</td>
+                            <td style="width: 12%;">
+                                <a href="/questionnaire/{{id}}/questions/results">
+                                    <button class="btn btn-primary">View</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <form class="col-md-8" action="/questionnaire/setup/step1" method="POST">
+                    <h2>Setup Questionnaire</h2>
+                    <div class="form-group">
+                        <label>Questionnaire Name</label>
+                        <input type="text" class="form-control" name="name" required/>
+                        <label>Due date</label>
+                        <input type="date" class="form-control" name="dueDate" required/>
+                    </div>
+                    <input type="submit" class="btn btn-primary pull-right">
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="metrics">
+                <table class="table table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Question</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {{#each metricsList}}
+                        <tr>
+                            <td>{{title}}</td>
+                            <td>{{description}}</td>
+                            <td>
+                                <a href="/questionnaire/question/{{id}}/edit">
+                                    <button class="btn btn-primary">Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <ul>
         </div>
-        <ul>
-      </div>
     </div>
-  </div>
+    </div>
 {{/donor}}
 {{#facilitator}}
-  <div>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Received Questionnaires</a></li>
-      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Questionnaire Results</a></li>
-      <li role="presentation"><a href="#metrics" aria-controls="metrics" role="tab" data-toggle="tab">Metrics</a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="home">
-        <table class="table table-striped">
-          <thead class="thead-inverse">
-            <tr>
-              <th>Questionnaire name</th>
-              <th>Due Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          {{#each questionnaire}}
-            <tr>
-              <td>{{name}}</td>
-              <td>{{dueDate}}</td>
-              <td>
-                <a href="/questionnaire/questions/view/{{id}}">
-                  <button class="btn btn-primary">Show</button>
-                </a>
-              </td>
-            </tr>
-          {{/each}}
-        </table>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="profile">
-        <table class="table table-striped">
-          <thead class="thead-inverse">
-            <tr>
-              <th>Questionnaire name</th>
-              <th>Due Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          {{#each facilitatorQuestionnaire}}
-            <tr>
-              <td>{{name}}</td>
-              <td>{{dueDate}}</td>
-              <td>
-                <a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">
-                  <button class="btn btn-primary">View</button>
-                </a>
-              </td>
-            </tr>
-          {{/each}}
-        </table>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="metrics">
-          <table class="table table-striped">
-            <thead class="thead-inverse">
-              <tr>
-                <th>Question</th>
-                <th>Description</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            {{#each metricsList}}
-              <tr>
-                <td>{{title}}</td>
-                <td>{{description}}</td>
-                <td><a href="/questionnaire/question/{{id}}/edit"><button class="btn btn-primary">Edit</button></a></td>
-              </tr>
-            {{/each}}
-          </table>
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Received Questionnaires</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Questionnaire Results</a></li>
+            <li role="presentation"><a href="#metrics" aria-controls="metrics" role="tab" data-toggle="tab">Metrics</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <table class="table table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Questionnaire name</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {{#each questionnaire}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{dueDate}}</td>
+                            <td>
+                                <a href="/questionnaire/questions/view/{{id}}">
+                                    <button class="btn btn-primary">Show</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <table class="table table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Questionnaire name</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {{#each facilitatorQuestionnaire}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{dueDate}}</td>
+                            <td>
+                                <a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">
+                                    <button class="btn btn-primary">View</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="metrics">
+                <table class="table table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Question</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {{#each metricsList}}
+                        <tr>
+                            <td>{{title}}</td>
+                            <td>{{description}}</td>
+                            <td>
+                                <a href="/questionnaire/question/{{id}}/edit">
+                                    <button class="btn btn-primary">Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
         </div>
     </div>
-  </div>
 {{/facilitator}}
 
 {{#startup}}
-  <h2>Received Questionnaires</h2>
-  <table class="table table-striped">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Questionnaire name</th>
-        <th>Due Date</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    {{#each questionnaire}}
-      <tr>
-        <td>{{name}}</td>
-        <td>{{dueDate}}</td>
-        <td style="width: 12%;">
-          <a href="/questionnaire/questions/{{id}}">
-            <button class="btn btn-primary">Answer</button>
-          </a>
-        </td>
-      </tr>
-    {{/each}}
-  </table>
+    <h2>Received Questionnaires</h2>
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Questionnaire name</th>
+                <th>Due Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        {{#each questionnaire}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{dueDate}}</td>
+                <td style="width: 12%;">
+                    <a href="/questionnaire/questions/{{id}}">
+                        <button class="btn btn-primary">Answer</button>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
 {{/startup}}
