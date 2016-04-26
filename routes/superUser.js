@@ -41,16 +41,33 @@ exports.handleRequest = function(req, res, next) {
                 mailOpts = {
                     from: 'Findivity',
                     to: data.email,
-                    subject: 'invite to join',
-                    text: data.firstName 'your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
+                    subject: 'invite to join'
+                    // text: data.firstName 'you÷r request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
                 };
 
             } else if (req.body.status === 'Reject') {
                 status = 'rejected';
+                var mailOpts, smtpConfig;
+
+                smtpConfig = nodemailer.createTransport('SMTP', {
+                    service: 'Gmail',
+                    auth: {
+                        user: 'APP EMAIL',
+                        pass: 'APP PASSWORD'
+                    }
+                });
+
+                mailOpts = {
+                    from: 'Findivity',
+                    to: data.email,
+                    subject: 'invite to join'
+                    // text: data.firstName 'you÷r request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
+                };
             };
             const superUserDataService = services.superUserDataService;
             superUserDataService.handleRequest(status, id)
                 .then(function(results) {
+                  smtpConfig.sendMail(mailOpts);
                     res.redirect('/root');
                 })
                 .catch(function(err) {
