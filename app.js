@@ -105,7 +105,7 @@ app.get('/logout', router.logout);
 
 app.use(login.checkSuperUser);
 app.get('/root',login.checkSuperUser, superUser.showRequests);
-app.post('/users/request/verify/:user_id',login.checkSuperUser, superUser.handleRequest);
+app.post('/users/request/verify/:user_id/:firstname/:email',login.checkSuperUser, superUser.handleRequest);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {
