@@ -24,7 +24,10 @@ exports.handleRequest = function(req, res, next) {
     req.getServices()
         .then(function(services) {
             var id = req.params.user_id;
-            var status;
+            var data = {
+              status: '',
+              token: uuid.v4()
+            };
             var mailOpts, smtpConfig;
 
             smtpConfig = nodemailer.createTransport('SMTP', {
@@ -35,7 +38,7 @@ exports.handleRequest = function(req, res, next) {
                 }
             });
             if (req.body.status === 'Accept') {
-                status = 'active';
+                data.status = 'active';
                 mailOpts = {
                     from: 'Findivity',
                     to: req.params.email,
@@ -44,7 +47,7 @@ exports.handleRequest = function(req, res, next) {
                 };
 
             } else if (req.body.status === 'Reject') {
-                status = 'rejected';
+                data.status = 'rejected';
                 mailOpts = {
                     from: 'Findivity',
                     to: req.params.email,
@@ -53,7 +56,7 @@ exports.handleRequest = function(req, res, next) {
                 };
             };
             const superUserDataService = services.superUserDataService;
-            superUserDataService.handleRequest(status, id)
+            superUserDataService.handleRequest(data, id)
                 .then(function(results) {
                     smtpConfig.sendMail(mailOpts);
                     res.redirect('/root');
