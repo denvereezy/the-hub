@@ -81,7 +81,7 @@
                             <td>{{name}}</td>
                             <td>{{status}}</td>
                             <td>
-                              <form class="" action="/users/request/verify/{{user_id}}" method="post">
+                              <form class="" action="/users/request/verify/{{user_id}}/{{firstname}}/{{email}}" method="post">
                                     <input type="submit" class="btn btn-success" name="status" value="Accept"/>
                                     <input type="submit" class="btn btn-primary" name="status" value="Reject"/>
                               </form>
