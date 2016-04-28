@@ -42,7 +42,7 @@ exports.handleRequest = function(req, res, next) {
                 mailOpts = {
                     from: 'Findivity',
                     to: req.params.email,
-                    subject: 'Request to join'
+                    subject: 'Request to join',
                     text: req.params.firstname + ' your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
                 };
 
@@ -51,7 +51,7 @@ exports.handleRequest = function(req, res, next) {
                 mailOpts = {
                     from: 'Findivity',
                     to: req.params.email,
-                    subject: 'Request to join'
+                    subject: 'Request to join',
                     text: req.params.firstname + ' your request to join Findivity was unsuccesful.'
                 };
             };
