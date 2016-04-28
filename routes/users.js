@@ -96,13 +96,21 @@ exports.confirmUser = function(req, res, next) {
                 req.flash('alert', 'Passwords does not match, please try again');
                 res.redirect('/account/verifyaccount/' + token)
             }
-
             const userDataService = services.userDataService;
+            UserDataService.checkToken(token)
+            .then(function(user){
+              match = user[0];
+              if (token !== match){
+                req.flash('alert', 'Token has expired, please try again');
+                res.redirect('/account/verifyaccount/' + token)
+              } else {
             userDataService.confirmAccount(user, token)
                 .then(function(results) {
                     req.flash('success', 'Password reset was successful');
                     res.redirect('/');
                 })
+              })
+            };
         })
         .catch(function(error) {
             next(error);
