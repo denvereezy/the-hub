@@ -1,39 +1,39 @@
 {{#facilitator}}
-  <h2>Questionnaires</h2>
+    <h2>Questionnaires</h2>
 
-  <table class="table table-striped">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Questionnaire name</th>
-        <th>Due Date</th>
-      </tr>
-    </thead>
-    {{#each facilitatorQuestionnaire}}
-      <tr>
-        <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">{{name}}</a></td>
-        <td>{{dueDate}}</td>
-      </tr>
-    {{/each}}
-  </table>
-  <button class="btn btn-success" onclick="goBack()">back</button>
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Questionnaire name</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        {{#each facilitatorQuestionnaire}}
+            <tr>
+                <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">{{name}}</a></td>
+                <td>{{dueDate}}</td>
+            </tr>
+        {{/each}}
+    </table>
+    <button class="btn btn-success" onclick="goBack()">back</button>
 {{/facilitator}}
 
 {{#donor}}
-  <h2>Questionnaires</h2>
+    <h2>Questionnaires</h2>
 
-  <table class="table table-striped">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Questionnaire name</th>
-        <th>Due Date</th>
-      </tr>
-    </thead>
-    {{#each donorQuestionnaires}}
-      <tr>
-        <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">{{name}}</a></td>
-        <td>{{dueDate}}</td>
-      </tr>
-    {{/each}}
-  </table>
-  <button class="btn btn-success" onclick="goBack()">back</button>
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Questionnaire name</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        {{#each donorQuestionnaires}}
+            <tr>
+                <td><a href="/questionnaire/{{id}}/questions/{{base_questionnaire_id}}/results">{{name}}</a></td>
+                <td>{{dueDate}}</td>
+            </tr>
+        {{/each}}
+    </table>
+    <button class="btn btn-success" onclick="goBack()">back</button>
 {{/donor}}
