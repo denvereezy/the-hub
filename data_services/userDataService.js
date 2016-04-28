@@ -26,6 +26,10 @@ module.exports = function(connection) {
         return queryService.executeQuery('delete from user where id = ?', id);
     };
 
+    this.checkToken = function(token) {
+      return queryService.executeQuery('select * from user where token = ?', token);
+    };
+
     this.confirmAccount = function(user, token) {
         return encryptPassword(user.password)
             .then(function(encryptedPassword) {
