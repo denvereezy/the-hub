@@ -18,7 +18,7 @@ const AllocateQuestionnaireDataService  = require('./data_services/allocateQuest
 const AnswerDataService                 = require('./data_services/answerDataService');
 const RollupDataService                 = require('./data_services/rollupDataService');
 const UserDataService                   = require('./data_services/userDataService');
-const SuperUserDataService              = require('./data_services/superUSerDataService');
+const SuperUserDataService              = require('./data_services/superUserDataService');
 
 const signup               = require('./routes/signup');
 const setupQuestionnaire   = require('./routes/setupQuestionnaire');
