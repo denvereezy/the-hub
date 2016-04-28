@@ -1,47 +1,47 @@
 {{#donor}}
-{{#if success}}
-<p class="alert alert-success">{{success}}</p>
-{{/if}}
-  <h2>Questionnaire contains:</h2>
-  <table class="table table-striped">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Title</th>
-        <th>description</th>
-      </tr>
-    </thead>
-    {{#each questionnaire}}
-      <tr>
-        <td>{{title}}</td>
-        <td>{{description}}</td>
-      </tr>
-    {{/each}}
-  </table>
-  <a href="/dashboard">
-    <button class="btn btn-primary pull-right">Close</button>
-  </a>
+    {{#if success}}
+        <p class="alert alert-success">{{success}}</p>
+    {{/if}}
+    <h2>Questionnaire contains:</h2>
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Title</th>
+                <th>description</th>
+            </tr>
+        </thead>
+        {{#each questionnaire}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{description}}</td>
+            </tr>
+        {{/each}}
+    </table>
+    <a href="/dashboard">
+        <button class="btn btn-primary pull-right">Close</button>
+    </a>
 {{/donor}}
 
 {{#facilitator}}
-{{#if success}}
-<p class="alert alert-success">{{success}}</p>
-{{/if}}
-  <h2>Questionnaire contains:</h2>
-  <table class="table table-striped">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Title</th>
-        <th>description</th>
-      </tr>
-    </thead>
-    {{#each questionnaire}}
-      <tr>
-        <td>{{title}}</td>
-        <td>{{description}}</td>
-      </tr>
-    {{/each}}
-  </table>
-  <a href="/dashboard">
-    <button class="btn btn-primary pull-right">Close</button>
-  </a>
+    {{#if success}}
+        <p class="alert alert-success">{{success}}</p>
+    {{/if}}
+    <h2>Questionnaire contains:</h2>
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Title</th>
+                <th>description</th>
+            </tr>
+        </thead>
+        {{#each questionnaire}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{description}}</td>
+            </tr>
+        {{/each}}
+    </table>
+    <a href="/dashboard">
+        <button class="btn btn-primary pull-right">Close</button>
+    </a>
 {{/facilitator}}
