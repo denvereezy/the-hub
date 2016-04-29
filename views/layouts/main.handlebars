@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <style media="screen">
     #logo{
-      width: 9em;
+      width: 12em;
       height: 6em;
     }
     .center{
@@ -37,25 +37,11 @@
 
 <body>
   <nav class="navbar" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
       <img id ="logo" src="/img/findivityLogo.png"/>
-      </div>
-
-      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right" role="navigation">
           <li class="navbar-brand active">Logged in as: {{user}} @ {{entity}}</li>
           <li><a href="/logout"><button class="btn btn-primary">Logout</button></a></li>
         </ul>
-      </div>
-      <!--.nav-collapse -->
-    </div>
   </nav>
 
   <nav class="navbar navbar-inverse" role="navigation">
