@@ -59,6 +59,7 @@ exports.handleRequest = function(req, res, next) {
             superUserDataService.handleRequest(data, id)
                 .then(function(results) {
                     smtpConfig.sendMail(mailOpts);
+                    req.flas('alert', 'account has been updated');
                     res.redirect('/root');
                 })
                 .catch(function(err) {
