@@ -1,51 +1,49 @@
 const nodemailer = require('nodemailer');
+const Promise = require('bluebird');
 
 module.exports = function() {
-    this.sendMail = function(mailOpts) {
-      var nodemailer = require('nodemailer');
+    var smtpConfig = {
+        host: process.env.host,
+        port: 465,
+        secure: true,
+        auth: {
+            user: proccess.env.user,
+            pass: proccess.env.password
+        }
+    };
 
-      var smtpConfig = {
-          host: 'halicarnassus.aserv.co.za',
-          port: 465,
-          secure: true, // use SSL
-          auth: {
-              user: 'admin@findivity.com',
-              pass: 'GB1$iPTzQw+R'
-          }
-      };
+    var poolConfig = {
+        pool: true,
+        host: process.env.host,
+        port: 465,
+        secure: true,
+        auth: {
+            user: proccess.env.user,
+            pass: proccess.env.password
+        }
+    };
 
-      var poolConfig = {
-          pool: true,
-          host: 'halicarnassus.aserv.co.za',
-          port: 465,
-          secure: true, // use SSL
-          auth: {
-              user: 'admin@findivity.com',
-              pass: 'GB1$iPTzQw+R'
-          }
-      };
+    var directConfig = {
+        name: 'findivity.com'
+    };
 
-      var directConfig = {
-          name: 'findivity.com' // must be the same that can be reverse resolved by DNS for your IP
-      };
+    this.send = function(mail) {
 
-      var transporter = nodemailer.createTransport(smtpConfig,poolConfig,directConfig)
-      return transporter;
-      // create reusable transporter object using the default SMTP transport
+        var transporter = nodemailer.createTransport(smtpConfig, poolConfig, directConfig);
+        var mailOptions = {
+            from: mail.from + ' <admin@findivity.com>',
+            to: mail.to,
+            subject: mail.subject,
+            text: mail.text
+        };
 
-      // setup e-mail data with unicode symbols
-      var mailOptions = {
-          from: '"Fred Foo 👥" <admin@findivity.com>', // sender address
-          to: 'denver@projectcodex.co, denver@projectcodex.co', // list of receivers
-          subject: 'Hello ✔', // Subject line
-          text: 'Hello world 🐴', // plaintext body
-          html: '<b>Hello world 🐴</b>' // html body
-      };
 
-      // send mail with defined transport object
-      nodemailer.sendMail(mailOpts,{
-          transport : transporter //pass your transport
-
-        })
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                return error;
+            } else {
+                return 'Message sent: ' + info.response;
+            };
+        });
     };
 };
