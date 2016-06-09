@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const uuid = require('node-uuid');
+const SmtpMailService = require('../data_services/smtpDataService');
 
 exports.showUsers = function(req, res, next) {
     req.getServices()
@@ -47,17 +48,9 @@ exports.addUser = function(req, res, next) {
                             token: uuid.v4()
                         };
 
-                        var mailOpts, smtpConfig;
+                        var transporter = new SmtpMailService();
 
-                        smtpConfig = nodemailer.createTransport('SMTP', {
-                            service: 'Gmail',
-                            auth: {
-                                user: 'APP EMAIL',
-                                pass: 'APP PASSWORD'
-                            }
-                        });
-
-                        mailOpts = {
+                        var mail = {
                             from: req.session.entity,
                             to: data.email,
                             subject: 'invite to join',
@@ -67,8 +60,7 @@ exports.addUser = function(req, res, next) {
                         const signupDataService = services.signupDataService;
                         signupDataService.addUser(data)
                             .then(function(results) {
-                                smtpConfig.sendMail(mailOpts);
-                                req.flash('success', 'user added successfully');
+                                transporter.send(mail);
                                 res.redirect('/users');
                             })
                             .catch(function(error) {
@@ -99,7 +91,7 @@ exports.confirmUser = function(req, res, next) {
             const userDataService = services.userDataService;
             userDataService.checkToken(token)
                 .then(function(user) {
-                    match = user[0];
+                    match = user[0].token;
                     if (token !== match) {
                         req.flash('alert', 'Token has expired, please try again');
                         res.redirect('/account/verifyaccount/' + token)

@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const uuid = require('node-uuid');
-
+const GMailService = require('../data_services/gmailDataService');
+const SmtpMailService = require('../data_services/smtpDataService');
 exports.showRequests = function(req, res, next) {
     req.getServices()
         .then(function(services) {
@@ -28,38 +29,41 @@ exports.handleRequest = function(req, res, next) {
               status: '',
               token: uuid.v4()
             };
-            var mailOpts, smtpConfig;
+            var from = '"Findivity" <admin@findivity.com>',
+                to   = req.params.email,
+                subject = 'Request to join',
+                name = req.params.firstname;
 
-            smtpConfig = nodemailer.createTransport('SMTP', {
-                service: 'Gmail',
-                auth: {
-                    user: 'APP EMAIL',
-                    pass: 'APP PASSWORD'
-                }
-            });
+
+            var transporter = new SmtpMailService();
+
+
             if (req.body.status === 'Accept') {
                 data.status = 'active';
                 mailOpts = {
-                    from: 'Findivity',
-                    to: req.params.email,
-                    subject: 'Request to join',
-                    text: req.params.firstname + ' your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
+                    from: from,
+                    to: to,
+                    subject: subject,
+                    text: name + ' your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
                 };
 
             } else if (req.body.status === 'Reject') {
                 data.status = 'rejected';
-                mailOpts = {
-                    from: 'Findivity',
-                    to: req.params.email,
-                    subject: 'Request to join',
-                    text: req.params.firstname + ' your request to join Findivity was unsuccesful.'
+                var mail = {
+                    from: from,
+                    to: to,
+                    subject: subject,
+                    text: name + ' your request to join Findivity was unsuccesful.'
                 };
             };
             const superUserDataService = services.superUserDataService;
             superUserDataService.handleRequest(data, id)
                 .then(function(results) {
-                    smtpConfig.sendMail(mailOpts);
-                    req.flas('alert', 'account has been updated');
+                    mailService.sendMail(mailOpts,function(err,result){
+                            if(err) {console.log(err)};
+                          })
+                    transporter.send(mail);
+                    req.flash('alert', 'account has been updated');
                     res.redirect('/root');
                 })
                 .catch(function(err) {
