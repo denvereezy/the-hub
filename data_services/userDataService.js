@@ -31,10 +31,12 @@ module.exports = function(connection) {
     };
 
     this.confirmAccount = function(user, token) {
-        return encryptPassword(user.password)
+      var password = user[0].password;
+        return encryptPassword(password)
             .then(function(encryptedPassword) {
-                user.password = encryptedPassword;
-                return queryService.executeQuery('update user set ? where token = ?', [user, token]);
+                user[0].password = encryptedPassword;
+                var data = user[0];
+                return queryService.executeQuery('update user set ? where token = ?', [data, token]);
             });
     };
 
