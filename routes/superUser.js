@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
 const uuid = require('node-uuid');
-const GMailService = require('../data_services/gmailDataService');
 const SmtpMailService = require('../data_services/smtpDataService');
 exports.showRequests = function(req, res, next) {
     req.getServices()
