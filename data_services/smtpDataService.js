@@ -7,8 +7,8 @@ module.exports = function() {
         port: 465,
         secure: true,
         auth: {
-            user: proccess.env.user,
-            pass: proccess.env.password
+            user: process.env.user,
+            pass: process.env.password
         }
     };
 
@@ -18,8 +18,8 @@ module.exports = function() {
         port: 465,
         secure: true,
         auth: {
-            user: proccess.env.user,
-            pass: proccess.env.password
+            user: process.env.user,
+            pass: process.env.password
         }
     };
 
