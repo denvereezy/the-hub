@@ -49,7 +49,7 @@ exports.handleRequest = function(req, res, next) {
             } else if (req.body.status === 'Reject') {
                 data.status = 'rejected';
                 var mail = {
-                    from: from,
+                    from: '"Findivity" <admin@findivity.com>',
                     to: to,
                     subject: subject,
                     text: name + ' your request to join Findivity was unsuccesful.'
