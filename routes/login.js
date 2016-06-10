@@ -26,13 +26,13 @@ exports.userLogin = function(req, res, next) {
                     var user = results[0];
                     console.log(user);
                     if (user === undefined) {
-                        req.flash('alert', 'Email or Password entered is Invalid, please try again 1');
+                        req.flash('alert', 'Email or Password entered is Invalid, please try again');
                         return res.redirect("/");
                     } else if (user.status === 'invited') {
-                        req.flash('alert', 'Email or Password entered is Invalid, please try again 2');
+                        req.flash('alert', 'Email or Password entered is Invalid, please try again');
                         return res.redirect("/");
                     } else if (user.status === 'rejected') {
-                        req.flash('alert', 'Email or Password entered is Invalid, please try again 3');
+                        req.flash('alert', 'Email or Password entered is Invalid, please try again');
                         return res.redirect("/");
                     } else if (user.role === 'Super User') {
                         bcrypt.compare(req.body.password, user.password, function(err, pass) {
