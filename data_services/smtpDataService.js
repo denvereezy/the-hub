@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
 const Promise = require('bluebird');
-
 module.exports = function() {
     var smtpConfig = {
         host: process.env.host,
@@ -40,8 +39,10 @@ module.exports = function() {
 
         transporter.sendMail(mailOptions, function(error, info) {
             if (error) {
+              console.log(error);
                 return error;
             } else {
+              console.log('Message sent: ' + info.response);
                 return 'Message sent: ' + info.response;
             };
         });

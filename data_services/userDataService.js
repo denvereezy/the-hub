@@ -30,11 +30,14 @@ module.exports = function(connection) {
       return queryService.executeQuery('select * from user where token = ?', token);
     };
 
-    this.confirmAccount = function(user, token) {
-      var password = user[0].password;
+    this.confirmAccount = function(user, token, matchPassword) {
+      var password = matchPassword;
+      console.log(password);
         return encryptPassword(password)
             .then(function(encryptedPassword) {
+              console.log(encryptedPassword);
                 user[0].password = encryptedPassword;
+                user[0].status = 'active';
                 var data = user[0];
                 return queryService.executeQuery('update user set ? where token = ?', [data, token]);
             });

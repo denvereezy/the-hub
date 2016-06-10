@@ -22,11 +22,7 @@ module.exports = function(connection) {
         return queryService.executeQuery('insert into entity set ?', entity);
     };
 
-    this.addUser = function(user) {
-        return encryptPassword(user.password)
-            .then(function(encryptedPassword) {
-                user.password = encryptedPassword;
-                return queryService.executeQuery('insert into user set ?', user);
-            });
+    this.addUser = function(data) {
+      return queryService.executeQuery('insert into user set ?', data);
     };
 };

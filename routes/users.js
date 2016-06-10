@@ -41,8 +41,8 @@ exports.addUser = function(req, res, next) {
                             email: req.body.email,
                             firstName: req.body.firstName,
                             lastName: req.body.lastName,
-                            password: '',
                             entity_id: req.session.entity_id,
+                            password: '',
                             role: 'admin',
                             status: 'invited',
                             token: uuid.v4()
@@ -77,13 +77,14 @@ exports.confirmUser = function(req, res, next) {
             const token = req.params.token;
             const password = req.body.password;
             const confirmPassword = req.body.password2;
+            var matchPassword;
             const user = {
                 token: null,
                 status: 'active'
             };
 
             if (confirmPassword === password) {
-                user.password = confirmPassword;
+                matchPassword = confirmPassword;
             } else {
                 req.flash('alert', 'Passwords does not match, please try again');
                 res.redirect('/account/verifyaccount/' + token)
@@ -96,7 +97,7 @@ exports.confirmUser = function(req, res, next) {
                         req.flash('alert', 'Token has expired, please try again');
                         res.redirect('/account/verifyaccount/' + token)
                     } else {
-                        userDataService.confirmAccount(user, token)
+                        userDataService.confirmAccount(user, token, matchPassword)
                             .then(function(results) {
                                 req.flash('success', 'Password reset was successful');
                                 res.redirect('/');

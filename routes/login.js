@@ -24,17 +24,19 @@ exports.userLogin = function(req, res, next) {
             loginDataService.login(email)
                 .then(function(results) {
                     var user = results[0];
+                    console.log(user);
                     if (user === undefined) {
-                        req.flash('alert', 'Email or Password entered is Invalid, please try again');
+                        req.flash('alert', 'Email or Password entered is Invalid, please try again 1');
                         return res.redirect("/");
                     } else if (user.status === 'invited') {
-                        req.flash('alert', 'Email or Password entered is Invalid, please try again');
+                        req.flash('alert', 'Email or Password entered is Invalid, please try again 2');
                         return res.redirect("/");
                     } else if (user.status === 'rejected') {
-                        req.flash('alert', 'Email or Password entered is Invalid, please try again');
+                        req.flash('alert', 'Email or Password entered is Invalid, please try again 3');
                         return res.redirect("/");
                     } else if (user.role === 'Super User') {
                         bcrypt.compare(req.body.password, user.password, function(err, pass) {
+
                             if (pass) {
                                 req.session.user = user.firstName;
                                 req.session.email = user.email;
@@ -48,6 +50,7 @@ exports.userLogin = function(req, res, next) {
                     } else {
 
                         bcrypt.compare(req.body.password, user.password, function(err, pass) {
+
                             if (pass) {
                                 req.session.user = user.firstName;
                                 req.session.email = user.email;
