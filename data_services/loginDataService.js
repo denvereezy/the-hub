@@ -23,6 +23,6 @@ module.exports = function(connection) {
     };
 
     this.login = function(email) {
-        return queryService.executeQuery('select user.id, email,entity_id,name, status, password, firstName, lastName, address, type from user inner join entity on entity_id = entity.id where email = ?', email);
+        return queryService.executeQuery('select user.id, type, role, email,entity_id,name, status, password, firstName, lastName, address, type from user inner join entity on entity_id = entity.id where email = ?', email);
     };
 };
