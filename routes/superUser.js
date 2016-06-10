@@ -58,9 +58,6 @@ exports.handleRequest = function(req, res, next) {
             const superUserDataService = services.superUserDataService;
             superUserDataService.handleRequest(data, id)
                 .then(function(results) {
-                    mailService.sendMail(mailOpts,function(err,result){
-                            if(err) {console.log(err)};
-                          })
                     transporter.send(mail);
                     req.flash('alert', 'account has been updated');
                     res.redirect('/root');
