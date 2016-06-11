@@ -32,10 +32,8 @@ module.exports = function(connection) {
 
     this.confirmAccount = function(user, token, matchPassword) {
       var password = matchPassword;
-      console.log(password);
         return encryptPassword(password)
             .then(function(encryptedPassword) {
-              console.log(encryptedPassword);
                 user[0].password = encryptedPassword;
                 user[0].status = 'active';
                 var data = user[0];

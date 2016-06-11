@@ -24,7 +24,6 @@ exports.userLogin = function(req, res, next) {
             loginDataService.login(email)
                 .then(function(results) {
                     var user = results[0];
-                    console.log(user);
                     if (user === undefined) {
                         req.flash('alert', 'Email or Password entered is Invalid, please try again');
                         return res.redirect("/");

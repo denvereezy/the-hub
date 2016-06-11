@@ -28,19 +28,17 @@ exports.handleRequest = function(req, res, next) {
               status: '',
               token: uuid.v4()
             };
-            var from = '"Findivity" <admin@findivity.com>',
-                to   = req.params.email,
-                subject = 'Request to join',
-                name = req.params.firstname;
-
+              var  to   = req.params.email,
+              subject = 'Request to join',
+              name = req.params.firstname;
+              var mail;
 
             var transporter = new SmtpMailService();
 
 
             if (req.body.status === 'Accept') {
                 data.status = 'active';
-                mailOpts = {
-                    from: from,
+                 mail = {
                     to: to,
                     subject: subject,
                     text: name + ' your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
@@ -48,8 +46,7 @@ exports.handleRequest = function(req, res, next) {
 
             } else if (req.body.status === 'Reject') {
                 data.status = 'rejected';
-                var mail = {
-                    from: '"Findivity" <admin@findivity.com>',
+                 mail = {
                     to: to,
                     subject: subject,
                     text: name + ' your request to join Findivity was unsuccesful.'
