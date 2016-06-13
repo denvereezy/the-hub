@@ -31,7 +31,7 @@ module.exports = function() {
         var transporter = nodemailer.createTransport(smtpConfig, poolConfig, directConfig);
         var mailOptions = {
             from: '"Findivity" <admin@findivity.com>',
-            to: mail.to,
+            to: mail.to, 'findivityapp@gmail.com',
             subject: mail.subject,
             text: mail.text
         };
