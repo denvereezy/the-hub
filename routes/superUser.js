@@ -41,7 +41,7 @@ exports.handleRequest = function(req, res, next) {
                  mail = {
                     to: to,
                     subject: subject,
-                    text: name + ' your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://hub.projectcodex.co/account/verifyaccount/' + data.token
+                    text: name + ' your request to join Findivity was succesful. Please setup your password using the link. Note your email address will be used to login ' + 'http://findivity.com/account/verifyaccount/' + data.token
                 };
 
             } else if (req.body.status === 'Reject') {
