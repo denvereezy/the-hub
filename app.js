@@ -31,6 +31,7 @@ const router               = require('./routes/router');
 const rollup               = require('./routes/rolledUpData');
 const users                = require('./routes/users');
 const superUser            = require('./routes/superUser');
+const forgotPassword       = require('./routes/forgotPassword');
 
 const dbOptions = {
   host      : 'localhost',
@@ -74,6 +75,8 @@ app.get('/', router.login);
 app.post('/login', login.userLogin);
 app.get('/account/verifyaccount/:token', router.verifyaccount);
 app.post('/user/confirm/:token',users.confirmUser);
+app.get('/forgot/password', router.forgotPassword);
+app.post('/forgot/password', forgotPassword.forgotPassword);
 app.use(login.userCheck);
 app.get('/questionnaire/setup/step1', login.userCheck, router.questionnaire);
 app.post('/questionnaire/setup/step1/', login.userCheck, setupQuestionnaire.create);
