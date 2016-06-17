@@ -19,7 +19,7 @@ exports.forgotPassword = function(req, res, next) {
       console.log(user);
       if(user === undefined){
         req.flash('Email address entered is invalid, please try again');
-        res.redirect('/reset');
+        res.redirect('/forgot/password');
       }
       else{
 
@@ -28,7 +28,8 @@ exports.forgotPassword = function(req, res, next) {
     })
     .then(function(results){
       transporter.sendPaasswordReset(data);
-      res.redirect('/')
+      req.flash('message', 'A password reset email has been sent to ' + data.email + '. Please follow the instructions to reset your password.')
+      res.redirect('/forgot/password')
     })
   })
   .catch(function(err){
@@ -41,7 +42,19 @@ exports.updateUserAccount = function(req, res ,next) {
   .then(function(services){
     var token = req.params.token;
     var password = req.body.password;
+    var password2 = req.body.password2;
     const userDataService = services.userDataService;
-
+    if (password !== password2){
+      req.flash('alert', 'Passwords does not match. Please try again');
+      return res.redirect('/reset/' + token);
+    }else{
+      userDataService.updatePassword(password, token)
+      .then(function(results) {
+        res.redirect('/');
+      })
+    }
   })
-}
+  .catch(function(err) {
+    next(err);
+  });
+};

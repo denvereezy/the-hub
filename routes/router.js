@@ -36,3 +36,16 @@ exports.message = function(req, res) {
       layout: false
     });
 };
+
+exports.forgotPassword = function(req, res) {
+    res.render('forgotPassword', {
+      layout: false
+    });
+};
+
+exports.resetPassword = function(req, res) {
+  res.render('resetPassword', {
+    layout: false,
+    token: req.params.token
+  });
+};
