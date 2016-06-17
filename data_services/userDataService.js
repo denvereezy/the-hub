@@ -41,4 +41,20 @@ module.exports = function(connection) {
             });
     };
 
+    this.update = function(data) {
+      var token = data.token;
+      var email = data.email;
+      return queryService.executeQuery('update user set token = ? where email = ?',[token, email]);
+    };
+
+    this.updatePassword = function(password, token) {
+      return encryptPassword(password)
+          .then(function(encryptedPassword) {
+            var data = {
+              password: encryptedPassword,
+              token: null
+            };
+      return queryService.executeQuery('update user set ? where token = ?',[data, token]);
+    });
+  };
 };
