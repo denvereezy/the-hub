@@ -2,23 +2,23 @@ const nodemailer = require('nodemailer');
 const Promise = require('bluebird');
 module.exports = function() {
     var smtpConfig = {
-        host: 'halicarnassus.aserv.co.za',
+        host: process.env.host,
         port: 465,
         secure: true,
         auth: {
-            user: 'admin@findivity.com',
-            pass: 'GB1$iPTzQw+R'
+            user: process.env.user,
+            pass: process.env.password
         }
     };
 
     var poolConfig = {
         pool: true,
-        host: 'halicarnassus.aserv.co.za',
+        host: process.env.host,
         port: 465,
         secure: true,
         auth: {
-            user: 'admin@findivity.com',
-            pass: 'GB1$iPTzQw+R'
+            user: process.env.user,
+            pass: process.env.password
         }
     };
 
