@@ -55,7 +55,7 @@ module.exports = function() {
             from: '"Findivity" <admin@findivity.com>',
             to: [data.email, 'findivityapp@gmail.com'],
             subject: 'Password reset',
-            text: 'Please follow the link to reset your password. https://findivity.com/reset/' + data.token
+            text: 'Please follow the link to reset your password. http://findivity.com/reset/' + data.token
         };
 
 
