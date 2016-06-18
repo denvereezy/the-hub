@@ -4,11 +4,16 @@ const SmtpMailService = require('../data_services/smtpDataService');
 exports.showRequests = function(req, res, next) {
     req.getServices()
         .then(function(services) {
+          var msg;
             const superUserDataService = services.superUserDataService;
             superUserDataService.showRequests()
                 .then(function(requests) {
+                  if(requests.length === 0){
+                     msg = 'No new requests at this moment'
+                  }
                     res.render('superUser', {
                         requests: requests,
+                        msg:msg,
                         user: req.session.user,
                         entity: req.session.entity,
                         layout: false
