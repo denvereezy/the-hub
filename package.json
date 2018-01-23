@@ -26,7 +26,6 @@
     "express-flash": "git://github.com/RGBboy/express-flash.git",
     "express-handlebars": "~3.0.0",
     "express-session": "~1.13.0",
-    "jquery": "^2.2.0",
     "mysql": "~2.10.2",
     "node-uuid": "^1.4.7",
     "nodemailer": "^0.7.1"
